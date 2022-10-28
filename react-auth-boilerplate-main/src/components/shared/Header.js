@@ -8,24 +8,14 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Nav.Item className='m-2'>
+		<Nav.Item>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item className='m-2'>
+		<Nav.Item>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
-			</Link>
-		</Nav.Item>
-		<Nav.Item className='m-2'>
-			<Link to='create' style={linkStyle}>
-				Create a Pet
-			</Link>
-		</Nav.Item>
-		<Nav.Item className='m-2'>
-			<Link to='pets' style={linkStyle}>
-				Index all pets
 			</Link>
 		</Nav.Item>
 	</>
@@ -33,10 +23,10 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item className='m-2'>
+        <Nav.Item>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
-        <Nav.Item className='m-2'>
+        <Nav.Item>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
 	</>
@@ -44,19 +34,19 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Item className='m-2'>
+		<Nav.Link>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Item>
+		</Nav.Link>
 	</>
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand className='m-2'>
+		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                Monster Pets
+                react-auth-template
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />

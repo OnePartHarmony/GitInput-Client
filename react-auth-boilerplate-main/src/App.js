@@ -12,9 +12,6 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import PetCreate from './components/pets/PetCreate'
-import PetIndex from './components/pets/PetIndex'
-import PetShow from './components/pets/PetShow'
 
 const App = () => {
 
@@ -71,27 +68,6 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
-		  <Route
-            path='/create'
-            element={
-              <RequireAuth user={user}>
-                <PetCreate msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-            path='/pets/:id'
-            element={
-                <PetShow msgAlert={msgAlert} user={user} />
-            }
-          />
-		    <Route
-            path='/pets'
-            element={
-              <RequireAuth user={user}>
-                <PetIndex msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
