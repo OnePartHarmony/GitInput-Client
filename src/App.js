@@ -12,6 +12,9 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import CompanyIndex from './components/companies/CompanyIndex'
+import CompanyCreate from './components/companies/CompanyCreate'
+import CompanyShow from './components/companies/CompanyShow'
 
 const App = () => {
 
@@ -68,6 +71,27 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
+		<Route
+            path='/companies'
+            element={
+              <RequireAuth user={user}>
+                <CompanyIndex msgAlert={msgAlert} user={user} />
+              </RequireAuth>}
+         	 />
+			<Route
+            path='/companies/:id'
+            element={
+              <RequireAuth user={user}>
+                <CompanyShow msgAlert={msgAlert} user={user} />
+              </RequireAuth>}
+         	 />
+			<Route
+            path='/companies/create'
+            element={
+              <RequireAuth user={user}>
+                <CompanyCreate msgAlert={msgAlert} user={user} />
+              </RequireAuth>}
+         	 />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
@@ -79,7 +103,9 @@ const App = () => {
 						deleteAlert={deleteAlert}
 					/>
 				))}
+
 			</Fragment>
+			
 		)
 }
 
