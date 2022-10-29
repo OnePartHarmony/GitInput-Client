@@ -56,13 +56,14 @@ const SignUp = (props) => {
 
 
     return (
-        <div className='row'>
+        <div className='row auth-form' style={{ margin: '100px auto 0 auto'}}>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign Up</h3>
+                <h3 className="mb-3 text-center">Sign Up</h3>
                 <Form onSubmit={onSignUp}>
                     <Form.Group controlId='email'>
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label className="mb-0">Email address</Form.Label>
                         <Form.Control
+                            className="mb-3"
                             required
                             type='email'
                             name='email'
@@ -72,8 +73,9 @@ const SignUp = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className="mb-0">Password</Form.Label>
                         <Form.Control
+                            className="mb-3"
                             required
                             name='password'
                             value={password}
@@ -83,8 +85,9 @@ const SignUp = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='passwordConfirmation'>
-                        <Form.Label>Password Confirmation</Form.Label>
+                        <Form.Label className="mb-0">Password Confirmation</Form.Label>
                         <Form.Control
+                            className="mb-3"
                             required
                             name='passwordConfirmation'
                             value={passwordConfirmation}
@@ -93,7 +96,7 @@ const SignUp = (props) => {
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button className="mt-3 mb-5" variant='primary' type='submit'>
                         Submit
                     </Button>
                 </Form>

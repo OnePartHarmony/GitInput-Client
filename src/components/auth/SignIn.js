@@ -55,13 +55,14 @@ const SignIn = (props) => {
 	}
 
     return (
-        <div className='row justify-content-center auth-form mt-5' style={{ width: "70%", margin: "auto" }}>
+        <div className='row auth-form' style={{ margin: '100px auto 0 auto'}}>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign In</h3>
+                <h3 className="mb-3 text-center">Sign In</h3>
                 <Form onSubmit={onSignIn}>
                     <Form.Group controlId='email'>
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label className="mb-0">Email address</Form.Label>
                         <Form.Control
+                            className="mb-3"
                             required
                             type='email'
                             name='email'
@@ -71,8 +72,9 @@ const SignIn = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className="mb-0">Password</Form.Label>
                         <Form.Control
+                            className="mb-3"
                             required
                             name='password'
                             value={password}
@@ -81,7 +83,7 @@ const SignIn = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button className="mt-3" variant='primary' type='submit'>
+                    <Button className="mt-3 mb-5" variant='primary' type='submit'>
                         Submit
                     </Button>
                 </Form>
