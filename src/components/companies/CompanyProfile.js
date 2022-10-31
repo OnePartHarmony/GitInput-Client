@@ -3,7 +3,7 @@
 
 const CompanyProfile = (props) => {
 
-    // const {company} = props
+    const {company, showReviewForm} = props
     
 
     return (
@@ -16,11 +16,11 @@ const CompanyProfile = (props) => {
                 <h5>Junior:</h5>
                 <h5>Senior:</h5>
                 <h5>Management:</h5>
-                {/* <img src={`https://logo.clearbit.com/${company.domain}`} alt={`${company.name} logo`}/> */}
+                <img src={`https://logo.clearbit.com/${company.domain}`} alt={`${company.name} logo`}/>
                 <p>Company Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                 <h5>companyWebsite.net</h5>
             </div>
-            <button className="btn btn-primary">Leave a Review</button>
+            <button className="btn btn-primary" onClick={showReviewForm}>Leave a Review</button>
         </div>
     )
 }
