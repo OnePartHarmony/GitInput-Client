@@ -79,10 +79,10 @@ const App = () => {
               </RequireAuth>}
          	 />
 			<Route
-            path='/companies/:id'
+            path='/companies/show'
             element={
               <RequireAuth user={user}>
-                <CompanyShow msgAlert={msgAlert} user={user} />
+                <CompanyShow msgAlert={msgAlert} user={user} company=""/>
               </RequireAuth>}
          	 />
 			<Route
