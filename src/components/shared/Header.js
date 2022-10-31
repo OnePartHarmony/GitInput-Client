@@ -19,6 +19,11 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Item>
+		<Nav.Item className="ms-3">
+			<Link to='/companies' style={linkStyle}>
+				View Companies
+			</Link>
+		</Nav.Item>
 	</>
 )
 
