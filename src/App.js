@@ -71,7 +71,7 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
-		<Route
+		  <Route
             path='/companies'
             element={
               <RequireAuth user={user}>

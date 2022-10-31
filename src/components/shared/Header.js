@@ -10,6 +10,11 @@ const linkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Item className="ms-3">
+			<Link to='/companies' style={linkStyle}>
+				View Companies
+			</Link>
+		</Nav.Item>
+		<Nav.Item className="ms-3">
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
@@ -29,6 +34,10 @@ const unauthenticatedOptions = (
         </Nav.Item>
         <Nav.Item className="ms-3">
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
+        </Nav.Item>
+		{/* TEMP ROUTE */}
+		<Nav.Item className="ms-3">
+		    <Link to='/companies' style={linkStyle}>Temp Companies</Link>
         </Nav.Item>
 	</>
 )
