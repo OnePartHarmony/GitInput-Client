@@ -22,7 +22,8 @@ body {
 .company-index {
   display: flex;
   flex-direction: row;
-  height: max-content;
+  height: 100vh;
+  margin: 0px;
 }
 
 .company-search-container {
@@ -30,7 +31,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: lightblue;
-  height: 100vh;
+  height: 103vh;
   width: 30vw;
 }
 

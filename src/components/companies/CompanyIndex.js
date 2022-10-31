@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Container, Card } from 'react-bootstrap'
+import { Form, Button, Card } from 'react-bootstrap'
 
 
 const CompanyIndex = (props) => {
