@@ -12,7 +12,7 @@ The idea behind ______ is to give software engineers a place to share their expe
 ## Team Positions
 - Harmony Brown: GIT Manager and Fullstack Developer
 - Jake Parker: Back-end Developer
-- Meghan Welch: Fron-end Developer
+- Meghan Welch: Front-end Developer
 - Claudio Flores: Full-stack Developer
 
 ## User Stories
