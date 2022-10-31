@@ -9,16 +9,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignUp = (props) => {
-	// constructor(props) {
-	// 	super(props)
-
-	// 	this.state = {
-	// 		email: '',
-	// 		password: '',
-	// 		passwordConfirmation: '',
-	// 	}
-	// }    
-    const [email, setEmail] = useState('')
+  
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
@@ -29,7 +21,7 @@ const SignUp = (props) => {
 
 		const { msgAlert, setUser } = props
 
-        const credentials = {email, password, passwordConfirmation}
+        const credentials = {username, password, passwordConfirmation}
 
 		signUp(credentials)
 			.then(() => signIn(credentials))
@@ -43,7 +35,7 @@ const SignUp = (props) => {
 			)
 			.then(() => navigate('/'))
 			.catch((error) => {
-                setEmail('')
+                setUsername('')
                 setPassword('')
                 setPasswordConfirmation('')
 				msgAlert({
@@ -60,16 +52,16 @@ const SignUp = (props) => {
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3 className="mb-3 text-center">Sign Up</h3>
                 <Form onSubmit={onSignUp}>
-                    <Form.Group controlId='email'>
-                        <Form.Label className="mb-0">Email address</Form.Label>
+                    <Form.Group controlId='username'>
+                        <Form.Label className="mb-0">Username</Form.Label>
                         <Form.Control
                             className="mb-3"
                             required
-                            type='email'
-                            name='email'
-                            value={email}
-                            placeholder='Enter email'
-                            onChange={e => setEmail(e.target.value)}
+                            type='text'
+                            name='username'
+                            value={username}
+                            placeholder='Enter username'
+                            onChange={e => setUsername(e.target.value)}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
