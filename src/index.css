@@ -103,15 +103,19 @@ body {
 }
 
 .review-card {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  align-items: center;
-  flex-grow: 1;
+  align-items: center; */
   margin: auto;
   width: 50%;
   border: 2px solid black;
+  background-color: white;
   border-radius: 5px;
   padding: 25px;
+}
+
+.review-info {
+  display: flex;
 }
 
 .review-section-1 {
@@ -125,6 +129,16 @@ body {
 .review-section-2 {
   padding-left: 50px;
   flex: 4;
+}
+
+.review-btn {
+  float: right;
+  background-color: rgba(236, 70, 61, .85);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  margin: 20px 5px 0px;
 }
 
 
