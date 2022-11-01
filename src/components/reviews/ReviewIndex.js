@@ -6,11 +6,11 @@ const ReviewIndex = (props) => {
 
     const {company} = props
 
-    const reveiwCards = company.reviews.map(review => (
+    const reviewCards = company.reviews.map(review => (
         <Card key={review._id} style={{backgroundColor: "rgb(152,212,255)"}}>
             <Card.Header>{review.title}</Card.Header>
             <Card.Body>
-                <h5>{review.rating}</h5>
+                <h5>{review.generalRating}</h5>
                 <p>{review.startingPosition}</p>
                 <p>{review.startingSalary}</p>
             </Card.Body>
@@ -26,7 +26,7 @@ const ReviewIndex = (props) => {
                 <div style={{backgroundColor: "rgb(152,212,255)", border: "2px solid rgb(126,196,255)", height: "50px"}}>
                     <h3>Reviews</h3> 
                 </div>                
-                {/* {reviewCards} */}
+                {reviewCards}
             </div>            
         </div>
     )

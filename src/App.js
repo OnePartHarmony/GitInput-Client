@@ -83,9 +83,9 @@ const App = () => {
             path='/companies/show'
             element={
               <RequireAuth user={user}>
-                <CompanyShow msgAlert={msgAlert} user={user} company={{name: "Google", description: "a cool place to work", domain: "google.com", reviews: [{
-        rating: 3,
-        startingPosition: "Entry",
+                <CompanyShow msgAlert={msgAlert} user={user} company={{name: "Google", description: "a cool place to work", domain: "google.com", logo: "https://logo.clearbit.com/google.com", reviews: [{
+        generalRating: 3,
+        startingPosition: "Intern",
         startingSalary: 50000,
         content: "This place is great!"
     }]}}/>
