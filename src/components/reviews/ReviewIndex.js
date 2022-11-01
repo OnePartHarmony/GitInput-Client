@@ -1,12 +1,30 @@
+import { useEffect, useState } from "react"
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { reviewCreate } from "../../api/review"
+import { reviewIndex } from "../../api/review"
 
 const ReviewIndex = (props) => {
 
-    const {company} = props
+    const {company, msgAlert} = props
 
-    const reviewCards = company.reviews.map(review => (
+    const [reviews, setReviews] = useState([])
+
+    useEffect(() => {
+        reviewIndex(company._id)
+            .then(res => {
+                setReviews(res.data.reviews)
+            })
+            .catch((err) => {
+                msgAlert({
+                    heading: "Failure",
+                    message: "Failed to find reviews" + err,
+                    variant: "danger"
+                })
+            })
+    }, [])
+
+
+    const reviewCards = reviews.map(review => (
         <Card key={review._id} style={{backgroundColor: "rgb(152,212,255)", margin: "20px"}}>
             <Card.Header>{review.title}</Card.Header>
             <Card.Body>
@@ -26,7 +44,7 @@ const ReviewIndex = (props) => {
                 <div style={{backgroundColor: "rgb(152,212,255)", border: "2px solid rgb(126,196,255)", height: "50px"}}>
                     <h3>Reviews</h3> 
                 </div>                
-                {reviewCards}
+                {reviews.length > 0 ? reviewCards : "No Reviews Yet"}
             </div>            
         </div>
     )

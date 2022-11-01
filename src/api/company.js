@@ -20,13 +20,10 @@ export const companyIndex = () => {
 	})
 }
 
-export const reviewShow = (user, id) => {
+export const companyShow = (id) => {
 	return axios({
 		method: "GET",
-		url: apiUrl + `/companies/${id}`,
-        headers: {
-            Authorization: `Token token=${user.token}`
-        }		
+		url: apiUrl + `/companies/${id}`		
 	})
 }
 
