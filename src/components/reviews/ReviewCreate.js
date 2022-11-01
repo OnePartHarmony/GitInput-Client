@@ -4,7 +4,7 @@ import { reviewCreate } from '../../api/review'
 
 const ReviewCreate = (props) => {
 
-    const {closeReviewForm, company, msgAlert} = props
+    const {closeReviewForm, company, companyId, msgAlert, user} = props
 
     const defaultReview = {
         title: "",
@@ -22,9 +22,12 @@ const ReviewCreate = (props) => {
         })
     }
 
-    const handleSubmit = () => {
-        reviewCreate(review)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        reviewCreate(review, user, companyId)
             .then(() => {
+                closeReviewForm()
                 msgAlert({
                     heading: 'Success!',
                     message: 'Your review has ben created.',
@@ -49,7 +52,7 @@ const ReviewCreate = (props) => {
                         <Form.Label>Title your Review:</Form.Label>
                         <Form.Control type="text" name="title" value={review.title} onChange={handleChange}/>
                     </Form.Group>                    
-                    <Form.Group clasName="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
+                    <Form.Group className="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
                         <Form.Label>Your Rating: </Form.Label>
                         {/* Star rating radio inputs */}
                         <Form.Check type="radio" name="generalRating" value="1" label='1' onChange={handleChange}/>
@@ -69,7 +72,7 @@ const ReviewCreate = (props) => {
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label>Starting Salary:</Form.Label>
-                        <Form.Control placeholder={`Your starting yearly salary at ${company.name} in USD`} name="startingSalary" value={review.startingSalary}/>
+                        <Form.Control placeholder={`Your starting yearly salary at ${company.name} in USD`} name="startingSalary" value={review.startingSalary} onChange={handleChange}/>
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label>Review:</Form.Label>
