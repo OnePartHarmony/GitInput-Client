@@ -7,7 +7,7 @@ const ReviewCreate = (props) => {
     const {closeReviewForm, company, msgAlert} = props
 
     const defaultReview = {
-        rating: 0,
+        generalRating: 0,
         startingPosition: "Entry",
         startingSalary: 0,
         content: ""
@@ -44,9 +44,14 @@ const ReviewCreate = (props) => {
             <div  style={{width: "33vw", margin: "auto", backgroundColor: "rgb(197,231,255)", border: "2px solid rgb(126,196,255)", height: "500px"}}>
                 <h3>Review {company.name}</h3>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group clasName="mb-2">
+                    <Form.Group clasName="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
                         <Form.Label>Your Rating: </Form.Label>
                         {/* Star rating radio inputs */}
+                        <Form.Check type="radio" name="generalRating" value="1" label='1' onChange={handleChange}/>
+                        <Form.Check type="radio" name="generalRating" value="2" label='2' onChange={handleChange}/>
+                        <Form.Check type="radio" name="generalRating" value="3" label='3' onChange={handleChange} />
+                        <Form.Check type="radio" name="generalRating" value="4" label='4' onChange={handleChange} />
+                        <Form.Check type="radio" name="generalRating" value="5" label='5' onChange={handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label>Starting Position:</Form.Label>
@@ -63,7 +68,7 @@ const ReviewCreate = (props) => {
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label>Review:</Form.Label>
-                        <Form.Control as="textarea" rows={4} placeholder="What are your reasons for this rating?" name="content" value={review.content} />
+                        <Form.Control as="textarea" rows={4} placeholder="What are your reasons for this rating?" name="content" value={review.content} onChange={handleChange}/>
                     </Form.Group>        
                     <Button type="submit">Submit Review</Button>
                 </Form>
