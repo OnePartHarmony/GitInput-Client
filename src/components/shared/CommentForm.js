@@ -1,18 +1,18 @@
-import { Form, Button, Container } from 'react-bootstrap'
+// import { Form, Button, Container } from 'react-bootstrap'
 
-const CommentForm = () => {
+// const CommentForm = () => {
 
-    const { review, handleChange } = props
+//     const { review, handleChange } = props
 
-    return (
-        <>
-            <Form.Control
-                placeholder="enter your comment here"
-                onChange= { handleChange }
-            />
-            <Button type="submit">Submit</Button>
-        </>
-    )
-}
+//     return (
+//         <>
+//             <Form.Control
+//                 placeholder="enter your comment here"
+//                 onChange= { handleChange }
+//             />
+//             <Button type="submit">Submit</Button>
+//         </>
+//     )
+// }
 
-export default CommentForm
+// export default CommentForm
