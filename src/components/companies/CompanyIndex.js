@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Container, Card } from 'react-bootstrap'
+import { Form, Button, Card } from 'react-bootstrap'
 
 
 const CompanyIndex = (props) => {
@@ -26,7 +26,7 @@ const CompanyIndex = (props) => {
                 <div className="company-card-container">
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -34,7 +34,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -42,7 +42,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -50,7 +50,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -58,7 +58,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -66,7 +66,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -74,7 +74,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -82,7 +82,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -90,7 +90,7 @@ const CompanyIndex = (props) => {
                     </Card>
                     <Card className="company-card text-center mb-3">
                         <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo" src="https://logo.clearbit.com/paypal.com"></img>
+                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
                         {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
                         <button className="mt-2 mb-2 company-btn">(company name) Website</button>
                         <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>

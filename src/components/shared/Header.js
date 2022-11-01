@@ -35,10 +35,6 @@ const unauthenticatedOptions = (
         <Nav.Item className="ms-3">
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
-		{/* TEMP ROUTE */}
-		<Nav.Item className="ms-3">
-		    <Link to='/companies' style={linkStyle}>Temp Companies</Link>
-        </Nav.Item>
 	</>
 )
 
@@ -52,6 +48,11 @@ const alwaysOptions = (
 		<Nav.Item>
 			<Link to='/companies/show' style={linkStyle}>
 				CompanyShow
+			</Link>
+		</Nav.Item>
+		<Nav.Item>
+			<Link to='/reviews/show' style={linkStyle}>
+				Review Show
 			</Link>
 		</Nav.Item>
 	</>
