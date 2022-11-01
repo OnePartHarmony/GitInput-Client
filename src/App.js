@@ -83,7 +83,7 @@ const App = () => {
             path='/companies/show'
             element={
               <RequireAuth user={user}>
-                <CompanyShow msgAlert={msgAlert} user={user} company={{name: "Google", description: "a cool place to work", domain: "google.com", logo: "https://logo.clearbit.com/google.com", reviews: [{
+                <CompanyShow msgAlert={msgAlert} user={user} company={{name: "Google", description: 'Google LLC is an American multinational technology company that focuses on search engine technology, online advertising, cloud computing, computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics.', domain: "google.com", logo: "https://logo.clearbit.com/google.com", reviews: [{
         generalRating: 3,
         startingPosition: "Intern",
         startingSalary: 50000,

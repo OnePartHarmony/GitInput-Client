@@ -7,7 +7,7 @@ const ReviewIndex = (props) => {
     const {company} = props
 
     const reviewCards = company.reviews.map(review => (
-        <Card key={review._id} style={{backgroundColor: "rgb(152,212,255)"}}>
+        <Card key={review._id} style={{backgroundColor: "rgb(152,212,255)", margin: "20px"}}>
             <Card.Header>{review.title}</Card.Header>
             <Card.Body>
                 <h5>{review.generalRating}</h5>
