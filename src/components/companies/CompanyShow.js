@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 
 const CompanyShow = (props) => {
 
-    const {msgAlert} = props
+    const {msgAlert, user} = props
     const {id} = useParams()
 
     const [company, setCompany] = useState({})
@@ -40,7 +40,8 @@ const CompanyShow = (props) => {
     return (
         <div style={{display: "flex"}}>
             <CompanyProfile company={company} showReviewForm={toggleReviewForm} />
-            {displayReviewCreate ? <ReviewCreate company={company} closeReviewForm={toggleReviewForm} msgAlert={msgAlert}/> : <ReviewIndex company={company}/>}
+
+            {displayReviewCreate ? <ReviewCreate company={company} companyId={id} closeReviewForm={toggleReviewForm} msgAlert={msgAlert} user={user}/> : <ReviewIndex companyId={id} msgAlert={msgAlert}/>}
         </div>
     )
 }

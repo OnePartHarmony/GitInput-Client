@@ -5,12 +5,12 @@ import { reviewIndex } from "../../api/review"
 
 const ReviewIndex = (props) => {
 
-    const {company, msgAlert} = props
+    const {companyId, msgAlert} = props
 
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        reviewIndex(company._id)
+        reviewIndex(companyId)
             .then(res => {
                 setReviews(res.data.reviews)
             })

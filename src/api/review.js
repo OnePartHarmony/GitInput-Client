@@ -1,12 +1,16 @@
 import apiUrl from "../apiConfig"
 import axios from "axios"
 
-export const reviewCreate = (review, user) => {
+export const reviewCreate = (review, user, companyId) => {
     return axios({
         method: "POST",
-        url: apiUrl + "/reviews",
+        url: apiUrl + `/reviews`,
         data: {
-            review: review
+            review: {
+                ...review,
+                owner: user._id,
+                company: companyId
+            } 
         },
         headers: {
             Authorization: `Token token=${user.token}`
@@ -21,13 +25,10 @@ export const reviewIndex = (companyId) => {
 	})
 }
 
-export const reviewShow = (user, id) => {
+export const reviewShow = (id) => {
 	return axios({
 		method: "GET",
-		url: apiUrl + `/reviews/${id}`,
-        headers: {
-            Authorization: `Token token=${user.token}`
-        }		
+		url: apiUrl + `/reviews/${id}`,	
 	})
 }
 
