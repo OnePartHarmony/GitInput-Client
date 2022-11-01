@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, Button, Card, Container } from 'react-bootstrap'
 import { companyIndex } from '../../api/company'
 import { Link } from 'react-router-dom'
+import  CompanyCreate  from './CompanyCreate'
 
 
 const CompanyIndex = (props) => {
@@ -32,7 +33,7 @@ const CompanyIndex = (props) => {
                 <img className="logo-company-index" src={company.logo}></img>
                 <a className="btn btn-primary mt-2 mb-2 company-link" href={`https://www.${company.domain}`}>{company.name} Website</a>
                 <p className="company-description">{company.description}</p>
-                <Link to={`/companies/${company._id}`} className="btn btn-success">View Company Reviews</Link>
+                <Link to={`/companies/${company._id}`} state={company} className="btn btn-success">View Company Reviews</Link>
             </Card>
         )
     })
@@ -53,6 +54,9 @@ const CompanyIndex = (props) => {
                             Search
                         </Button>
                     </div>
+                    <div>
+                        <CompanyCreate msgAlert={msgAlert} />
+                        </div>
                 </div>
                 <div className="company-card-container">
                     {allCompanies.length > 0 ? allCompaniesJSX : "Loading..."}
