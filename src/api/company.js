@@ -13,13 +13,10 @@ export const companyCreate = (company, user) => {
         }
     })
 }
-export const companyIndex = (user) => {
+export const companyIndex = () => {
 	return axios({
 		method: 'GET',
-		url: apiUrl + '/companies',
-		headers: {
-            Authorization: `Token token=${user.token}`
-        }
+		url: apiUrl + '/companies'
 	})
 }
 

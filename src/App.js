@@ -74,22 +74,15 @@ const App = () => {
           />
 		  <Route
             path='/companies'
-            element={
-              <RequireAuth user={user}>
-                <CompanyIndex msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
+            element={              
+              <CompanyIndex msgAlert={msgAlert} user={user} />
+            }
          	 />
 			<Route
-            path='/companies/show'
-            element={
-              <RequireAuth user={user}>
-                <CompanyShow msgAlert={msgAlert} user={user} company={{name: "Google", description: 'Google LLC is an American multinational technology company that focuses on search engine technology, online advertising, cloud computing, computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics.', domain: "google.com", logo: "https://logo.clearbit.com/google.com", reviews: [{
-        generalRating: 3,
-        startingPosition: "Intern",
-        startingSalary: 50000,
-        content: "This place is great!"
-    }]}}/>
-              </RequireAuth>}
+            path='/companies/:id'
+            element={            
+              <CompanyShow msgAlert={msgAlert} user={user}/>
+            }
          	 />
 			<Route
             path='/companies/create'
@@ -101,9 +94,8 @@ const App = () => {
 			<Route
             path='/reviews/show'
             element={
-              <RequireAuth user={user}>
                 <ReviewShow msgAlert={msgAlert} user={user} company=""/>
-              </RequireAuth>}
+            }
          	 />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (

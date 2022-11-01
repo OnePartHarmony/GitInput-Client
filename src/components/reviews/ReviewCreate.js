@@ -7,8 +7,9 @@ const ReviewCreate = (props) => {
     const {closeReviewForm, company, msgAlert} = props
 
     const defaultReview = {
+        title: "",
         generalRating: 0,
-        startingPosition: "Entry",
+        startingPosition: "Intern",
         startingSalary: 0,
         content: ""
     }
@@ -44,6 +45,10 @@ const ReviewCreate = (props) => {
             <div  style={{width: "33vw", margin: "auto", backgroundColor: "rgb(197,231,255)", border: "2px solid rgb(126,196,255)", height: "500px"}}>
                 <h3>Review {company.name}</h3>
                 <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-2">
+                        <Form.Label>Title your Review:</Form.Label>
+                        <Form.Control type="text" name="title" value={review.title} onChange={handleChange}/>
+                    </Form.Group>                    
                     <Form.Group clasName="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
                         <Form.Label>Your Rating: </Form.Label>
                         {/* Star rating radio inputs */}
