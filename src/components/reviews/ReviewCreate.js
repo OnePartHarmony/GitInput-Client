@@ -22,9 +22,12 @@ const ReviewCreate = (props) => {
         })
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
         reviewCreate(review, user, companyId)
             .then(() => {
+                closeReviewForm()
                 msgAlert({
                     heading: 'Success!',
                     message: 'Your review has ben created.',
