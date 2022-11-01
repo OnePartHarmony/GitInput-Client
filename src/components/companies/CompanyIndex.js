@@ -1,14 +1,45 @@
-import React from 'react'
-import { Form, Button, Card } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Form, Button, Card, Container } from 'react-bootstrap'
+import { companyIndex } from '../../api/company'
+import { Link } from 'react-router-dom'
 
 
 const CompanyIndex = (props) => {
 
-    
+    const {msgAlert} = props
+ 
+    const [allCompanies, setAllCompanies] = useState([])
+
+    useEffect(() => {
+        companyIndex()
+            .then(res => {
+                setAllCompanies(res.data.companies)
+                console.log(allCompanies)
+            })
+            .catch((error) => {
+                msgAlert({
+                    heading: 'Failure',
+                    message: 'Failed to find companies' + error,
+                    variant: 'danger'
+                })
+            })
+    }, [])
+
+    const allCompaniesJSX = allCompanies.map((company, index) => {
+        return (
+            <Card key={index} className="company-card text-center mb-3">
+                <h1 className="company-name mt-2">{company.name}</h1>
+                <img className="logo-company-index" src={company.logo}></img>
+                <a className="btn btn-primary mt-2 mb-2 company-link" href={`https://www.${company.domain}`}>{company.name} Website</a>
+                <p className="company-description">{company.description}</p>
+                <Link to={`/companies/${company._id}`} className="btn btn-success">View Company Reviews</Link>
+            </Card>
+        )
+    })
 
     return (
         <>  
-            <container className="company-index">
+            <Container className="company-index">
                 {/* need to add name, id, value, on change?*/}
                 <div className="company-search-container text-center">
                     <div className="mb-5 company-search-box">
@@ -24,80 +55,9 @@ const CompanyIndex = (props) => {
                     </div>
                 </div>
                 <div className="company-card-container">
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
-                    <Card className="company-card text-center mb-3">
-                        <h1 class="company-name mt-2">Company Name</h1>
-                        <img className="logo-company-index" src="https://logo.clearbit.com/paypal.com"></img>
-                        {/* <a className="mt-2 mb-2 company-link" href="123.com">Company Link</a> */}
-                        <button className="mt-2 mb-2 company-btn">(company name) Website</button>
-                        <p className="company-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button className="mb-3 company-btn">View Company Reviews</button>
-                    </Card>
+                    {allCompanies.length > 0 ? allCompaniesJSX : "Loading..."}
                 </div>
-            </container>
+            </Container>
         </>
     )
 }
