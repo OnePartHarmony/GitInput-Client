@@ -105,6 +105,7 @@ body {
 .review-card {
   display: flex;
   flex-direction: row;
+  align-items: center;
   flex-grow: 1;
   margin: auto;
   width: 50%;
