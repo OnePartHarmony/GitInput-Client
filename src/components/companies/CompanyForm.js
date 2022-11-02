@@ -16,17 +16,18 @@ const CompanyForm = (props) => {
                     value= { company.name }
                     onChange={ handleChange }
                 />
-                <Form.Label>Logo:</Form.Label>
+                <Form.Label>Logo (direct image link):</Form.Label>
                 <Form.Control 
-                    placeholder="What's type of company?"
+                    placeholder="https://i.imgur.com/companyLogo.jpg"
                     name="logo"
                     id="logo"
+                    type="url"
                     value= { company.type }
                     onChange={ handleChange }
                 />
                 <Form.Label>Domain:</Form.Label>
                 <Form.Control 
-                    placeholder="Google.com"
+                    placeholder="google.com"
                     name="domain"
                     id="domain"
                     value= { company.domain }

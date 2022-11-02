@@ -52,14 +52,17 @@ const CompanyIndex = (props) => {
                         <Button className="mt-3 mb-5">
                             Search
                         </Button>
-                        <div className="company-create">
-                            <h5>
-                            Don't see your company at all?
-                            <br/>
-                            Create it!
-                            </h5>
-                        <CreateCompanyModal user={user} msgAlert={msgAlert}/>
-                        </div>
+                        {user ? 
+                            <div className="company-create">
+                                <h5>
+                                Don't see your company at all?
+                                <br/>
+                                Create it!
+                                </h5>
+                            <CreateCompanyModal user={user} msgAlert={msgAlert}/>
+                            </div>
+                        : null }
+                        
                     </div>
                 </div>
                 <div className="company-card-container">

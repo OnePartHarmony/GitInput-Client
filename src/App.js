@@ -13,7 +13,6 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CompanyIndex from './components/companies/CompanyIndex'
-import CompanyCreate from './components/companies/CompanyCreate'
 import CompanyShow from './components/companies/CompanyShow'
 import ReviewShow from './components/reviews/ReviewShow'
 
@@ -83,13 +82,6 @@ const App = () => {
             element={            
               <CompanyShow msgAlert={msgAlert} user={user}/>
             }
-         	 />
-			<Route
-            path='/companies/create'
-            element={
-              <RequireAuth user={user}>
-                <CompanyCreate msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
          	 />
 			<Route
             path='/reviews/:reviewId'
