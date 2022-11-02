@@ -7,7 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 const EditCompanyModal = (props) => {
     const { 
-        user, show, handleClose, 
+        user, show, , 
         msgAlert, triggerRefresh 
     } = props
 
