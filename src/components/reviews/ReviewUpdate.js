@@ -42,7 +42,7 @@ const ReviewUpdate = (props) => {
                     <Form.Label>Review Title:</Form.Label>
                     <Form.Control type="text" name="title" value={review.title} onChange={handleChange}/>
                 </Form.Group>
-                <Form.Group clasName="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
+                <Form.Group className="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
                     <Form.Label>Your Rating:</Form.Label>
                     {/* Star rating radio inputs */}
                     <Form.Check type="radio" name="generalRating" value="1" label='1' onChange={handleChange}/>
