@@ -6,10 +6,11 @@ export const commentCreate = (user, reviewId, comment) => {
         method: "POST",
         url: apiUrl + `/comments/:${reviewId}`,
         data: {
-            comment: {comment: comment, authour: user._id}
+            comment: {comment: comment, author: user.id}
         },
         headers: {
             Authorization: `Token token=${user.token}`
         }
     })
 }
+

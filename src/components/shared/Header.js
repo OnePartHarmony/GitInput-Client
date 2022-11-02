@@ -59,10 +59,10 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar className='nav-bar' variant='dark' expand='md'>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle} className="ms-3">
-                Git Input
+            <Link to='/' style={linkStyle} className="ms-3 site-name">
+                &lt;Git Input/&gt;
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />

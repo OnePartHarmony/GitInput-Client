@@ -96,7 +96,7 @@ const App = () => {
             element={
                 <ReviewShow msgAlert={msgAlert} user={user} company=""/>
             }
-         	 />
+         	/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
