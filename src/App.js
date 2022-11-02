@@ -92,7 +92,7 @@ const App = () => {
               </RequireAuth>}
          	 />
 			<Route
-            path='/reviews/show'
+            path='/reviews/:reviewId'
             element={
                 <ReviewShow msgAlert={msgAlert} user={user} company=""/>
             }

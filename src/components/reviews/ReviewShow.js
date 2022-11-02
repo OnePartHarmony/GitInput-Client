@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from 'react' 
 import { useParams, useNavigate } from 'react-router-dom'
 import { Form, Button, Card } from 'react-bootstrap'
-import reviewShow from '../../api/review'
+import { reviewShow } from '../../api/review'
 import CommentCreate from '../comments/CommentCreate'
 
 const ReviewShow = (props) => {
 
-    const { user, msgAlert} = props
-
-    const [review, setReview] = useState(null)
+    const { user, msgAlert } = props
+    const [review, setReview] = useState({})
     const [displayComments, setDisplayComments] = useState(false)
-    const { id } = useParams()
+    const { reviewId } = useParams()
 
-
+    useEffect(() => {
+        console.log('this is the reviewId', reviewId)
+        reviewShow(reviewId)
+            .then((res) => {
+                console.log('this is the review res.data', res.data)
+                setReview(res.data.review)
+                console.log('this is this review', review)
+            })
+            .catch((err) => {
+                msgAlert({
+                    heading: "Failure",
+                    message: "Failed to find review." + err,
+                    variant: "danger"
+                })
+            })
+    }, [])
 
     const toggleCommentForm = () => {
             setDisplayComments(prevState => !prevState)
@@ -24,17 +38,17 @@ const ReviewShow = (props) => {
             <div className="show-review-container">
                 <h1 className="text-center mt-5 mb-4">Company Name</h1>
                 <img className="logo-review-show mt-3 mb-5" src="https://logo.clearbit.com/google.com"></img>
-                <h2 className="text-center review-title">Reviews</h2>
+                <h2 className="text-center review-title">{ review.title }</h2>
                 <div className="review-card">
                     <div className="review-info">
                         <section className="review-section-1">
-                            <div className="rating-item">User: meg</div>
-                            <div className="rating-item">Rating: *****</div>
-                            <div className="rating-item">Salary: $3,000,000</div>
-                            <div className="rating-item">Starting Position: CEO</div>
+                            <div className="rating-item">User: { review.owner.username }</div>
+                            <div className="rating-item">Rating: { review.generalRating }</div>
+                            <div className="rating-item">Salary: { review.startingSalary }</div>
+                            <div className="rating-item">Starting Position: { review.startingPosition }</div>
                         </section>
                         <section className="review-section-2">
-                            <div className="review-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+                            <div className="review-text">{ review.content }</div>
                         </section>
                     </div>
                     <section className="review-btns">
