@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react' 
 import { useParams, useNavigate } from 'react-router-dom'
 import { Form, Button, Card } from 'react-bootstrap'
-import SetComment from '../comments/SetComment'
+import reviewShow from '../../api/review'
+import CommentCreate from '../comments/CommentCreate'
 
 
 const ReviewShow = (props) => {
 
-    const [review, setReview] = useState( null)
+    const { user, msgAlert} = props
+
+    const [review, setReview] = useState(null)
+    const [displayComments, setDisplayComments] = useState(false)
     const { id } = useParams()
 
 
 
+    const toggleCommentForm = () => {
+            setDisplayComments(prevState => !prevState)
+    }
 
     return (
         <>
@@ -32,12 +39,13 @@ const ReviewShow = (props) => {
                         </section>
                     </div>
                     <section className="review-btns">
-                        <button className="review-btn">Comment</button>
-                        <button className="review-btn">Like</button>
+                        <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
+                        <button className="review-btn" >Like</button>
                     </section>
+
+                </div>
             </div>
-            </div>
-            {/* <SetComment></SetComment> */}
+            {displayComments ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
         </>
     )
 }

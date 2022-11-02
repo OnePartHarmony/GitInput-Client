@@ -1,12 +1,13 @@
 import apiUrl from "../apiConfig"
 import axios from "axios"
 
-export const commentCreate = (review, user) => {
+
+export const commentCreate = (user, reviewId, comment) => {
     return axios({
         method: "POST",
-        url: apiUrl + "/comments/:reviewId",
+        url: apiUrl + `/comments/:${reviewId}`,
         data: {
-            review: review
+            comment: {comment: comment, authour: user._id}
         },
         headers: {
             Authorization: `Token token=${user.token}`
