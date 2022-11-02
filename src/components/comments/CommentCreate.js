@@ -14,6 +14,7 @@ const CommentCreate = (props) => {
     const createComment = () => {
 
         commentCreate(user, review._id, comment)
+        console.log(review._id)
             .then(() => {
                 setComment({})
                 msgAlert({

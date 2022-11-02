@@ -26,9 +26,10 @@ export const reviewIndex = (companyId) => {
 }
 
 export const reviewShow = (id) => {
+    console.log('this is the id', id)
 	return axios({
 		method: "GET",
-		url: apiUrl + `/reviews/${id}`,	
+		url: apiUrl + `/reviews/show/${id}`,	
 	})
 }
 
