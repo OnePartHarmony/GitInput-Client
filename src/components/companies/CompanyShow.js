@@ -31,7 +31,7 @@ const CompanyShow = (props) => {
         setDisplayReviewCreate(prevValue => !prevValue)
     }
 
-    if (company == {}) {
+    if (company === {}) {
         return(
             <>Loading...</>
         )

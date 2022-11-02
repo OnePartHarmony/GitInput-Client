@@ -24,19 +24,26 @@ const ReviewIndex = (props) => {
     }, [])
 
 
-    const reviewCards = reviews.map(review => (
+    const reviewCards = reviews.map(review => {
+        return (
         <Card key={review._id} style={{backgroundColor: "rgb(152,212,255)", margin: "20px"}}>
             <Card.Header>{review.title}</Card.Header>
             <Card.Body>
-                <h5>{review.generalRating}</h5>
+                <div style={{display: "flex", justifyContent: "center"}}>
+                   {Array.from({length: review.generalRating}, (a,index) => 
+                    <svg key={index} width="30" height="30" viewBox="0 0 60 60"><path fill="gold" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
+                    )} 
+                </div>
                 <p>{review.startingPosition}</p>
                 <p>{review.startingSalary}</p>
             </Card.Body>
             <Card.Footer>
                 <Link className="btn btn-success" to={`/reviews/${review._id}`} >Read More</Link>
             </Card.Footer>
-        </Card>
-    ))
+        </Card>            
+        )
+
+    })
     return (
         <div className="mt-5" style={{flex: 1, textAlign: "center", }}>
             
