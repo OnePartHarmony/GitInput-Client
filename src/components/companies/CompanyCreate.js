@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { companyCreate } from '../../api/company'
 
+import CompanyForm from './CompanyForm'
+
 const CompanyCreate = ({ user, msgAlert }) => {
 
     const defaultCompany = {
@@ -35,33 +37,12 @@ const CompanyCreate = ({ user, msgAlert }) => {
     }
 
     return (
-			<>
-				<input
-					type='text'
-					value={company.name}
-					name='name'
-					onChange={handleChange}
-				/>
-				<input
-					type='text'
-					value={company.logo}
-					name='logo'
-					onChange={handleChange}
-				/>
-                <input
-					type='text'
-					value={company.domain}
-					name='domain'
-					onChange={handleChange}
-				/>
-                 <input
-					type='text'
-					value={company.description}
-					name='description'
-					onChange={handleChange}
-				/>
-				<button onClick={handleCreateCompany}>Create A New Company</button>
-			</>
+            <CompanyForm
+            company={ company }
+            handleChange={ handleChange }
+            heading="Add a new Company!"
+            handleSubmit={ handleCreateCompany }
+        />
 		)
 }
 

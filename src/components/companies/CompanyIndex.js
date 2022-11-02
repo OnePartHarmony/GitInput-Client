@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, Button, Card, Container } from 'react-bootstrap'
 import { companyIndex } from '../../api/company'
 import { Link } from 'react-router-dom'
-import  CompanyCreate  from './CompanyCreate'
+import CreateCompanyModal from './CreateCompanyModal'
 
 
 const CompanyIndex = (props) => {
@@ -41,7 +41,6 @@ const CompanyIndex = (props) => {
     return (
         <>  
             <Container className="company-index">
-                {/* need to add name, id, value, on change?*/}
                 <div className="company-search-container text-center">
                     <div className="mb-5 company-search-box">
                         <section className="m-3 mt-0">Don't see your company listed? Search and add it!</section>
@@ -53,15 +52,20 @@ const CompanyIndex = (props) => {
                         <Button className="mt-3 mb-5">
                             Search
                         </Button>
-                    </div>
-                    <div>
-                        <CompanyCreate msgAlert={msgAlert} />
+                        <div className="company-create">
+                            <h5>
+                            Don't see your company at all?
+                            <br/>
+                            Create it!
+                            </h5>
+                        <CreateCompanyModal/>
                         </div>
+                    </div>
                 </div>
                 <div className="company-card-container">
                     {allCompanies.length > 0 ? allCompaniesJSX : "Loading..."}
                 </div>
-            </Container>
+            </Container>  
         </>
     )
 }

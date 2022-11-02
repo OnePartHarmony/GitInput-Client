@@ -1,6 +1,3 @@
-
-
-
 const CompanyProfile = (props) => {
 
     const {company, showReviewForm, user} = props
