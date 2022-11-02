@@ -1,3 +1,6 @@
+import apiUrl from "../apiConfig"
+import axios from "axios"
+
 export const commentCreate = (review, user) => {
     return axios({
         method: "POST",
