@@ -7,7 +7,7 @@ import CreateCompanyModal from './CreateCompanyModal'
 
 const CompanyIndex = (props) => {
 
-    const {msgAlert} = props
+    const {msgAlert, user} = props
  
     const [allCompanies, setAllCompanies] = useState([])
 
@@ -58,7 +58,7 @@ const CompanyIndex = (props) => {
                             <br/>
                             Create it!
                             </h5>
-                        <CreateCompanyModal/>
+                        <CreateCompanyModal user={user} msgAlert={msgAlert}/>
                         </div>
                     </div>
                 </div>

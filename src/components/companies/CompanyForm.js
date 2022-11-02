@@ -1,4 +1,5 @@
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Container, Button } from 'react-bootstrap'
+
 
 const CompanyForm = (props) => {
     const { company, handleChange, heading, handleSubmit } = props
