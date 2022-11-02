@@ -1,31 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import CompanyCreate from "./CompanyCreate"
 import { companyCreate } from '../../api/company'
-
-
-// const handleSubmit = (e) => {
-//   e.preventDefault()
-
-//   createCompany(user, company._id)
-//     .then(() => handleClose())
-//     .then(() => {
-//       msgAlert({
-//         heading: 'Oh yeah!',
-//         message: 'Great! The pet loves it!',
-//         variant: 'success'
-//       })
-//     })
-//     .then(() => triggerRefresh())
-//     .catch(() => {
-//       msgAlert({
-//         heading: 'Oh No!',
-//         message: 'Something went wrong! Please try again',
-//         variant: 'danger'
-//       })
-//     })
-// }
+import CompanyForm from './CompanyForm'
 
 function CreateCompanyModal(props) {
   const [show, setShow] = useState(false);
@@ -33,41 +10,39 @@ function CreateCompanyModal(props) {
   // const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const {
-    user, handleClose, msgAlert, triggerRefresh
-  } = props
+  const { user, handleClose, msgAlert } = props
 
-  const [company, setCompany] = useState({})
+  const defaultCompany = {
+    name: '',
+    logo: '',
+    domain: '',
+    description: ''
+}
 
-  const handleChange = (e) => {
-    setCompany(prevCompany => {
-      const name = e.target.name
-      let value = e.target.value
+const [company, setCompany] = useState(defaultCompany)
 
+const handleChange = (event) => {
+    setCompany({...company, [event.target.name]: event.target.value})
+}
+
+const handleCreateCompany = () => {
+    companyCreate(company, user)
+    .then(() => {
+        msgAlert({
+            heading: 'Success',
+            message: 'Create Company',
+            variant: 'success'
+        })
     })
-  }
+    .catch((error) => {
+        msgAlert({
+            heading: 'Failure',
+            message: 'Create Company Failure' + error,
+            variant: 'danger'
+        })
+    })
+}
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  
-    companyCreate(user, company)
-      .then(() => handleClose())
-      .then(() => {
-        msgAlert({
-          heading: 'Oh yeah!',
-          message: 'Great! The pet loves it!',
-          variant: 'success'
-        })
-      })
-      .then(() => triggerRefresh())
-      .catch(() => {
-        msgAlert({
-          heading: 'Oh No!',
-          message: 'Something went wrong! Please try again',
-          variant: 'danger'
-        })
-      })
-  }
 
   return (
     <>
@@ -79,15 +54,18 @@ function CreateCompanyModal(props) {
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
         </Modal.Header>
-        <Modal.Body> <CompanyCreate user={user} msgAlert={msgAlert}
-        /> </Modal.Body>
+        <Modal.Body>
+          <CompanyForm
+              company={ company }
+              handleChange={ handleChange }
+              heading="Add a new Company!"
+              handleSubmit={ handleCreateCompany }
+          />
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {/* <Button variant="primary" onClick={handleSubmit}>
-            Save
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>
