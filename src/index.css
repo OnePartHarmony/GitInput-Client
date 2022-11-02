@@ -141,4 +141,9 @@ body {
   margin: 20px 5px 0px;
 }
 
+.company-create {
+  border-style: solid;
+  border-color:rgb(143, 206, 227) ;
+}
+
 
