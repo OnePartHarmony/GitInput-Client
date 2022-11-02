@@ -64,7 +64,7 @@ const ReviewCreate = (props) => {
                     <Form.Group className="mb-2">
                         <Form.Label>Starting Position:</Form.Label>
                         <Form.Select aria-label="starting position" name="startingPosition" defaultValue={review.startingPosition} onChange={handleChange}>
-                            <option value="Entry">Entry</option>
+                            <option value="Intern">Intern</option>
                             <option value="Junior">Junior</option>
                             <option value="Senior">Senior</option>
                             <option value="Management">Management</option>
