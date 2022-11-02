@@ -15,9 +15,9 @@ const ReviewShow = (props) => {
         console.log('this is the reviewId', reviewId)
         reviewShow(reviewId)
             .then((res) => {
-                console.log('this is the review res.data', res.data)
+                console.log('this is the review res.data', res.data.review.owner.username)
                 setReview(res.data.review)
-                console.log('this is this review', review)
+                console.log(res.data.review)
             })
             .catch((err) => {
                 msgAlert({
