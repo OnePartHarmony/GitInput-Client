@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react' 
 import { useParams, useNavigate } from 'react-router-dom'
 import { Form, Button, Card } from 'react-bootstrap'
-import SetComment from '../comments/SetComment'
+import reviewShow from '../../api/review'
+import CommentCreate from '../comments/CommentCreate'
 
 const ReviewShow = (props) => {
 
-    const [review, setReview] = useState( null)
+    const { user, msgAlert} = props
+
+    const [review, setReview] = useState(null)
+    const [displayComments, setDisplayComments] = useState(false)
     const { id } = useParams()
 
 
 
+    const toggleCommentForm = () => {
+            setDisplayComments(prevState => !prevState)
+    }
 
     return (
         <>
              <style>{'body { height:100vh; width:100vw; background-color: rgba(159, 159, 159, .3); background-image: linear-gradient(60deg, rgba(237, 237, 237, 1) 35%, transparent 30%), linear-gradient(-400deg, rgba(202, 235, 242, .7) 40%, transparent 30%);}'}</style>
-            <container className="show-review-container">
+            <div className="show-review-container">
                 <h1 className="text-center mt-5 mb-4">Company Name</h1>
                 <img className="logo-review-show mt-3 mb-5" src="https://logo.clearbit.com/google.com"></img>
                 <h2 className="text-center review-title">Reviews</h2>
-                <container className="review-card">
+                <div className="review-card">
                     <div className="review-info">
                         <section className="review-section-1">
                             <div className="rating-item">User: meg</div>
@@ -31,12 +38,13 @@ const ReviewShow = (props) => {
                         </section>
                     </div>
                     <section className="review-btns">
-                        <button className="review-btn">Comment</button>
-                        <button className="review-btn">Like</button>
+                        <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
+                        <button className="review-btn" >Like</button>
                     </section>
-            </container>
-            </container>
-            <SetComment></SetComment>
+                </div>
+            </div>
+            {displayComments ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
+
         </>
     )
 }
