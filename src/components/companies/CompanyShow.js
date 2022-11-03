@@ -9,7 +9,7 @@ const CompanyShow = (props) => {
 
     const {msgAlert, user} = props
     const {id} = useParams()
-
+//    console.log(user)
     const [company, setCompany] = useState({})
     const [displayReviewCreate, setDisplayReviewCreate] = useState(false)
 

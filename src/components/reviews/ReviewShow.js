@@ -8,14 +8,16 @@ import CommentCreate from '../comments/CommentCreate'
 const ReviewShow = (props) => {
 
     const { user, msgAlert, setComment } = props
-    const [review, setReview] = useState({})
+    const [review, setReview] = useState(null)
     const [displayCommentForm, setDisplayCommentForm] = useState(false)
     const { reviewId } = useParams()
-
+//    console.log(user)
+    
     useEffect(() => {
         reviewShow(reviewId)
             .then((res) => {
                 setReview(res.data.review)
+ //               console.log(res.data.review)
             })
             .catch((err) => {
                 msgAlert({
@@ -25,26 +27,31 @@ const ReviewShow = (props) => {
                 })
             })
     }, [])
-
+    
     const toggleCommentForm = () => {
             setDisplayCommentForm(prevState => !prevState)
     }
 
-    // if (review){
-    //     console.log('length',review.comments.length)
-    // }
-    // let comments
-    // console.log('review.comments', review)
-    // if (review) {
-    //     if (review.comments.length > 0) {
-    //         comments = review.comments.map(comment => (
-    //             <>
-    //                 <h3>Username: {comment.owner.username} </h3>
-    //                 <p>{comment.comment}</p>
-    //             </>
-    //         ))
-    //     }
-    // }
+    if (!review){
+        return(
+            <>Loading...</>
+        )
+        
+    }
+    let comments
+    if (review !== null) {
+//        console.log(review.comments)
+        if (review.comments.length > 0) {
+            comments = review.comments.map(comment => (
+                <>
+                    {/* <h3>Username: {comment.owner.username} </h3> */}
+                    <p>{comment.comment}</p>
+                </>
+            ))
+        }
+    }
+
+
 
 
     return (
@@ -75,7 +82,8 @@ const ReviewShow = (props) => {
             </div>
 
             {displayCommentForm ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
-            {/* <div>{ comments ? comments : null}</div> */}
+
+            <div>{ comments ? comments : null}</div>
 
         </>
     )
