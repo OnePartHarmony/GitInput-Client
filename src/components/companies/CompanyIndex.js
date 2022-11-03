@@ -27,19 +27,25 @@ const CompanyIndex = (props) => {
 
     const allCompaniesJSX = allCompanies.map((company, index) => {
         return (
-            <Card key={index} className="company-card text-center mb-3">
-                <h1 className="company-name mt-2">{company.name}</h1>
-                <img className="logo-company-index" src={company.logo}></img>
-                <a className="btn btn-primary mt-2 mb-2 company-link" href={`https://www.${company.domain}`}>{company.name} Website</a>
-                <p className="company-description">{company.description}</p>
-                <Link to={`/companies/${company._id}`} state={company} className="btn btn-success">View Company Reviews</Link>
+            <Card key={index} className="company-card text-center mb-3 d-flex flex-column">
+                <Card.Title>
+                <p className="company-name mt-2">{company.name}</p>
+                </Card.Title>
+                <div className="logo-index-container">
+                    <img className="logo-company-index" src={company.logo}></img>
+                </div>
+                <Button className="btn mt-2 mb-2 company-link" href={`https://www.${company.domain}`}>{company.name} Website</Button>
+                <div className= "description-container">
+                    <p className="company-description">{company.description}</p>
+                </div>
+                <Link to={`/companies/${company._id}`} state={company} className="company-button mt-auto mb-3">View Company Reviews</Link>
             </Card>
         )
     })
 
     return (
         <>  
-            <Container className="company-index">
+            <main className="company-index">
                 <div className="company-search-container text-center">
                     <div className="mb-5 company-search-box">
                         <section className="m-3 mt-0">Don't see your company listed? Search and add it!</section>
@@ -67,7 +73,7 @@ const CompanyIndex = (props) => {
                 <div className="company-card-container">
                     {allCompanies.length > 0 ? allCompaniesJSX : "Loading..."}
                 </div>
-            </Container>  
+            </main>  
         </>
     )
 }
