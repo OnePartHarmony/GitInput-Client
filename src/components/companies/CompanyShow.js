@@ -9,7 +9,6 @@ const CompanyShow = (props) => {
 
     const {msgAlert, user} = props
     const {id} = useParams()
-//    console.log(user)
     const [company, setCompany] = useState({})
     const [displayReviewCreate, setDisplayReviewCreate] = useState(false)
     const [updated, setUpdated] = useState(false)
@@ -18,7 +17,6 @@ const CompanyShow = (props) => {
         companyShow(id)
             .then(res => {
                 setCompany(res.data.company)
-                console.log("look at this shit", company)
             })
             .catch((err) => {
                 msgAlert({
@@ -27,7 +25,7 @@ const CompanyShow = (props) => {
                     variant: "danger"
                 })
             })
-    }, [updated])
+    }, [updated, id, msgAlert])
 
     const toggleReviewForm = () => {
         setDisplayReviewCreate(prevValue => !prevValue)
