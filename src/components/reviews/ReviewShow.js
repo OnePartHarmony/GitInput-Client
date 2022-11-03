@@ -7,9 +7,10 @@ import CommentCreate from '../comments/CommentCreate'
 
 const ReviewShow = (props) => {
 
-    const { user, msgAlert, setComment } = props
+    const { user, msgAlert} = props
     const [review, setReview] = useState(null)
     const [displayCommentForm, setDisplayCommentForm] = useState(false)
+    const [updated, setUpdated] = useState(false)
     const { reviewId } = useParams()
 //    console.log(user)
     
@@ -26,11 +27,13 @@ const ReviewShow = (props) => {
                     variant: "danger"
                 })
             })
-    }, [])
+    }, [updated])
     
     const toggleCommentForm = () => {
             setDisplayCommentForm(prevState => !prevState)
     }
+
+
 
     if (!review){
         return(
@@ -83,7 +86,7 @@ const ReviewShow = (props) => {
                 </div>
             </div>
 
-            {displayCommentForm ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
+            {displayCommentForm ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} triggerRefresh={() => setUpdated(prev => !prev)} closeComment={() => setDisplayCommentForm(false)}/> : null}
 
             <div>{ comments ? comments : null}</div>
 
