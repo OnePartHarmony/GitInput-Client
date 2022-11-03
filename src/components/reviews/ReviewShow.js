@@ -60,7 +60,7 @@ const ReviewShow = (props) => {
 
 
     const deleteReview = () => {
-        reviewDelete(user, review._id)
+        reviewDelete(user, reviewId)
             .then(() => {
                 msgAlert({
                     heading: "Success!",
@@ -134,6 +134,7 @@ const ReviewShow = (props) => {
                 closeUpdate={() => setDisplayUpdate(false)}
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 user={user}
+                reviewId={reviewId}
             />
         </>
     )

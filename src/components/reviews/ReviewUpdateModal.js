@@ -5,7 +5,7 @@ import Ratings from "react-ratings-declarative"
 
 const ReviewUpdateModal = (props) => {
 
-    const {currentReview, company, msgAlert, showUpdate, closeUpdate, user} = props
+    const {currentReview, company, msgAlert, showUpdate, closeUpdate, triggerRefresh, user, reviewId} = props
     
     const [review, setReview] = useState(currentReview)
 
@@ -21,14 +21,19 @@ const ReviewUpdateModal = (props) => {
         })
     }
 
-    const updateReview = () => {
-        reviewUpdate(review, user)
+    const updateReview = (e) => {
+        e.preventDefault()
+        reviewUpdate(review, user, reviewId)
             .then(() => {
                 msgAlert({
                     heading: 'Success!',
                     message: 'Your review has ben updated.',
                     variant: 'success'
                 })
+            })
+            .then(() => {
+                closeUpdate()
+                triggerRefresh()
             })
             .catch((err) => {
                 msgAlert({

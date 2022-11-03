@@ -32,10 +32,10 @@ export const reviewShow = (id) => {
 	})
 }
 
-export const reviewUpdate = (review, user) => {	
+export const reviewUpdate = (review, user, id) => {	
 	return axios({
 		method: 'PATCH',
-		url: apiUrl + `/reviews/${review.id}`,
+		url: apiUrl + `/reviews/${id}`,
 		data: {
 			review: review
 		},
