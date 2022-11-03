@@ -4,7 +4,7 @@ import { commentCreate } from '../../api/comments'
 
 const CommentCreate = (props) => {
     const {user, review, msgAlert} = props
-    console.log(user)
+//    console.log(user)
     const [comment, setComment] = useState('')
 
     const handleChange = (e) => {
@@ -16,7 +16,7 @@ const CommentCreate = (props) => {
         commentCreate(user, review._id, comment)
             .then(() => {
                 setComment('')
-                console.log('this is the comment', comment)
+//                console.log('this is the comment', comment)
                 msgAlert({
                     heading: 'Success!',
                     message: 'Your comment has ben created.',
