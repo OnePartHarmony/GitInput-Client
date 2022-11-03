@@ -7,18 +7,17 @@ import CommentCreate from '../comments/CommentCreate'
 
 const ReviewShow = (props) => {
 
-    const { user, msgAlert } = props
-    const [review, setReview] = useState({})
-    const [displayComments, setDisplayComments] = useState(false)
+    const { user, msgAlert, setComment } = props
+    const [review, setReview] = useState(null)
+    const [displayCommentForm, setDisplayCommentForm] = useState(false)
     const { reviewId } = useParams()
-
+//    console.log(user)
+    
     useEffect(() => {
-        console.log('this is the reviewId', reviewId)
         reviewShow(reviewId)
             .then((res) => {
-                console.log('this is the review res.data', res.data.review.owner.username)
                 setReview(res.data.review)
-                console.log(res.data.review)
+ //               console.log(res.data.review)
             })
             .catch((err) => {
                 msgAlert({
@@ -28,17 +27,30 @@ const ReviewShow = (props) => {
                 })
             })
     }, [])
-
+    
     const toggleCommentForm = () => {
-            setDisplayComments(prevState => !prevState)
+            setDisplayCommentForm(prevState => !prevState)
     }
 
-
-    if (!review) {
-        return (
+    if (!review){
+        return(
             <>Loading...</>
         )
+        
     }
+    let comments
+    if (review !== null) {
+//        console.log(review.comments)
+        if (review.comments.length > 0) {
+            comments = review.comments.map(comment => (
+                <>
+                    {/* <h3>Username: {comment.owner.username} </h3> */}
+                    <p>{comment.comment}</p>
+                </>
+            ))
+        }
+    }
+
 
     return (
         <>
@@ -66,7 +78,11 @@ const ReviewShow = (props) => {
 
                 </div>
             </div>
-            {displayComments ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
+
+            {displayCommentForm ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
+
+            <div>{ comments ? comments : null}</div>
+
         </>
     )
 }

@@ -3,14 +3,16 @@ import axios from "axios"
 
 
 export const commentCreate = (user, reviewId, comment) => {
+    console.log('this is running', user, reviewId, comment)
     return axios({
         method: "POST",
-        url: apiUrl + `/comments/:${reviewId}`,
+        url: apiUrl + `/comments/${reviewId}`,
         data: {
-            comment: {comment: comment, authour: user._id}
+            comment: comment, author: user._id
         },
         headers: {
             Authorization: `Token token=${user.token}`
         }
     })
 }
+

@@ -1,8 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Scope+One&display=swap');
+
+* {
+  font-family: 'Scope One', serif;
+}
+
 body {
   margin: 0;
+  font-family: 'Scope One'
 
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
+}
+
+/* NAV-BAR */
+.nav-bar {
+  background-color: #a9a9a9;
+}
+
+.site-name {
+  font-family: 'Bungee Shade', cursive;
+  color: black;
+  font-size: 40px;
+  margin: 0;
 }
 
 
@@ -138,11 +158,5 @@ body {
   color: white;
   margin: 20px 5px 0px;
 }
-
-.company-create {
-  border-style: solid;
-  border-color:rgb(143, 206, 227) ;
-}
-
 
 
