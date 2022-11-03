@@ -62,7 +62,8 @@ const ReviewShow = (props) => {
                 <div className="review-card">
                     <div className="review-info">
                         <section className="review-section-1">
-                            <div className="rating-item">User: { review.owner?.username }</div>
+                            {/* conditionally rendered username because seed reviews have no owner */}
+                            {review.owner ? <div className="rating-item">User: { review.owner?.username }</div> : null }
                             <div className="rating-item">Rating: { review.generalRating }</div>
                             <div className="rating-item">Salary: { review.startingSalary }</div>
                             <div className="rating-item">Starting Position: { review.startingPosition }</div>
@@ -71,10 +72,13 @@ const ReviewShow = (props) => {
                             <div className="review-text">{ review.content }</div>
                         </section>
                     </div>
-                    <section className="review-btns">
-                        <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
-                        <button className="review-btn" >Like</button>
-                    </section>
+                    {/* only signed-in users can comment */}
+                    {user ?
+                        <section className="review-btns">
+                            <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
+                            <button className="review-btn" >Like</button>
+                        </section>                    
+                    : null}
 
                 </div>
             </div>
