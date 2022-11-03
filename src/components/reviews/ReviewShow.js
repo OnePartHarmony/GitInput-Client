@@ -133,6 +133,7 @@ const ReviewShow = (props) => {
                 showUpdate={displayUpdate}
                 closeUpdate={() => setDisplayUpdate(false)}
                 triggerRefresh={() => setUpdated(prev => !prev)}
+                user={user}
             />
         </>
     )
