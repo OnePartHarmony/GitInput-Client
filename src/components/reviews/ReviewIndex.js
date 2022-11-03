@@ -26,7 +26,7 @@ const ReviewIndex = (props) => {
 
     const reviewCards = reviews.map(review => {
         return (
-        <Card key={review._id} style={{backgroundColor: "rgb(152,212,255)", margin: "20px"}}>
+        <Card key={review._id} style={{margin: "20px"}}>
             <Card.Header>{review.title}</Card.Header>
             <Card.Body>
                 <div style={{display: "flex", justifyContent: "center"}}>
