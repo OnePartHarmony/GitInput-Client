@@ -12,11 +12,13 @@ const CompanyShow = (props) => {
 //    console.log(user)
     const [company, setCompany] = useState({})
     const [displayReviewCreate, setDisplayReviewCreate] = useState(false)
+    const [updated, setUpdated] = useState(false)
 
     useEffect(() => {
         companyShow(id)
             .then(res => {
                 setCompany(res.data.company)
+                console.log("look at this shit", company)
             })
             .catch((err) => {
                 msgAlert({
@@ -25,7 +27,7 @@ const CompanyShow = (props) => {
                     variant: "danger"
                 })
             })
-    }, [])
+    }, [updated])
 
     const toggleReviewForm = () => {
         setDisplayReviewCreate(prevValue => !prevValue)
@@ -40,7 +42,7 @@ const CompanyShow = (props) => {
     return (
         <>
         <div style={{display: "flex"}}>
-            <CompanyProfile company={company} showReviewForm={toggleReviewForm} user={user}/>
+            <CompanyProfile company={company} msgAlert={msgAlert} companyId={id} showReviewForm={toggleReviewForm} user={user} triggerRefresh={()=> setUpdated (prevValue=>!prevValue)}/>
 
             {displayReviewCreate ? <ReviewCreate company={company} companyId={id} closeReviewForm={toggleReviewForm} msgAlert={msgAlert} user={user}/> : <ReviewIndex companyId={id} msgAlert={msgAlert}/>}
         </div>
