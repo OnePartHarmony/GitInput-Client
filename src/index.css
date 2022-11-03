@@ -134,6 +134,7 @@ body {
   height: 75vh;
   border-radius: 10px;
   background-color: white;
+  border: 2px solid black;
 }
 
 .title-box {
@@ -164,8 +165,34 @@ body {
 }
 
 
+/* REVIEW INDEX */
+/* .review-index-card {
+  display: flex;
+} */
 
+/* .review-heading-container {
+  display: flex;
+  flex-direction: row;
+} */
 
+.review-index-heading {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 15px;
+  gap: 15px;
+}
+
+.review-index-section {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.review-label {
+  font-weight: bold;
+}
 
 /* REVIEW SHOW */
 .show-review-container {

@@ -26,16 +26,30 @@ const ReviewIndex = (props) => {
 
     const reviewCards = reviews.map(review => {
         return (
-        <Card key={review._id} style={{margin: "20px"}}>
-            <Card.Header>{review.title}</Card.Header>
+        <Card className="review-index-card" key={review._id} style={{backgroundColor: "rgb(152,212,255)", margin: "20px"}}>
+                <h1 className="review-index-heading">
+                    <div>{Array.from({length: review.generalRating}, (a,index) => 
+                        <svg key={index} width="30" height="30" viewBox="0 0 60 60"><path fill="gold" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
+                        )} 
+                    </div>
+                    <div>{review.title}</div>
+                </h1>
             <Card.Body>
-                <div style={{display: "flex", justifyContent: "center"}}>
+                {/* <div style={{display: "flex", justifyContent: "center"}}>
                    {Array.from({length: review.generalRating}, (a,index) => 
                     <svg key={index} width="30" height="30" viewBox="0 0 60 60"><path fill="gold" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
                     )} 
-                </div>
-                <p>{review.startingPosition}</p>
-                <p>{review.startingSalary}</p>
+                </div> */}
+                <section className="review-index-section">
+                    <div className="review-label">Starting Position:</div>
+                    <div>{review.startingPosition}</div>
+                </section>
+
+                <section className="review-index-section">
+                    <div className="review-label">Starting Salary:</div>
+                    <div>{review.startingSalary}</div>
+                </section>
+                
             </Card.Body>
             <Card.Footer>
                 <Link className="btn btn-success" to={`/reviews/${review._id}`} >Read More</Link>
@@ -47,9 +61,9 @@ const ReviewIndex = (props) => {
     return (
         <div className="mt-5" style={{flex: 1, textAlign: "center", }}>
             
-            <div  style={{overflow: "scroll", width: "33vw", margin: "auto", backgroundColor: "rgb(197,231,255)", border: "2px solid rgb(126,196,255)", height: "500px"}}>
-                <div style={{backgroundColor: "rgb(152,212,255)", border: "2px solid rgb(126,196,255)", height: "50px"}}>
-                    <h3>Reviews</h3> 
+            <div  className="company-profile" style={{overflow: "scroll", width: "33vw", margin: "auto", padding: "10px"}}>
+                <div className="title-box">
+                    <h3 className="profile-title">Reviews</h3> 
                 </div>                
                 {reviews.length > 0 ? reviewCards : "No Reviews Yet"}
             </div>            
