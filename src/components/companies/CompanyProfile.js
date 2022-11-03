@@ -1,13 +1,37 @@
 import EditCompanyModal from "./EditCompanyModal"
 import { useState } from 'react'
 import { Button } from "react-bootstrap"
+import { companyDelete } from "../../api/company"
+import { useNavigate } from "react-router-dom"
 
 
 const CompanyProfile = (props) => {
 
     const [displayUpdate, setDisplayUpdate] = useState(false)
     const { company, showReviewForm, user, msgAlert, triggerRefresh, companyId } = props
+    const [isDeleteClicked, setIsDeleteClicked] = useState(false)
 
+    const navigate = useNavigate()
+
+    const deleteCompany = (e) => {
+        e.preventDefault()
+        companyDelete(user, companyId)
+            .then(() => {
+                msgAlert({
+                    heading: "Success!",
+                    message: "Deleted review.",
+                    variant: "success"
+                })
+                navigate(`/companies`)
+            })
+            .catch((err) => {
+                msgAlert({
+                    heading: "Failure",
+                    message: "Failed to delete company: " + err,
+                    variant: "danger"
+                })
+            })
+    }
 
     return (
         <div className="mt-5" style={{ flex: 1, textAlign: "center" }}>
@@ -21,8 +45,8 @@ const CompanyProfile = (props) => {
             {user ? <button className="btn btn-primary" onClick={showReviewForm}>Leave a Review</button> : null}
             {user && (user._id === company.owner) ?
                 <div>
-                    <Button className='btn-success btn' onClick={() => setDisplayUpdate(true)}>Edit Review</Button>
-                    {/* {isDeleteClicked ? <Button className="btn-danger" onClick={deleteReview}>I'm sure, DELETE</Button> : <Button className='btn-warning' onClick={() => setIsDeleteClicked(true)}>Delete this Company?</Button>} */}
+                    <Button className='btn-success btn' onClick={() => setDisplayUpdate(true)}>Edit Company</Button>
+                    {isDeleteClicked ? <Button className="btn-danger" onClick={deleteCompany}>I'm sure, DELETE</Button> : <Button className='btn-warning' onClick={() => setIsDeleteClicked(true)}>Delete this Company?</Button>}
                 </div>
                 : null}
             <EditCompanyModal
