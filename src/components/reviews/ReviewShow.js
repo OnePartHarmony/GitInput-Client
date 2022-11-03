@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react' 
 import { useParams, useNavigate } from 'react-router-dom'
 import { Form, Button, Card } from 'react-bootstrap'
-import { reviewShow } from '../../api/review'
+import { reviewDelete, reviewShow } from '../../api/review'
 import CommentCreate from '../comments/CommentCreate'
+import ReviewUpdateModal from './ReviewUpdateModal'
 
 
 const ReviewShow = (props) => {
 
-    const { user, msgAlert, setComment } = props
+    const { user, msgAlert} = props
     const [review, setReview] = useState(null)
     const [displayCommentForm, setDisplayCommentForm] = useState(false)
+    const [displayUpdate, setDisplayUpdate] = useState(false)
+    const [isDeleteClicked, setIsDeleteClicked] = useState(false)
+    const [updated, setUpdated] = useState(false)
     const { reviewId } = useParams()
-//    console.log(user)
+
+    const navigate = useNavigate()
     
     useEffect(() => {
         reviewShow(reviewId)
@@ -26,11 +31,13 @@ const ReviewShow = (props) => {
                     variant: "danger"
                 })
             })
-    }, [])
+    }, [updated])
     
     const toggleCommentForm = () => {
             setDisplayCommentForm(prevState => !prevState)
     }
+
+
 
     if (!review){
         return(
@@ -52,6 +59,25 @@ const ReviewShow = (props) => {
     }
 
 
+    const deleteReview = () => {
+        reviewDelete(user, reviewId)
+            .then(() => {
+                msgAlert({
+                    heading: "Success!",
+                    message: "Deleted review.",
+                    variant: "success"
+                })
+                navigate(`/companies/${review.company._id}`)
+            })
+            .catch((err) => {
+                msgAlert({
+                    heading: "Failure",
+                    message: "Failed to delete review: " + err,
+                    variant: "danger"
+                })
+            })
+    }
+
     return (
         <>
              <style>{'body { height:100vh; width:100vw; background-color: rgba(159, 159, 159, .3); background-image: linear-gradient(60deg, rgba(237, 237, 237, 1) 35%, transparent 30%), linear-gradient(-400deg, rgba(202, 235, 242, .7) 40%, transparent 30%);}'}</style>
@@ -72,6 +98,12 @@ const ReviewShow = (props) => {
                             <div className="review-text">{ review.content }</div>
                         </section>
                     </div>
+                    {user && (user._id === review.owner?._id) ?
+                        <div>
+                            <Button className='btn-info' onClick={() => setDisplayUpdate(true)}>Edit Review</Button>
+                            {isDeleteClicked ? <Button className="btn-danger" onClick={deleteReview}>I'm sure, DELETE</Button> : <Button className='btn-warning' onClick={() => setIsDeleteClicked(true)}>Delete this Review?</Button>}
+                        </div>
+                    : null}
                     {/* only signed-in users can comment */}
                     {user ?
                         <section className="review-btns">
@@ -83,10 +115,27 @@ const ReviewShow = (props) => {
                 </div>
             </div>
 
-            {displayCommentForm ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
+            {displayCommentForm ?
+                <CommentCreate
+                    user={user}
+                    review = {review}
+                    msgAlert = {msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                    closeComment={() => setDisplayCommentForm(false)}
+                />
+            : null}
 
             <div>{ comments ? comments : null}</div>
-
+            <ReviewUpdateModal
+                currentReview={review}
+                company={review.company}
+                msgAlert={msgAlert}
+                showUpdate={displayUpdate}
+                closeUpdate={() => setDisplayUpdate(false)}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                user={user}
+                reviewId={reviewId}
+            />
         </>
     )
 }

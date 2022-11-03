@@ -27,12 +27,12 @@ export const companyShow = (id) => {
 	})
 }
 
-export const companyUpdate = (review, user, id) => {	
+export const companyUpdate = (company, user, id) => {	
 	return axios({
 		method: 'PATCH',
 		url: apiUrl + `/companies/${id}`,
 		data: {
-			review: review
+			company: company
 		},
         headers: {
             Authorization: `Token token=${user.token}`

@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Modal } from 'react-bootstrap'
 import { reviewUpdate } from "../../api/review"
+import Ratings from "react-ratings-declarative"
 
-const ReviewUpdate = (props) => {
+const ReviewUpdateModal = (props) => {
 
-    const {currentReview, company, msgAlert} = props
+    const {currentReview, company, msgAlert, showUpdate, closeUpdate, triggerRefresh, user, reviewId} = props
     
     const [review, setReview] = useState(currentReview)
 
@@ -14,14 +15,25 @@ const ReviewUpdate = (props) => {
         })
     }
 
-    const updateReview = () => {
-        reviewUpdate(review)
+    const changeRating = (newRating) => {
+        setReview(prevReview => {
+            return({...prevReview, generalRating: newRating})
+        })
+    }
+
+    const updateReview = (e) => {
+        e.preventDefault()
+        reviewUpdate(review, user, reviewId)
             .then(() => {
                 msgAlert({
                     heading: 'Success!',
                     message: 'Your review has ben updated.',
                     variant: 'success'
                 })
+            })
+            .then(() => {
+                closeUpdate()
+                triggerRefresh()
             })
             .catch((err) => {
                 msgAlert({
@@ -36,7 +48,10 @@ const ReviewUpdate = (props) => {
     return (
         <>
             
-                <div>
+            <Modal show={ showUpdate } onHide={ closeUpdate }>
+                <Modal.Header closeButton />
+                <Modal.Body>
+
                     <h3>Update Review of {company.name}</h3>
                     <Form onSubmit={updateReview}>
                         <Form.Group className="mb-2">
@@ -83,11 +98,12 @@ const ReviewUpdate = (props) => {
                         <Button type="submit">Update Review</Button>
                     </Form>
                     
-                </div>
+                </Modal.Body>
+            </Modal>
             
         </>
 
     )
 }
 
-export default ReviewUpdate
+export default ReviewUpdateModal
