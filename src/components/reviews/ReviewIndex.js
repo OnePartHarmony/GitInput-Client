@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { reviewIndex } from "../../api/review"
+import fiveStars from "../../fiveStars"
 
 const ReviewIndex = (props) => {
 
@@ -26,26 +27,11 @@ const ReviewIndex = (props) => {
 
     
 
-    const reviewCards = reviews.map(review => {
+    const reviewCards = reviews.map(review => (
 
-        const starsArray = Array.from({length: review.generalRating}, (a,index) => 
-            <svg key={index} width="30" height="30" viewBox="0 0 60 60"><path fill="gold" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
-        )
-        while (starsArray.length < 5) {
-            let newIndex = starsArray.length
-            starsArray.push(
-                <svg key={newIndex} width="30" height="30" viewBox="0 0 60 60"><path fill="grey" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
-            )
-        }
-
-        return (
         <Card className="review-index-card" key={review._id} style={{backgroundColor: "rgb(152,212,255)", margin: "20px"}}>
                 <h1 className="review-index-heading">
-                    {/* <div>{Array.from({length: review.generalRating}, (a,index) => 
-                        <svg key={index} width="30" height="30" viewBox="0 0 60 60"><path fill="gold" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
-                        )} 
-                    </div> */}
-                    <div>{starsArray}</div>
+                    <div>{fiveStars(review.generalRating)}</div>
                     <div>{review.title}</div>
                 </h1>
             <Card.Body>
@@ -63,10 +49,8 @@ const ReviewIndex = (props) => {
             <Card.Footer>
                 <Link className="btn btn-success" to={`/reviews/${review._id}`} >Read More</Link>
             </Card.Footer>
-        </Card>            
-        )
-
-    })
+        </Card>
+    ))
     return (
         <div className="mt-5" style={{flex: 1, textAlign: "center", }}>
             
