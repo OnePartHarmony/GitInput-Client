@@ -11,13 +11,13 @@ const ReviewShow = (props) => {
     const [review, setReview] = useState(null)
     const [displayCommentForm, setDisplayCommentForm] = useState(false)
     const { reviewId } = useParams()
-    console.log(user)
+//    console.log(user)
     
     useEffect(() => {
         reviewShow(reviewId)
             .then((res) => {
                 setReview(res.data.review)
-                console.log(res.data.review)
+ //               console.log(res.data.review)
             })
             .catch((err) => {
                 msgAlert({
@@ -40,7 +40,7 @@ const ReviewShow = (props) => {
     }
     let comments
     if (review !== null) {
-        console.log(review.comments)
+//        console.log(review.comments)
         if (review.comments.length > 0) {
             comments = review.comments.map(comment => (
                 <>
