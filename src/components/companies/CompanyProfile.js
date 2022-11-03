@@ -1,9 +1,6 @@
-
-
-
 const CompanyProfile = (props) => {
 
-    const {company, showReviewForm} = props
+    const {company, showReviewForm, user} = props
     
 
     return (
@@ -15,7 +12,8 @@ const CompanyProfile = (props) => {
                 <p>{company.description} </p>
                 <h5>{company.domain}</h5>
             </div>
-            <button className="btn btn-primary" onClick={showReviewForm}>Leave a Review</button>
+            {user ? <button className="btn btn-primary" onClick={showReviewForm}>Leave a Review</button> : null}
+            
         </div>
     )
 }

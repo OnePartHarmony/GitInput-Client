@@ -4,6 +4,7 @@ import { Form, Button, Card } from 'react-bootstrap'
 import { reviewShow } from '../../api/review'
 import CommentCreate from '../comments/CommentCreate'
 
+
 const ReviewShow = (props) => {
 
     const { user, msgAlert, setComment } = props
@@ -76,10 +77,14 @@ const ReviewShow = (props) => {
                         <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
                         <button className="review-btn" >Like</button>
                     </section>
+
                 </div>
             </div>
+
             {displayCommentForm ? <CommentCreate user={user} review = {review} msgAlert = {msgAlert} /> : null}
+
             <div>{ comments ? comments : null}</div>
+
         </>
     )
 }
