@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap"
 const CompanyProfile = (props) => {
 
     const [displayUpdate, setDisplayUpdate] = useState(false)
-    const { company, showReviewForm, user, msgAlert, triggerRefresh } = props
+    const { company, showReviewForm, user, msgAlert, triggerRefresh, companyId } = props
 
 
     return (
@@ -17,7 +17,6 @@ const CompanyProfile = (props) => {
                 <img src={company.logo} alt={`${company.name} logo`} />
                 <p>{company.description} </p>
                 <h5>{company.domain}</h5>
-                {console.log(company.owner, user._id)}
             </div>
             {user ? <button className="btn btn-primary" onClick={showReviewForm}>Leave a Review</button> : null}
             {user && (user._id === company.owner) ?
@@ -32,7 +31,8 @@ const CompanyProfile = (props) => {
                 closeUpdate={() => setDisplayUpdate(false)}
                 triggerRefresh={triggerRefresh}
                 showUpdate={displayUpdate}
-                user={user} />
+                user={user} 
+                companyId={companyId}/>
         </div>
     )
 }

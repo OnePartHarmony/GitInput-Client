@@ -42,7 +42,7 @@ const CompanyShow = (props) => {
     return (
         <>
         <div style={{display: "flex"}}>
-            <CompanyProfile company={company} msgAlert={msgAlert} showReviewForm={toggleReviewForm} user={user} triggerRefresh={()=> setUpdated (prevValue=>!prevValue)}/>
+            <CompanyProfile company={company} msgAlert={msgAlert} companyId={id} showReviewForm={toggleReviewForm} user={user} triggerRefresh={()=> setUpdated (prevValue=>!prevValue)}/>
 
             {displayReviewCreate ? <ReviewCreate company={company} companyId={id} closeReviewForm={toggleReviewForm} msgAlert={msgAlert} user={user}/> : <ReviewIndex companyId={id} msgAlert={msgAlert}/>}
         </div>

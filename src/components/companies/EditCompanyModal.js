@@ -9,7 +9,7 @@ function EditCompanyModal(props) {
 
   // const handleClose = () => setShow(false);
 //   const handleShow = () => setShow(true);
-const {currentCompany, msgAlert, showUpdate, closeUpdate, user} = props
+const {currentCompany, msgAlert, showUpdate, closeUpdate, user, companyId, triggerRefresh} = props
 
 
   const [company, setCompany] = useState(currentCompany)
@@ -20,8 +20,13 @@ const {currentCompany, msgAlert, showUpdate, closeUpdate, user} = props
       })
   }
 
-  const updateCompany = () => {
-    companyUpdate(company, user)
+  const updateCompany = (e) => {
+    e.preventDefault()
+    companyUpdate(company, user, companyId)
+    .then(() => {
+        triggerRefresh()
+        closeUpdate()
+    })
         .then(() => {
             msgAlert({
                 heading: 'Success!',
