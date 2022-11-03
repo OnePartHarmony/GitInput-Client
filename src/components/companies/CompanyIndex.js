@@ -15,7 +15,6 @@ const CompanyIndex = (props) => {
         companyIndex()
             .then(res => {
                 setAllCompanies(res.data.companies)
-                console.log(allCompanies)
             })
             .catch((error) => {
                 msgAlert({
