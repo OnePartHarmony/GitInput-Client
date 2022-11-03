@@ -4,7 +4,7 @@ import { commentCreate } from '../../api/comments'
 
 const CommentCreate = (props) => {
     const {user, review, msgAlert} = props
-
+    console.log(user)
     const [comment, setComment] = useState('')
 
     const handleChange = (e) => {
