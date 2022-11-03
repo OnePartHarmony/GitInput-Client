@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+
 import Modal from 'react-bootstrap/Modal';
 import { companyUpdate } from '../../api/company'
 import CompanyForm from './CompanyForm'
 
 function EditCompanyModal(props) {
-//   const [show, setShow] = useState(false);
 
-  // const handleClose = () => setShow(false);
-//   const handleShow = () => setShow(true);
 const {currentCompany, msgAlert, showUpdate, closeUpdate, user, companyId, triggerRefresh} = props
 
 
@@ -46,10 +43,6 @@ const {currentCompany, msgAlert, showUpdate, closeUpdate, user, companyId, trigg
 
   return (
     <>
-      {/* <Button variant="primary" onClick={closeUpdate}>
-       Update Company!
-      </Button> */}
-
       <Modal show={showUpdate} onHide={closeUpdate}>
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
@@ -63,9 +56,6 @@ const {currentCompany, msgAlert, showUpdate, closeUpdate, user, companyId, trigg
           />
         </Modal.Body>
         <Modal.Footer>
-          {/* <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>
