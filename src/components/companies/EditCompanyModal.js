@@ -1,67 +1,70 @@
-import React, { useState } from 'react'
-import { Modal } from 'react-bootstrap'
-import CompanyForm from './CompanyForm'
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { companyUpdate } from '../../api/company'
-import messages from '../shared/AutoDismissAlert/messages'
+import CompanyForm from './CompanyForm'
+
+function EditCompanyModal(props) {
+//   const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+//   const handleShow = () => setShow(true);
+const {currentCompany, msgAlert, showUpdate, closeUpdate, user} = props
 
 
-const EditCompanyModal = (props) => {
-    const { 
-        user, show, , 
-        msgAlert, triggerRefresh 
-    } = props
+  const [company, setCompany] = useState(currentCompany)
 
-    const [company, setCompany] = useState(props.company)
-    
+  const handleChange = (e) => {
+      setCompany(prevCompany => {
+          return({...prevCompany, [e.target.name]: e.target.value})
+      })
+  }
 
-    const handleChange = (e) => {
-        setCompany(prevCompany => {
-            const updatedName = e.target.name
-            let updatedValue = e.target.value
-            if (e.target.type === 'number') {
-                updatedValue = parseInt(e.target.value)
-            }
-            const updatedCompany = { [updatedName]: updatedValue }
-
-            return { ...prevCompany, ...updatedCompany }
+  const updateCompany = () => {
+    companyUpdate(company, user)
+        .then(() => {
+            msgAlert({
+                heading: 'Success!',
+                message: 'Your company has been updated.',
+                variant: 'success'
+            })
         })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        
-        companyUpdate(company, user, props.company._id)
-            .then(() => handleClose())
-            .then(() => {
-                msgAlert({
-                    heading: 'Success',
-                    message: messages.updateCompanySuccess,
-                    variant: 'success'
-                })
+        .catch((err) => {
+            msgAlert({
+                heading: 'Failure',
+                message: 'Failed to update company.' + err,
+                variant: 'danger'
             })
-            .then(() => triggerRefresh())
-            .catch((error) => {
-                msgAlert({
-                    heading: 'Failure',
-                    message: messages.updateCompanyFailure + error,
-                    variant: 'danger'
-                })
-            })
-    }
+        })
+}
 
-    return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton/>
-            <Modal.Body>
-                <CompanyForm 
-                    company={company}
-                    handleChange={handleChange}
-                    handleSubmit={handleSubmit}
-                    heading="Update Company"
-                />
-            </Modal.Body>
-        </Modal>
-    )
+
+  return (
+    <>
+      {/* <Button variant="primary" onClick={closeUpdate}>
+       Update Company!
+      </Button> */}
+
+      <Modal show={showUpdate} onHide={closeUpdate}>
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <CompanyForm
+              company={ company }
+              handleChange={ handleChange }
+              heading="Add a new Company!"
+              handleSubmit={ updateCompany}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          {/* <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button> */}
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 
 export default EditCompanyModal
