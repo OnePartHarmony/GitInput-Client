@@ -49,7 +49,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar className='nav-bar' variant='dark' expand='md'>
+	<Navbar className='nav-bar p-0' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle} className="ms-3 site-name">
                 &lt;Git Input/&gt;
