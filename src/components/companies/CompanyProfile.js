@@ -16,9 +16,8 @@ const CompanyProfile = (props) => {
                 <img className="profile-logo" src={company.logo} alt={`${company.name} logo`}/>
                 <p className="profile-description">{company.description} </p>
                 <a href={`https://www.${company.domain}`} target="_blank" className="company-button">{company.domain}</a>
+                {user ? <button className="company-button mt-3" onClick={showReviewForm}>Leave a Review</button> : null}
             </div>
-            {user ? <button className="btn btn-primary" onClick={showReviewForm}>Leave a Review</button> : null}
-            
         </div>
         </>
     )
