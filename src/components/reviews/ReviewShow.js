@@ -33,6 +33,13 @@ const ReviewShow = (props) => {
             setDisplayComments(prevState => !prevState)
     }
 
+
+    if (!review) {
+        return (
+            <>Loading...</>
+        )
+    }
+
     return (
         <>
              <style>{'body { height:100vh; width:100vw; background-color: rgba(159, 159, 159, .3); background-image: linear-gradient(60deg, rgba(237, 237, 237, 1) 35%, transparent 30%), linear-gradient(-400deg, rgba(202, 235, 242, .7) 40%, transparent 30%);}'}</style>
@@ -43,7 +50,7 @@ const ReviewShow = (props) => {
                 <div className="review-card">
                     <div className="review-info">
                         <section className="review-section-1">
-                            <div className="rating-item">User: { review.owner.username }</div>
+                            <div className="rating-item">User: { review.owner?.username }</div>
                             <div className="rating-item">Rating: { review.generalRating }</div>
                             <div className="rating-item">Salary: { review.startingSalary }</div>
                             <div className="rating-item">Starting Position: { review.startingPosition }</div>

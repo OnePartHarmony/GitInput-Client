@@ -40,11 +40,6 @@ const alwaysOptions = (
 				Home
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
-			<Link to='/reviews/show' style={linkStyle}>
-				Review Show
-			</Link>
-		</Nav.Item>
 		<Nav.Item className="ms-3">
 			<Link to='/companies' style={linkStyle}>
 				View Companies
