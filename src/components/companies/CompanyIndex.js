@@ -31,14 +31,17 @@ const CompanyIndex = (props) => {
                 <Card.Title>
                 <p className="company-name mt-2">{company.name}</p>
                 </Card.Title>
-                <div className="logo-index-container">
+                <div className="logo-index-container mb-3">
                     <img className="logo-company-index" src={company.logo}></img>
                 </div>
-                <Button className="btn mt-2 mb-2 company-link" href={`https://www.${company.domain}`}>{company.name} Website</Button>
-                <div className= "description-container">
+                {/* <a className="company-button mt-2 mb-2 company-link" target="_blank" href={`https://www.${company.domain}`}>Visit Website</a> */}
+                <div className= "description-container text-center">
                     <p className="company-description">{company.description}</p>
                 </div>
-                <Link to={`/companies/${company._id}`} state={company} className="company-button mt-auto mb-3">View Company Reviews</Link>
+                <div className="index-btn-container align-text-bottom mt-2">
+                    <a className="company-button company-link" target="_blank" href={`https://www.${company.domain}`}> Website</a>
+                    <Link to={`/companies/${company._id}`} state={company} className="company-button">Reviews</Link>
+                </div>
             </Card>
         )
     })

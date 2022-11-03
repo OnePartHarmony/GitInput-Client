@@ -15,13 +15,17 @@ body {
 
 /* NAV-BAR */
 .nav-bar {
-  background-color: 	#404040
+  background-color:#404040
 }
 
 .site-name {
   font-family: 'Bungee Shade', cursive;
   font-size: 40px;
   margin: 0;
+}
+
+.nav-item {
+  color:#CAEBF2;
 }
 
 
@@ -44,7 +48,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #A9A9A9;
+  background-color: #CAEBF2;
   height: 103vh;
   width: 25vw;
 }
@@ -80,7 +84,7 @@ body {
 }
 
 .logo-index-container {
-  min-height: 90px;
+  height: 90px;
 }
 
 .logo-company-index {
@@ -89,17 +93,29 @@ body {
   object-fit: contain;
 }
 
+.index-btn-container{
+  margin-bottom: 10px;
+}
+
 .company-button {
-  color: white;
+  border: solid 2px #404040;
+  color: #404040;
   text-decoration: none;
   padding: 5px 20px;
   border-radius: 10px;
-  background: #FF3B3F;
+  margin: 0px 10px 10px 10px;
+  /* background: rgb(252, 101, 104); */
+}
+
+.company-button:hover {
+  background: #CAEBF2;
+  color: #404040;
+  cursor: pointer;
 }
 
 .description-container {
-  min-height: 80px;
-  margin: 5px 20px;
+  height: 25%;
+  width: 270px;
 }
 
 .company-description {
@@ -109,21 +125,74 @@ body {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   white-space: normal;
-  width: 270px;
   max-height: 100px;
   font-size: 12px;
 }
 
-.company-btn {
-  font-size: 12px;
+/* COMPANY PROFILE */
+.company-profile {
+  height: 75vh;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.title-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 100%;
+  height: 20%;
+  margin: 0 0 30px 0;
+  background-color: #CAEBF2
+}
+
+.profile-title {
+  font-size: 250%;
   font-weight: bold;
-  border-radius: 5px;
-  width: 65%;
-  border: none;
-  padding: 10px 15px;
+}
+
+.profile-logo {
+  margin: 10px 20px;
+  max-height: 150px;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+.profile-description {
+  margin: 60px 30px 60px 30px;
 }
 
 
+/* REVIEW INDEX */
+/* .review-index-card {
+  display: flex;
+} */
+
+/* .review-heading-container {
+  display: flex;
+  flex-direction: row;
+} */
+
+.review-index-heading {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 15px;
+  gap: 15px;
+}
+
+.review-index-section {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.review-label {
+  font-weight: bold;
+}
 
 /* REVIEW SHOW */
 .show-review-container {
