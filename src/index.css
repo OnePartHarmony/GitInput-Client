@@ -15,7 +15,7 @@ body {
 
 /* NAV-BAR */
 .nav-bar {
-  background-color: 	#404040
+  background-color:#404040
 }
 
 .site-name {
@@ -44,7 +44,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #A9A9A9;
+  background-color: #CAEBF2;
   height: 103vh;
   width: 25vw;
 }
@@ -80,7 +80,7 @@ body {
 }
 
 .logo-index-container {
-  min-height: 90px;
+  height: 90px;
 }
 
 .logo-company-index {
@@ -89,17 +89,28 @@ body {
   object-fit: contain;
 }
 
+.index-btn-container{
+  margin-bottom: 10px;
+}
+
 .company-button {
-  color: white;
+  border: solid 3px #404040;
+  color: #404040;
   text-decoration: none;
   padding: 5px 20px;
   border-radius: 10px;
-  background: #FF3B3F;
+  margin: 0px 10px 10px 10px;
+  /* background: rgb(252, 101, 104); */
+}
+
+.company-button:hover {
+  background: #CAEBF2;
+  color: #404040;
 }
 
 .description-container {
-  min-height: 80px;
-  margin: 5px 20px;
+  height: 25%;
+  width: 270px;
 }
 
 .company-description {
@@ -109,18 +120,8 @@ body {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   white-space: normal;
-  width: 270px;
   max-height: 100px;
   font-size: 12px;
-}
-
-.company-btn {
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 5px;
-  width: 65%;
-  border: none;
-  padding: 10px 15px;
 }
 
 
