@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Scope+One&display=swap');
 
 * {
@@ -7,6 +8,7 @@
 body {
   margin: 0;
   font-family: 'Scope One'
+
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
@@ -156,4 +158,5 @@ body {
   color: white;
   margin: 20px 5px 0px;
 }
+
 

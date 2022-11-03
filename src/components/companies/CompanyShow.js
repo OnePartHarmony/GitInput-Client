@@ -31,18 +31,20 @@ const CompanyShow = (props) => {
         setDisplayReviewCreate(prevValue => !prevValue)
     }
 
-    if (company == {}) {
+    if (company === {}) {
         return(
             <>Loading...</>
         )
     }
 
     return (
+        <>
         <div style={{display: "flex"}}>
-            <CompanyProfile company={company} showReviewForm={toggleReviewForm} />
+            <CompanyProfile company={company} showReviewForm={toggleReviewForm} user={user}/>
 
             {displayReviewCreate ? <ReviewCreate company={company} companyId={id} closeReviewForm={toggleReviewForm} msgAlert={msgAlert} user={user}/> : <ReviewIndex companyId={id} msgAlert={msgAlert}/>}
         </div>
+        </>
     )
 }
 
