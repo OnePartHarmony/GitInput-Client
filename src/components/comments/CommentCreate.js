@@ -3,7 +3,7 @@ import CommentForm from '../shared/CommentForm'
 import { commentCreate } from '../../api/comments'
 
 const CommentCreate = (props) => {
-    const {user, review, msgAlert} = props
+    const {user, review, msgAlert, triggerRefresh, closeComment} = props
 //    console.log(user)
     const [comment, setComment] = useState('')
 
@@ -12,16 +12,17 @@ const CommentCreate = (props) => {
     }
 
     const createComment = () => {
-
         commentCreate(user, review._id, comment)
-            .then(() => {
-                setComment('')
-//                console.log('this is the comment', comment)
+            .then(() => {               
                 msgAlert({
                     heading: 'Success!',
                     message: 'Your comment has ben created.',
                     variant: 'success'
                 })
+            })
+            .then(() => {
+                closeComment()
+                triggerRefresh()                
             })
             .catch((err) => {
                 msgAlert({
