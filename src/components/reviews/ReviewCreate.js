@@ -92,7 +92,7 @@ const ReviewCreate = (props) => {
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label>Starting Salary:</Form.Label>
-                            <Form.Control placeholder={`Your starting yearly salary at ${company.name} in USD`} name="startingSalary" value={review.startingSalary} onChange={handleChange}/>
+                            <Form.Control type="number" placeholder={`Starting yearly salary in USD`} name="startingSalary" value={review.startingSalary} onChange={handleChange}/>
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label>Review:</Form.Label>
