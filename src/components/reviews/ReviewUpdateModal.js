@@ -5,7 +5,7 @@ import Ratings from "react-ratings-declarative"
 
 const ReviewUpdateModal = (props) => {
 
-    const {currentReview, company, msgAlert, showUpdate, closeUpdate} = props
+    const {currentReview, company, msgAlert, showUpdate, closeUpdate, user} = props
     
     const [review, setReview] = useState(currentReview)
 
@@ -22,7 +22,7 @@ const ReviewUpdateModal = (props) => {
     }
 
     const updateReview = () => {
-        reviewUpdate(review)
+        reviewUpdate(review, user)
             .then(() => {
                 msgAlert({
                     heading: 'Success!',
