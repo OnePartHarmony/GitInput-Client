@@ -13,6 +13,25 @@ body {
   -moz-osx-font-smoothing: grayscale; */
 }
 
+/* HOME PAGE */
+.welcome-section {
+  margin-top: 40px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-title{
+  font-size: 40px;
+}
+
+.git-input {
+  /* margin-top: 0; */
+  font-family: 'Bungee Shade', cursive;
+  font-size: 80px;
+}
+
 /* NAV-BAR */
 .nav-bar {
   background-color:#404040
@@ -258,4 +277,20 @@ body {
   margin: 20px 5px 0px;
 }
 
+/* REVIEW CREATE */
+.create-review-title {
+  font-size: 30px;
+  font-weight: bold;
+}
 
+.review-form {
+  text-align: left;
+}
+
+.review-stars {
+margin: auto;
+}
+
+.review-update-label {
+  font-weight: bold;
+}
