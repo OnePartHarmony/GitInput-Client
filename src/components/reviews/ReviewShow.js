@@ -6,6 +6,7 @@ import CommentCreate from '../comments/CommentCreate'
 import ReviewUpdateModal from './ReviewUpdateModal'
 import fiveStars from '../../fiveStars'
 import { commentDelete } from '../../api/comments'
+import CommentUpdateModal from '../comments/CommentUpdateModal'
 
 const ReviewShow = (props) => {
 
@@ -13,6 +14,7 @@ const ReviewShow = (props) => {
     const [review, setReview] = useState(null)
     const [displayCommentForm, setDisplayCommentForm] = useState(false)
     const [displayUpdate, setDisplayUpdate] = useState(false)
+    const [displayCommentUpdate, setDisplayCommentUpdate] = useState(false)
     const [isDeleteClicked, setIsDeleteClicked] = useState(false)
     const [updated, setUpdated] = useState(false)
     const { reviewId } = useParams()
@@ -35,6 +37,10 @@ const ReviewShow = (props) => {
     
     const toggleCommentForm = () => {
             setDisplayCommentForm(prevState => !prevState)
+    }
+
+    const triggerRefresh = () => {
+        setUpdated(prev => !prev)
     }
 
     const deleteComment = (commentId) => {
@@ -69,17 +75,32 @@ const ReviewShow = (props) => {
                     <div style={{textAlign: "right"}}>
                         <small>{comment.owner.username} </small>
                         <br/>
-                        <small>{comment.createdAt.split("T")[0]}</small>
+                        <small>
+                            posted {comment.createdAt.split("T")[0]}
+                             {/* {comment.createdAt.split("T")[1].split(".")[0]} */}
+                        </small>
                         <br/>
-                        {comment.createdAt !== comment.updatedAt && <small style={{color: "red"}}>{comment.updatedAt.split()[0]}</small>}
+                        {comment.createdAt !== comment.updatedAt && <small style={{color: "red"}}>
+                            edited {comment.updatedAt.split("T")[0]}
+                             {/* {comment.updatedAt.split("T")[1].split(".")[0]} */}
+                            </small>}
                     </div>                   
                     {user && user._id === comment.owner._id ? 
                         <div style={{display: "flex", justifyContent: "space-evenly", width: "40%", marginRight: "auto", alignItems: "center"}}>
-                            <h4 style={{textShadow: "2px 2px 4px rgba(0,0,0,.6)", cursor: "pointer"}}>edit</h4>
+                            <h4 style={{textShadow: "2px 2px 4px rgba(0,0,0,.6)", cursor: "pointer"}} onClick={() => setDisplayCommentUpdate(prev=>!prev)}>edit</h4>
                             <h2 style={{color: "red", cursor: "pointer", textShadow: "2px 2px 4px rgb(0,0,0,.6)"}} onClick={() => deleteComment(comment._id)}>X</h2>
                         </div>
                     : null }
-                    
+                    <CommentUpdateModal
+                        currentComment={comment.comment}
+                        msgAlert={msgAlert}
+                        showUpdate={displayCommentUpdate}
+                        closeUpdate={() => setDisplayCommentUpdate(false)}
+                        user={user}
+                        commentId={comment._id}
+                        triggerRefresh={triggerRefresh}
+                        reviewId={reviewId}
+                    />
                 </div>
 
             ))
@@ -121,6 +142,12 @@ const ReviewShow = (props) => {
                             <div className="review-text">{ review.content }</div>
                         </section>
                     </div>
+                    {/* display dates posted and edited, but only both if actually edited */}
+                    <small>posted {review.createdAt.split("T")[0]}</small>
+                    <br/>
+                    {review.createdAt !== review.updatedAt &&
+                    <small style={{color: "red"}}>edited {review.updatedAt.split("T")[0]}</small>}
+
                     {user && (user._id === review.owner?._id) ?
                         <div>
                             <Button className='btn-info' onClick={() => setDisplayUpdate(true)}>Edit Review</Button>
@@ -143,7 +170,7 @@ const ReviewShow = (props) => {
                     user={user}
                     review = {review}
                     msgAlert = {msgAlert}
-                    triggerRefresh={() => setUpdated(prev => !prev)}
+                    triggerRefresh={triggerRefresh}
                     closeComment={() => setDisplayCommentForm(false)}
                 />
             : null}
@@ -155,7 +182,7 @@ const ReviewShow = (props) => {
                 msgAlert={msgAlert}
                 showUpdate={displayUpdate}
                 closeUpdate={() => setDisplayUpdate(false)}
-                triggerRefresh={() => setUpdated(prev => !prev)}
+                triggerRefresh={triggerRefresh}
                 user={user}
                 reviewId={reviewId}
             />

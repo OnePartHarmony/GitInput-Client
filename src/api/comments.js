@@ -16,6 +16,19 @@ export const commentCreate = (user, reviewId, comment) => {
     })
 }
 
+export const commentUpdate = (user, comment, commentId, reviewId) => {	
+	return axios({
+		method: 'PATCH',
+		url: apiUrl + `/comments/${reviewId}/${commentId}`,
+		data: {
+			comment: comment
+		},
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+	})
+}
+
 export const commentDelete = (user, reviewId, commentId) => {
     return axios({
         method: "DELETE",
