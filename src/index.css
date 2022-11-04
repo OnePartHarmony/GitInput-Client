@@ -28,7 +28,6 @@ body {
 }
 
 .git-input {
-  /* margin-top: 0; */
   font-family: 'Bungee Shade', cursive;
   font-size: 80px;
 }
@@ -132,7 +131,6 @@ body {
   padding: 5px 20px;
   border-radius: 10px;
   margin: 0px 10px 10px 10px;
-  /* background: rgb(252, 101, 104); */
 }
 
 .company-button:hover {
@@ -155,6 +153,20 @@ body {
   white-space: normal;
   max-height: 100px;
   font-size: 12px;
+}
+
+.search-btn {
+  border: solid 2px #404040;
+  color: #404040;
+  text-decoration: none;
+  padding: 5px 20px;
+  border-radius: 10px;
+  margin: 0px 10px 10px 10px;
+}
+
+.search-btn:hover {
+  background-color: #404040;
+  color: white;
 }
 
 /* COMPANY PROFILE */
@@ -220,10 +232,6 @@ body {
   display: flex;
   flex-direction: row;
   gap: 15px;
-}
-
-.review-label {
-  font-weight: bold;
 }
 
 /* REVIEW SHOW */
@@ -301,7 +309,7 @@ body {
 margin: auto;
 }
 
-.review-update-label {
+.label {
   font-weight: bold;
 }
 
