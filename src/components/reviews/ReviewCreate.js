@@ -98,9 +98,11 @@ const ReviewCreate = (props) => {
                                 <option value="Management">Management</option>
                             </Form.Select>
                         </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label className="review-update-label">Starting Salary:</Form.Label>
-                            <Form.Control placeholder={`Your starting yearly salary at ${company.name} in USD`} name="startingSalary" value={review.startingSalary} onChange={handleChange}/>
+
+                        <Form.Group className="mb-2">
+                            <Form.Label>Starting Salary:</Form.Label>
+                            <Form.Control type="number" placeholder={`Starting yearly salary in USD`} name="startingSalary" value={review.startingSalary} onChange={handleChange}/>
+
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label className="review-update-label">Review:</Form.Label>
