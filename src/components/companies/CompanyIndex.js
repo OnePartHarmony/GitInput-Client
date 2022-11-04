@@ -17,7 +17,6 @@ const CompanyIndex = (props) => {
             .then(res => {
                 setAllCompanies(res.data.companies)
                 setFilteredCompanies(res.data.companies)
-                console.log(allCompanies)
             })
             .catch((error) => {
                 msgAlert({
