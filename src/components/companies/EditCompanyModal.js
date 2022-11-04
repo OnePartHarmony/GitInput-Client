@@ -24,13 +24,6 @@ const {currentCompany, msgAlert, showUpdate, closeUpdate, user, companyId, trigg
         triggerRefresh()
         closeUpdate()
     })
-        .then(() => {
-            msgAlert({
-                heading: 'Success!',
-                message: 'Your company has been updated.',
-                variant: 'success'
-            })
-        })
         .catch((err) => {
             msgAlert({
                 heading: 'Failure',

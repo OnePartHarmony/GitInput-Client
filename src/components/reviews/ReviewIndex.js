@@ -29,19 +29,22 @@ const ReviewIndex = (props) => {
     const reviewCards = reviews.map(review => (
 
         <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
-
-                <h1 className="review-index-heading">
-                    <div>{fiveStars(review.generalRating)}</div>
-                    <div>{review.title}</div>
-                </h1>
+            <Card.Header className="review-index-section mb-1">
+                <div className="label review-user">User:</div>
+                <div className="label review-user">{review.owner.username}</div>
+            </Card.Header>
+            <h1 className="review-index-heading">
+                <div>{fiveStars(review.generalRating)}</div>
+                <div>{review.title}</div>
+            </h1>
             <Card.Body>
                 <section className="review-index-section">
-                    <div className="review-label">Starting Position:</div>
+                    <div className="label">Starting Position:</div>
                     <div>{review.startingPosition}</div>
                 </section>
 
                 <section className="review-index-section">
-                    <div className="review-label">Starting Salary:</div>
+                    <div className="label">Starting Salary:</div>
                     <div>{review.startingSalary}</div>
                 </section>
                 
@@ -55,7 +58,7 @@ const ReviewIndex = (props) => {
         <div className="mt-5" style={{flex: 1, textAlign: "center", }}>
             
             <div  className="company-profile" style={{width: "33vw", margin: "auto", padding: "10px", position: "relative"}}>
-                <div className="title-box fixed mb-3">
+                <div className="title-box mb-3">
                     <h3 className="profile-title fixed">Reviews</h3> 
                 </div>      
                 <div className="scroll">        

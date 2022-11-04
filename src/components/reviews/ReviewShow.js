@@ -58,6 +58,7 @@ const ReviewShow = (props) => {
     let comments
     if (review !== null) {
         if (review.comments.length > 0) {
+
             comments = review.comments.map((comment, index) => (
                 
                 <div key={index} className='mt-4' style={{width: "300px", background: "lightgrey", border: "2px solid black", borderRadius: "10px", padding: "8px", margin: "auto"}}>
@@ -80,6 +81,7 @@ const ReviewShow = (props) => {
                     : null }
                     
                 </div>
+
             ))
         }
     }
@@ -88,11 +90,6 @@ const ReviewShow = (props) => {
     const deleteReview = () => {
         reviewDelete(user, reviewId)
             .then(() => {
-                msgAlert({
-                    heading: "Success!",
-                    message: "Deleted review.",
-                    variant: "success"
-                })
                 navigate(`/companies/${review.company._id}`)
             })
             .catch((err) => {
@@ -130,7 +127,7 @@ const ReviewShow = (props) => {
                             {isDeleteClicked ? <Button className="btn-danger" onClick={deleteReview}>I'm sure, DELETE</Button> : <Button className='btn-warning' onClick={() => setIsDeleteClicked(true)}>Delete this Review?</Button>}
                         </div>
                     : null}
-                    {/* only signed-in users can comment */}
+                             {/* only signed-in users can comment */}
                     {user ?
                         <section className="review-btns">
                             <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>

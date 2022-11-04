@@ -37,7 +37,6 @@ const CompanyIndex = (props) => {
                 <div className="logo-index-container mb-3">
                     <img className="logo-company-index" src={company.logo}></img>
                 </div>
-                {/* <a className="company-button mt-2 mb-2 company-link" target="_blank" href={`https://www.${company.domain}`}>Visit Website</a> */}
                 <div className= "description-container text-center">
                     <p className="company-description">{company.description}</p>
                 </div>
@@ -66,27 +65,28 @@ const CompanyIndex = (props) => {
             <main className="company-index">
                 <div className="company-search-container text-center">
                     <div className="mb-5 company-search-box">
-                        <section className="m-3 mt-0">Don't see your company listed? Search and add it!</section>
+                        <section className="m-3 mt-0">Don't see your company listed? 
+                        <br/>
+                        Search for it!</section>
                         <Form.Control
                         className="text-center"
                         placeholder="Search a Company"
                         onChange={(e) => searchCompanies(e)}
                         >
                         </Form.Control>
-                        <Button className="mt-3 mb-5">
+                        <button className="search-btn mt-3 mb-5">
                             Search
-                        </Button>
+                        </button>
                         {user ? 
                             <div className="company-create">
-                                <h5>
-                                Don't see your company at all?
+                                <section>
+                                Don't see your company in the search?
                                 <br/>
                                 Create it!
-                                </h5>
+                                </section>
                             <CreateCompanyModal user={user} msgAlert={msgAlert}/>
                             </div>
                         : null }
-                        
                     </div>
                 </div>
                 <div className="company-card-container">

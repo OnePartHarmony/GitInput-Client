@@ -6,18 +6,20 @@ const CompanyForm = (props) => {
 
     return (
         <Container className="justify-content-center">
-            <h3>{ heading }</h3>
+            <h3 className="text-center label">{ heading }</h3>
             <Form onSubmit={ handleSubmit }>
-                <Form.Label>Name:</Form.Label>
+                <Form.Label className="label mb-0 mt-3">Name:</Form.Label>
                 <Form.Control 
+                    className="mb-3"
                     placeholder="What's your company's name?"
                     name="name"
                     id="name"
                     value= { company.name }
                     onChange={ handleChange }
                 />
-                <Form.Label>Logo (direct image link):</Form.Label>
+                <Form.Label className="label mb-0">Logo (direct image link):</Form.Label>
                 <Form.Control 
+                    className="mb-3"
                     placeholder="https://i.imgur.com/companyLogo.jpg"
                     name="logo"
                     id="logo"
@@ -25,23 +27,27 @@ const CompanyForm = (props) => {
                     value= { company.type }
                     onChange={ handleChange }
                 />
-                <Form.Label>Domain:</Form.Label>
+                <Form.Label className="label mb-0">Domain:</Form.Label>
                 <Form.Control 
+                    className="mb-3"
                     placeholder="google.com"
                     name="domain"
                     id="domain"
                     value= { company.domain }
                     onChange={ handleChange }
                 />
-                <Form.Label>Description:</Form.Label>
+                <Form.Label className="label mb-0">Description:</Form.Label>
                 <Form.Control 
+                    className="mb-3"
                     placeholder="Company description"
                     name="description"
                     id="description"
                     value= { company.description }
                     onChange={ handleChange }
                 />
-                <Button type="submit">Submit</Button>
+                <div className="text-center">
+                    <button className="search-btn mt-3" type="submit">Submit</button>
+                </div>
             </Form>
         </Container>
     )
