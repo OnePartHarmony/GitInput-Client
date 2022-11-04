@@ -100,7 +100,6 @@ const ReviewCreate = (props) => {
                         </Form.Group>        
                         <Button type="submit">Submit Review</Button>
                     </Form>
-                    <Button className='btn-warning' onClick={closeReviewForm}>Nevermind</Button>
                 </div>
             </div>        
         </>

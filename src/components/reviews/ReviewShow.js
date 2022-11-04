@@ -4,7 +4,7 @@ import { Form, Button, Card } from 'react-bootstrap'
 import { reviewDelete, reviewShow } from '../../api/review'
 import CommentCreate from '../comments/CommentCreate'
 import ReviewUpdateModal from './ReviewUpdateModal'
-
+import fiveStars from '../../fiveStars'
 
 const ReviewShow = (props) => {
 
@@ -47,7 +47,7 @@ const ReviewShow = (props) => {
     }
     let comments
     if (review !== null) {
-//        console.log(review.comments)
+       console.log(review.comments)
         if (review.comments.length > 0) {
             comments = review.comments.map(comment => (
                 <>
@@ -90,7 +90,7 @@ const ReviewShow = (props) => {
                         <section className="review-section-1">
                             {/* conditionally rendered username because seed reviews have no owner */}
                             {review.owner ? <div className="rating-item">User: { review.owner?.username }</div> : null }
-                            <div className="rating-item">Rating: { review.generalRating }</div>
+                            <div className="rating-item">{ fiveStars(review.generalRating) }</div>
                             <div className="rating-item">Salary: { review.startingSalary }</div>
                             <div className="rating-item">Starting Position: { review.startingPosition }</div>
                         </section>

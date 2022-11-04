@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 const CompanyProfile = (props) => {
 
     const [displayUpdate, setDisplayUpdate] = useState(false)
-    const { company, showReviewForm, user, msgAlert, triggerRefresh, companyId } = props
+    const { company, toggleReviewForm, user, msgAlert, triggerRefresh, companyId, displayReviewCreate } = props
     const [isDeleteClicked, setIsDeleteClicked] = useState(false)
 
     const navigate = useNavigate()
@@ -49,7 +49,10 @@ const CompanyProfile = (props) => {
                 <a href={`https://www.${company.domain}`} target="_blank" className="company-button">{company.domain}</a>
 
             </div>
-            {user ? <button className="btn btn-primary" onClick={showReviewForm}>Leave a Review</button> : null}
+
+        {/* if signed in, the leave review button toggles form and becomes a close form button */}
+            {user ? (displayReviewCreate ? <button className="btn btn-warning" onClick={toggleReviewForm}>Close Review Form</button> : <button className="btn btn-primary" onClick={toggleReviewForm}>Leave a Review</button> ) : null}
+
             {user && (user._id === company.owner) ?
                 <div>
                     <Button className='btn-success btn' onClick={() => setDisplayUpdate(true)}>Edit Company</Button>
