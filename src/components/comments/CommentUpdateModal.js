@@ -1,5 +1,11 @@
+import { useState } from "react"
+import { Modal } from "react-bootstrap"
+import {commentUpdate} from "../../api/comments"
+import CommentForm from "../shared/CommentForm"
+
+
 const CommentUpdateModal = (props) => {
-    const {currentComment, msgAlert, showUpdate, closeUpdate, user, commentId, triggerRefresh} = props
+    const {currentComment, msgAlert, showUpdate, closeUpdate, user, commentId, triggerRefresh, reviewId} = props
 
 
   const [comment, setComment] = useState(currentComment)
@@ -9,8 +15,7 @@ const CommentUpdateModal = (props) => {
   }
 
   const editComment = (e) => {
-    e.preventDefault()
-    commmentUpdate(comment, user, commentId)
+    commentUpdate(user, comment, commentId, reviewId)
     .then(() => {
         triggerRefresh()
         closeUpdate()
@@ -32,7 +37,7 @@ const CommentUpdateModal = (props) => {
           <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CommmentForm
+          <CommentForm
                 comment = { comment }
                 handleChange = { handleChange }
                 handleSubmit = { editComment }
