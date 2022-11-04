@@ -50,6 +50,7 @@ const CompanyProfile = (props) => {
 
             </div>
 
+            {/* if signed in, the leave review button toggles form and becomes a close form button */}
             {user ? (displayReviewCreate ? <button className="btn btn-warning" onClick={toggleReviewForm}>Close Review Form</button> : <button className="btn btn-primary" onClick={toggleReviewForm}>Leave a Review</button> ) : null}
 
             {user && (user._id === company.owner) ?
