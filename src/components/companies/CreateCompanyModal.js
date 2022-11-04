@@ -28,11 +28,6 @@ const handleChange = (event) => {
 const handleCreateCompany = () => {
     companyCreate(company, user)
     .then(() => {
-        msgAlert({
-            heading: 'Success',
-            message: 'Create Company',
-            variant: 'success'
-        })
         triggerRefresh()
         handleClose()
     })
@@ -65,9 +60,6 @@ const handleCreateCompany = () => {
           />
         </Modal.Body>
         <Modal.Footer>
-          {/* <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

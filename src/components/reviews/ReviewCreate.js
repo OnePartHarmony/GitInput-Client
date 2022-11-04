@@ -36,11 +36,6 @@ const ReviewCreate = (props) => {
         reviewCreate(review, user, companyId)
             .then(() => {
                 closeReviewForm()
-                msgAlert({
-                    heading: 'Success!',
-                    message: 'Your review has ben created.',
-                    variant: 'success'
-                })
             })
             .catch((err) => {
                 msgAlert({
@@ -63,7 +58,6 @@ const ReviewCreate = (props) => {
                         </Form.Group>                    
                         <Form.Group className="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
                             <br/>
-                            {/* Star rating radio inputs */} 
                             <div className="review-stars">
                                 <Ratings 
                                     

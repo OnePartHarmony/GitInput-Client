@@ -38,7 +38,6 @@ const CompanyIndex = (props) => {
                 <div className="logo-index-container mb-3">
                     <img className="logo-company-index" src={company.logo}></img>
                 </div>
-                {/* <a className="company-button mt-2 mb-2 company-link" target="_blank" href={`https://www.${company.domain}`}>Visit Website</a> */}
                 <div className= "description-container text-center">
                     <p className="company-description">{company.description}</p>
                 </div>

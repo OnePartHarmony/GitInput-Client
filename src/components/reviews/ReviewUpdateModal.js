@@ -25,13 +25,6 @@ const ReviewUpdateModal = (props) => {
         e.preventDefault()
         reviewUpdate(review, user, reviewId)
             .then(() => {
-                msgAlert({
-                    heading: 'Success!',
-                    message: 'Your review has ben updated.',
-                    variant: 'success'
-                })
-            })
-            .then(() => {
                 closeUpdate()
                 triggerRefresh()
             })
