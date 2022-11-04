@@ -26,8 +26,8 @@ const ReviewIndex = (props) => {
 
 
 
-    const reviewCards = reviews.map(review => {
-        return (
+    const reviewCards = reviews.map(review => (
+
         <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
 
                 <h1 className="review-index-heading">
