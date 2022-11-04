@@ -81,6 +81,7 @@ const ReviewShow = (props) => {
                 <div className="review-card">
                     <div className="review-info">
                         <section className="review-section-1">
+                            {/* conditionally rendered username because seed reviews have no owner */}
                             {review.owner ? <div className="rating-item">User: { review.owner?.username }</div> : null }
                             <div className="rating-item">{ fiveStars(review.generalRating) }</div>
                             <div className="rating-item">Salary: { review.startingSalary }</div>
@@ -96,6 +97,7 @@ const ReviewShow = (props) => {
                             {isDeleteClicked ? <Button className="btn-danger" onClick={deleteReview}>I'm sure, DELETE</Button> : <Button className='btn-warning' onClick={() => setIsDeleteClicked(true)}>Delete this Review?</Button>}
                         </div>
                     : null}
+                             {/* only signed-in users can comment */}
                     {user ?
                         <section className="review-btns">
                             <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
