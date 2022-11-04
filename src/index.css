@@ -286,6 +286,7 @@ body {
   margin: 20px 5px 0px;
 }
 
+
 /* REVIEW CREATE */
 .create-review-title {
   font-size: 30px;
@@ -303,3 +304,4 @@ margin: auto;
 .review-update-label {
   font-weight: bold;
 }
+

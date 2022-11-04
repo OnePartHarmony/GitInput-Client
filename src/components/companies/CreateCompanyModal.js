@@ -7,10 +7,10 @@ import CompanyForm from './CompanyForm'
 function CreateCompanyModal(props) {
   const [show, setShow] = useState(false);
 
-  // const handleClose = () => setShow(false);
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { user, handleClose, msgAlert } = props
+  const { user, msgAlert, triggerRefresh } = props
 
   const defaultCompany = {
     name: '',
@@ -33,6 +33,8 @@ const handleCreateCompany = () => {
             message: 'Create Company',
             variant: 'success'
         })
+        triggerRefresh()
+        handleClose()
     })
     .catch((error) => {
         msgAlert({
@@ -63,9 +65,9 @@ const handleCreateCompany = () => {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          {/* <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

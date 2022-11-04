@@ -10,11 +10,13 @@ const CompanyIndex = (props) => {
     const {msgAlert, user} = props
  
     const [allCompanies, setAllCompanies] = useState([])
+    const [filteredCompanies, setFilteredCompanies] = useState([])
 
     useEffect(() => {
         companyIndex()
             .then(res => {
                 setAllCompanies(res.data.companies)
+                setFilteredCompanies(res.data.companies)
                 console.log(allCompanies)
             })
             .catch((error) => {
@@ -26,7 +28,8 @@ const CompanyIndex = (props) => {
             })
     }, [])
 
-    const allCompaniesJSX = allCompanies.map((company, index) => {
+    const allCompaniesJSX = filteredCompanies.map((company, index) => {
+ 
         return (
             <Card key={index} className="company-card text-center mb-3 d-flex flex-column">
                 <Card.Title>
@@ -47,8 +50,20 @@ const CompanyIndex = (props) => {
         )
     })
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+    const searchCompanies = (e) => {
+        let companies=allCompanies
+        let capital = capitalizeFirstLetter(e.target.value)
+        let lower = e.target.value.toLowerCase()
+        let upper = e.target.value.toUpperCase()
+        let filtered = companies.filter(company => company["name"].includes(lower) || company["name"].includes(capital) || company["name"].includes(upper))
+        setFilteredCompanies(filtered)
+    }
+    
     return (
-        <>  
+        <> 
             <main className="company-index">
                 <div className="company-search-container text-center">
                     <div className="mb-5 company-search-box">
@@ -56,6 +71,7 @@ const CompanyIndex = (props) => {
                         <Form.Control
                         className="text-center"
                         placeholder="Search a Company"
+                        onChange={(e) => searchCompanies(e)}
                         >
                         </Form.Control>
                         <Button className="mt-3 mb-5">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { reviewIndex } from "../../api/review"
+import fiveStars from "../../fiveStars"
 
 const ReviewIndex = (props) => {
 
@@ -24,22 +25,16 @@ const ReviewIndex = (props) => {
     }, [])
 
 
-    const reviewCards = reviews.map(review => {
-        return (
+
+    const reviewCards = reviews.map(review => (
+
         <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
+
                 <h1 className="review-index-heading">
-                    <div>{Array.from({length: review.generalRating}, (a,index) => 
-                        <svg key={index} width="30" height="30" viewBox="0 0 60 60"><path fill="gold" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
-                        )} 
-                    </div>
+                    <div>{fiveStars(review.generalRating)}</div>
                     <div>{review.title}</div>
                 </h1>
             <Card.Body>
-                {/* <div style={{display: "flex", justifyContent: "center"}}>
-                   {Array.from({length: review.generalRating}, (a,index) => 
-                    <svg key={index} width="30" height="30" viewBox="0 0 60 60"><path fill="gold" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/></svg>
-                    )} 
-                </div> */}
                 <section className="review-index-section">
                     <div className="review-label">Starting Position:</div>
                     <div>{review.startingPosition}</div>
@@ -54,10 +49,8 @@ const ReviewIndex = (props) => {
             <Card.Footer>
                 <Link className="company-button" to={`/reviews/${review._id}`} >Read More</Link>
             </Card.Footer>
-        </Card>            
-        )
-
-    })
+        </Card>
+    ))
     return (
         <div className="mt-5" style={{flex: 1, textAlign: "center", }}>
             
