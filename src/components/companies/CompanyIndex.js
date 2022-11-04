@@ -69,7 +69,7 @@ const CompanyIndex = (props) => {
                     <div className="mb-5 company-search-box">
                         <section className="m-3 mt-0">Don't see your company listed? 
                         <br/>
-                        Search and add it!</section>
+                        Search for it!</section>
                         <Form.Control
                         className="text-center"
                         placeholder="Search a Company"
