@@ -49,9 +49,24 @@ body {
   font-family: 'Bungee Shade', cursive;
   font-size: 40px;
   margin: 0;
+  color: white;
+  text-decoration: none;
+}
+
+.site-name:hover {
+  color:#CAEBF2;
+}
+
+.welcome-nav {
+  color:#CAEBF2;
 }
 
 .nav-item {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item:hover {
   color:#CAEBF2;
 }
 
