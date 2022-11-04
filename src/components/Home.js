@@ -1,6 +1,4 @@
 const Home = (props) => {
-	// const { msgAlert, user } = props
-
 
 	return (
 		<>

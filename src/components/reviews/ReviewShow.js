@@ -22,7 +22,6 @@ const ReviewShow = (props) => {
         reviewShow(reviewId)
             .then((res) => {
                 setReview(res.data.review)
- //               console.log(res.data.review)
             })
             .catch((err) => {
                 msgAlert({
@@ -51,7 +50,6 @@ const ReviewShow = (props) => {
         if (review.comments.length > 0) {
             comments = review.comments.map(comment => (
                 <>
-                    {/* <h3>Username: {comment.owner.username} </h3> */}
                     <p>{comment.comment}</p>
                 </>
             ))
@@ -62,11 +60,6 @@ const ReviewShow = (props) => {
     const deleteReview = () => {
         reviewDelete(user, reviewId)
             .then(() => {
-                msgAlert({
-                    heading: "Success!",
-                    message: "Deleted review.",
-                    variant: "success"
-                })
                 navigate(`/companies/${review.company._id}`)
             })
             .catch((err) => {
@@ -104,7 +97,7 @@ const ReviewShow = (props) => {
                             {isDeleteClicked ? <Button className="btn-danger" onClick={deleteReview}>I'm sure, DELETE</Button> : <Button className='btn-warning' onClick={() => setIsDeleteClicked(true)}>Delete this Review?</Button>}
                         </div>
                     : null}
-                    {/* only signed-in users can comment */}
+                             {/* only signed-in users can comment */}
                     {user ?
                         <section className="review-btns">
                             <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
