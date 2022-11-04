@@ -33,10 +33,10 @@ const ReviewIndex = (props) => {
                 <div className="label review-user">User:</div>
                 <div className="label review-user">{review.owner.username}</div>
             </Card.Header>
-            <h1 className="review-index-heading">
-                <div>{fiveStars(review.generalRating)}</div>
-                <div>{review.title}</div>
-            </h1>
+            <section className="review-index-heading">
+                <div className="stars">{fiveStars(review.generalRating)}</div>
+                <div className="review-index-title">{review.title}</div>
+            </section>
             <Card.Body>
                 <section className="review-index-section">
                     <div className="label">Starting Position:</div>

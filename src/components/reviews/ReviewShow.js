@@ -79,31 +79,48 @@ const ReviewShow = (props) => {
                 <img className="logo-review-show mt-3 mb-5" src={review.company.logo}></img>
                 <h2 className="text-center review-title">{ review.title }</h2>
                 <div className="review-card">
-                    <div className="review-info">
+                    <div className="review-info d-flex">
                         <section className="review-section-1">
                             {/* conditionally rendered username because seed reviews have no owner */}
-                            {review.owner ? <div className="rating-item">User: { review.owner?.username }</div> : null }
+                            <section className="review-index-section">
+                                <div className="rating-item label">User:</div> 
+                                {review.owner ? <div className="rating-item">{ review.owner?.username }</div> : null }
+                            </section>
+
                             <div className="rating-item">{ fiveStars(review.generalRating) }</div>
-                            <div className="rating-item">Salary: { review.startingSalary }</div>
-                            <div className="rating-item">Starting Position: { review.startingPosition }</div>
+                            <section className="review-index-section">
+                                <div className="rating-item label">Salary:</div> 
+                                <div>{ review.startingSalary }</div>
+                            </section>
+                            <section className="review-index-section">
+                                <div className="rating-item label">Starting Position:</div> 
+                                <div>{ review.startingPosition }</div>
+                            </section>
+                            <div className="rating-item"> </div>
                         </section>
                         <section className="review-section-2">
                             <div className="review-text">{ review.content }</div>
                         </section>
                     </div>
-                    {user && (user._id === review.owner?._id) ?
-                        <div>
-                            <Button className='btn-info' onClick={() => setDisplayUpdate(true)}>Edit Review</Button>
-                            {isDeleteClicked ? <Button className="btn-danger" onClick={deleteReview}>I'm sure, DELETE</Button> : <Button className='btn-warning' onClick={() => setIsDeleteClicked(true)}>Delete this Review?</Button>}
-                        </div>
-                    : null}
-                             {/* only signed-in users can comment */}
-                    {user ?
-                        <section className="review-btns">
-                            <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
-                            <button className="review-btn" >Like</button>
-                        </section>                    
-                    : null}
+                    <div className="align-self-end">
+                        <section>
+                        {user && (user._id === review.owner?._id) ?
+                                <div >
+                                    <button className='company-button' onClick={() => setDisplayUpdate(true)}>Edit Review</button>
+                                    {isDeleteClicked ? <button className="company-button" onClick={deleteReview}>I'm sure, DELETE</button> : <button className='company-button' onClick={() => setIsDeleteClicked(true)}>Delete Review</button>}
+                                </div>
+                            : null}
+                        </section>
+                                {/* only signed-in users can comment */}
+                        <section>
+                            {user ?
+                                <section className="review-btns">
+                                    <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
+                                    <button className="review-btn" >Like</button>
+                                </section>                    
+                            : null}
+                        </section>
+                    </div>
 
                 </div>
             </div>
