@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Button, Card, Container } from 'react-bootstrap'
+import { Form, Card } from 'react-bootstrap'
 import { companyIndex } from '../../api/company'
 import { Link } from 'react-router-dom'
 import CreateCompanyModal from './CreateCompanyModal'
@@ -17,7 +17,6 @@ const CompanyIndex = (props) => {
             .then(res => {
                 setAllCompanies(res.data.companies)
                 setFilteredCompanies(res.data.companies)
-                console.log(allCompanies)
             })
             .catch((error) => {
                 msgAlert({
@@ -26,7 +25,7 @@ const CompanyIndex = (props) => {
                     variant: 'danger'
                 })
             })
-    }, [])
+    }, [msgAlert])
 
     const allCompaniesJSX = filteredCompanies.map((company, index) => {
  
@@ -35,8 +34,8 @@ const CompanyIndex = (props) => {
                 <Card.Title>
                 <p className="company-name">{company.name}</p>
                 </Card.Title>
-                <div className="logo-index-container">
-                    <img className="logo-company-index" src={company.logo}></img>
+                <div className="logo-index-container mb-3">
+                    <img className="logo-company-index" alt="logo" src={company.logo}></img>
                 </div>
                 <div className= "description-container text-center">
                     <p className="company-description mt-4">{company.description}</p>

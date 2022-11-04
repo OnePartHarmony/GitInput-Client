@@ -22,7 +22,7 @@ const ReviewIndex = (props) => {
                     variant: "danger"
                 })
             })
-    }, [])
+    }, [companyId, msgAlert])
 
 
 
@@ -31,7 +31,7 @@ const ReviewIndex = (props) => {
         <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
             <Card.Header className="review-index-section mb-1">
                 <div className="label review-user">User:</div>
-                <div className="label review-user">{review.owner.username}</div>
+                <div className="label review-user">{review.owner?.username}</div>
             </Card.Header>
             <section className="review-index-heading">
                 <div className="stars">{fiveStars(review.generalRating)}</div>
