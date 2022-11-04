@@ -102,8 +102,8 @@ const ReviewShow = (props) => {
                             <div className="review-text">{ review.content }</div>
                         </section>
                     </div>
-                    <div className="align-self-end">
-                        <section>
+                    <div className="review-btns">
+                        <section className="revew-btns-1">
                         {user && (user._id === review.owner?._id) ?
                                 <div >
                                     <button className='company-button' onClick={() => setDisplayUpdate(true)}>Edit Review</button>
@@ -112,11 +112,11 @@ const ReviewShow = (props) => {
                             : null}
                         </section>
                                 {/* only signed-in users can comment */}
-                        <section>
+                        <section className="revew-btns-2">
                             {user ?
-                                <section className="review-btns">
-                                    <button className="review-btn" onClick={() => toggleCommentForm()}>Comment</button>
-                                    <button className="review-btn" >Like</button>
+                                <section>
+                                    <button className="comment-like-btn" onClick={() => toggleCommentForm()}>Comment</button>
+                                    <button className="comment-like-btn" >Like</button>
                                 </section>                    
                             : null}
                         </section>
