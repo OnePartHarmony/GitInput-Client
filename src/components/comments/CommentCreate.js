@@ -34,11 +34,11 @@ const CommentCreate = (props) => {
 
     return(
         <>
-            <CommentForm
-                comment = { comment }
-                handleChange = { handleChange }
-                handleSubmit = { createComment }
-            />
+        <CommentForm
+            comment = { comment }
+            handleChange = { handleChange }
+            handleSubmit = { createComment }
+        />
         </>
     )
 }

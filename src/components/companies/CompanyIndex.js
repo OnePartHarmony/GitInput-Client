@@ -32,15 +32,15 @@ const CompanyIndex = (props) => {
         return (
             <Card key={index} className="company-card text-center mb-3 d-flex flex-column">
                 <Card.Title>
-                <p className="company-name mt-2">{company.name}</p>
+                <p className="company-name">{company.name}</p>
                 </Card.Title>
                 <div className="logo-index-container mb-3">
                     <img className="logo-company-index" alt="logo" src={company.logo}></img>
                 </div>
                 <div className= "description-container text-center">
-                    <p className="company-description">{company.description}</p>
+                    <p className="company-description mt-4">{company.description}</p>
                 </div>
-                <div className="index-btn-container align-text-bottom mt-2">
+                <div className="index-btn-container mt-auto mb-2">
                     <a className="company-button company-link" target="_blank" href={`https://www.${company.domain}`}> Website</a>
                     <Link to={`/companies/${company._id}`} state={company} className="company-button">Reviews</Link>
                 </div>

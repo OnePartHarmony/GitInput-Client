@@ -47,11 +47,11 @@ const CompanyProfile = (props) => {
                 <img className="profile-logo" src={company.logo} alt={`${company.name} logo`}/>
                 <p className="profile-description">{company.description} </p>
                 <a href={`https://www.${company.domain}`} target="_blank" className="company-button">{company.domain}</a>
-
+                {/* if signed in, the leave review button toggles form and becomes a close form button */}
+                {user ? (displayReviewCreate ? <button className="company-button" onClick={toggleReviewForm}>Close Review Form</button> : <button className="company-button mt-2" onClick={toggleReviewForm}>Leave a Review</button> ) : null}
             </div>
 
-            {/* if signed in, the leave review button toggles form and becomes a close form button */}
-            {user ? (displayReviewCreate ? <button className="btn btn-warning" onClick={toggleReviewForm}>Close Review Form</button> : <button className="btn btn-primary" onClick={toggleReviewForm}>Leave a Review</button> ) : null}
+
 
             {user && (user._id === company.owner) ?
                 <div>
