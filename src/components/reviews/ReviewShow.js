@@ -6,6 +6,7 @@ import CommentCreate from '../comments/CommentCreate'
 import ReviewUpdateModal from './ReviewUpdateModal'
 import fiveStars from '../../fiveStars'
 import { commentDelete } from '../../api/comments'
+import CommentUpdateModal from '../comments/CommentUpdateModal'
 
 const ReviewShow = (props) => {
 
@@ -79,7 +80,15 @@ const ReviewShow = (props) => {
                             <h2 style={{color: "red", cursor: "pointer", textShadow: "2px 2px 4px rgb(0,0,0,.6)"}} onClick={() => deleteComment(comment._id)}>X</h2>
                         </div>
                     : null }
-                    
+                    <CommentUpdateModal
+                        currentComment={comment}
+                        msgAlert={msgAlert}
+                        showUpdate=
+                        closeUpdate=
+                        user={user}
+                        commentId={comment._id}
+                        triggerRefresh=
+                    />
                 </div>
 
             ))
