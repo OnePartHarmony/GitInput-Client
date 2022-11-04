@@ -43,9 +43,9 @@ const handleCreateCompany = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <button className="search-btn mt-3" onClick={handleShow}>
         Create Company!
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

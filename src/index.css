@@ -28,7 +28,6 @@ body {
 }
 
 .git-input {
-  /* margin-top: 0; */
   font-family: 'Bungee Shade', cursive;
   font-size: 80px;
 }
@@ -50,9 +49,24 @@ body {
   font-family: 'Bungee Shade', cursive;
   font-size: 40px;
   margin: 0;
+  color: white;
+  text-decoration: none;
+}
+
+.site-name:hover {
+  color:#CAEBF2;
+}
+
+.welcome-nav {
+  color:#CAEBF2;
 }
 
 .nav-item {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item:hover {
   color:#CAEBF2;
 }
 
@@ -132,7 +146,6 @@ body {
   padding: 5px 20px;
   border-radius: 10px;
   margin: 0px 10px 10px 10px;
-  /* background: rgb(252, 101, 104); */
 }
 
 .company-button:hover {
@@ -155,6 +168,20 @@ body {
   white-space: normal;
   max-height: 100px;
   font-size: 12px;
+}
+
+.search-btn {
+  border: solid 2px #404040;
+  color: #404040;
+  text-decoration: none;
+  padding: 5px 20px;
+  border-radius: 10px;
+  margin: 0px 10px 10px 10px;
+}
+
+.search-btn:hover {
+  background-color: #404040;
+  color: white;
 }
 
 /* COMPANY PROFILE */
@@ -195,9 +222,6 @@ body {
 
 
 /* REVIEW INDEX */
-/* .fixed {
-  position: absolute;
-} */
 .scroll {
   overflow: scroll;
   height: 75%;
@@ -210,9 +234,9 @@ body {
 .review-index-heading {
   display: flex;
   flex-direction: row;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
-  margin: 10px 15px;
+  margin: 10px 15px 0px;
   gap: 15px;
 }
 
@@ -222,8 +246,9 @@ body {
   gap: 15px;
 }
 
-.review-label {
-  font-weight: bold;
+.review-user {
+  font-size: 20px;
+  margin: 0px;
 }
 
 /* REVIEW SHOW */
@@ -301,7 +326,7 @@ body {
 margin: auto;
 }
 
-.review-update-label {
+.label {
   font-weight: bold;
 }
 
