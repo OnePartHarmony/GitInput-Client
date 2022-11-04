@@ -22,7 +22,7 @@ const ReviewIndex = (props) => {
                     variant: "danger"
                 })
             })
-    }, [])
+    }, [companyId, msgAlert])
 
 
 
