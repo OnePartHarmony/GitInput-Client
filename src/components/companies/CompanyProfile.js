@@ -67,6 +67,7 @@ const CompanyProfile = (props) => {
                 showUpdate={displayUpdate}
                 user={user} 
                 companyId={companyId}/>
+
         </div>
         </>
     )

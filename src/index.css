@@ -13,6 +13,34 @@ body {
   -moz-osx-font-smoothing: grayscale; */
 }
 
+/* HOME PAGE */
+.welcome-section {
+  margin-top: 7%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-title{
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.git-input {
+  /* margin-top: 0; */
+  font-family: 'Bungee Shade', cursive;
+  font-size: 80px;
+}
+
+.site-description {
+  margin-top: 40px;
+  width: 50%;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
 /* NAV-BAR */
 .nav-bar {
   background-color:#404040
@@ -145,7 +173,7 @@ body {
   width: 100%;
   height: 20%;
   margin: 0 0 30px 0;
-  background-color: #CAEBF2
+  background-color: #CAEBF2;
 }
 
 .profile-title {
@@ -161,19 +189,23 @@ body {
 }
 
 .profile-description {
-  margin: 60px 30px 60px 30px;
+  height: 150px;
+  margin: 40px 30px 40px 30px;
 }
 
 
 /* REVIEW INDEX */
-/* .review-index-card {
-  display: flex;
+/* .fixed {
+  position: absolute;
 } */
+.scroll {
+  overflow: scroll;
+  height: 75%;
+}
 
-/* .review-heading-container {
-  display: flex;
-  flex-direction: row;
-} */
+.review-index-card {
+  background-color: #EFEFEF
+}
 
 .review-index-heading {
   display: flex;
@@ -253,3 +285,23 @@ body {
   color: white;
   margin: 20px 5px 0px;
 }
+
+
+/* REVIEW CREATE */
+.create-review-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.review-form {
+  text-align: left;
+}
+
+.review-stars {
+margin: auto;
+}
+
+.review-update-label {
+  font-weight: bold;
+}
+
