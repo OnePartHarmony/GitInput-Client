@@ -9,7 +9,7 @@ const Home = (props) => {
 		<section className="welcome-section">
 			<div className="welcome-title">Welcome to</div>
 			<div className="git-input">&lt;Git Input/&gt;</div>
-			<div></div>
+			<div className="site-description">Here at Git Input, we supply software engineers with real testimonies of what it is like to work for specific companies. Our goal is to create a safe and completely anonymous place for fellow software engineers to share their experiences. With your reviews, Git Input can aid potential future employees to land an amazing job or avoid a toxic work environment!</div>
 		</section>
 		</>
 	)

@@ -15,7 +15,7 @@ body {
 
 /* HOME PAGE */
 .welcome-section {
-  margin-top: 40px;
+  margin-top: 7%;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -23,13 +23,22 @@ body {
 }
 
 .welcome-title{
-  font-size: 40px;
+  font-size: 60px;
+  font-weight: bold;
 }
 
 .git-input {
   /* margin-top: 0; */
   font-family: 'Bungee Shade', cursive;
   font-size: 80px;
+}
+
+.site-description {
+  margin-top: 40px;
+  width: 50%;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.7;
 }
 
 /* NAV-BAR */
