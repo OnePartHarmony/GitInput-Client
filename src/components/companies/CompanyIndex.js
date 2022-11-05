@@ -37,6 +37,7 @@ const CompanyIndex = (props) => {
                 <div className="logo-index-container mb-3">
                     <img className="logo-company-index" alt="logo" src={company.logo}></img>
                 </div>
+                {company.numberOfReviews ? (company.numberOfReviews === 1 ? <p>1 Review</p> : <p>{company.numberOfReviews} Reviews</p> ) : null }
                 <div className= "description-container text-center">
                     <p className="company-description mt-4">{company.description}</p>
                 </div>
