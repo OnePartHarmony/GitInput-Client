@@ -36,7 +36,7 @@ const CompanyShow = (props) => {
             <>Loading...</>
         )
     }
-    
+
     return (
         <>
         <div style={{display: "flex"}}>
