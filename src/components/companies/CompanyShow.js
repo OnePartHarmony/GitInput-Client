@@ -47,8 +47,6 @@ const CompanyShow = (props) => {
         </>
     )
 
-
-    
 }
 
 export default CompanyShow
