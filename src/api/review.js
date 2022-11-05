@@ -46,7 +46,6 @@ export const reviewUpdate = (review, user, id) => {
 }
 
 export const reviewDelete = (user, id) => {
-	console.log(id)
 	return axios({
 		method: 'DELETE',
 		url: apiUrl + `/reviews/${id}`,
@@ -54,4 +53,31 @@ export const reviewDelete = (user, id) => {
             Authorization: `Token token=${user.token}`
         }
 	})
+}
+
+
+export const reviewLike = (user, reviewId) => {
+    return axios({
+        method: 'PATCH',
+        url: apiUrl + `/reviews/like/${reviewId}`,
+        data: {
+            userId: user._id
+        },
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
+
+export const reviewUnlike = (user, reviewId) => {
+    return axios({
+        method: 'PATCH',
+        url: apiUrl + `/reviews/unlike/${reviewId}`,
+        data: {
+            userId: user._id
+        },
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
 }

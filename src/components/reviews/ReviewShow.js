@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react' 
 import { useParams, useNavigate } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
-import { reviewDelete, reviewShow } from '../../api/review'
+import { reviewDelete, reviewLike, reviewShow, reviewUnlike } from '../../api/review'
 import CommentCreate from '../comments/CommentCreate'
 import ReviewUpdateModal from './ReviewUpdateModal'
 import fiveStars from '../../fiveStars'
@@ -11,13 +10,15 @@ import CommentUpdateModal from '../comments/CommentUpdateModal'
 const ReviewShow = (props) => {
 
     const { user, msgAlert} = props
+    const { reviewId } = useParams()
+
     const [review, setReview] = useState(null)
     const [displayCommentForm, setDisplayCommentForm] = useState(false)
     const [displayUpdate, setDisplayUpdate] = useState(false)
     const [displayCommentUpdate, setDisplayCommentUpdate] = useState(false)
     const [isDeleteClicked, setIsDeleteClicked] = useState(false)
     const [updated, setUpdated] = useState(false)
-    const { reviewId } = useParams()
+
 
     const navigate = useNavigate()
     
@@ -34,6 +35,12 @@ const ReviewShow = (props) => {
                 })
             })
     }, [updated, msgAlert, reviewId])
+
+    if (!review){
+        return(
+            <>Loading...</>
+        )        
+    }    
     
     const toggleCommentForm = () => {
             setDisplayCommentForm(prevState => !prevState)
@@ -43,9 +50,33 @@ const ReviewShow = (props) => {
         setUpdated(prev => !prev)
     }
 
+    const likeReview = () => {
+        reviewLike(user, reviewId)
+            .then(setTimeout(triggerRefresh, 300))
+            .catch((err) => {
+                msgAlert({
+                    heading: "Failed to Like Review",
+                    message: "error: " + err,
+                    variant: "danger"
+                })
+            })
+    }
+
+    const unLikeReview = () => {
+        reviewUnlike(user, reviewId)
+            .then(setTimeout(triggerRefresh, 300))
+            .catch((err) => {
+                msgAlert({
+                    heading: "Failed to Unlike Review",
+                    message: "error: " + err,
+                    variant: "danger"
+                })
+            })
+    }
+
     const deleteComment = (commentId) => {
         commentDelete(user, reviewId, commentId)
-            .then(() => setUpdated(prev => !prev))
+            .then(triggerRefresh)
             .catch((err) => {
                 msgAlert({
                     heading: "Failed to Delete Comment",
@@ -55,21 +86,32 @@ const ReviewShow = (props) => {
             })
     }
 
-    if (!review){
-        return(
-            <>Loading...</>
-        )        
+    const deleteReview = () => {
+        reviewDelete(user, reviewId)
+            .then(() => {
+                navigate(`/companies/${review.company._id}`)
+            })
+            .catch((err) => {
+                msgAlert({
+                    heading: "Failure",
+                    message: "Failed to delete review: " + err,
+                    variant: "danger"
+                })
+            })
     }
+
 
     let comments
     let salaryUSD
     if (review !== null) {
+    ////show starting salary as money vs number
         salaryUSD = review.startingSalary.toLocaleString('en-US', {
             style: 'currency',     
             currency: 'USD',     
             currencyDisplay: 'symbol',
             maximumFractionDigits: 2
         })
+    ///map comments to cards
         if (review.comments.length > 0) {
             comments = review.comments.map((comment, index) => (
                 
@@ -82,15 +124,15 @@ const ReviewShow = (props) => {
                         <small>{comment.owner.username} </small>
                         <br/>
                         <small>
+                        {/* date comment was written */}
                             posted {comment.createdAt.split("T")[0]}
-                             {/* {comment.createdAt.split("T")[1].split(".")[0]} */}
                         </small>
                         <br/>
+                    {/* if comment has been updated, show updated date */}
                         {comment.createdAt !== comment.updatedAt && <small style={{color: "red"}}>
                             edited {comment.updatedAt.split("T")[0]}
-                             {/* {comment.updatedAt.split("T")[1].split(".")[0]} */}
                             </small>}
-                    </div>                   
+                    </div>
                     {user && user._id === comment.owner._id ? 
                         <div style={{display: "flex", justifyContent: "space-evenly", width: "40%", marginRight: "auto", alignItems: "center"}}>
                             <h4 style={{textShadow: "2px 2px 4px rgba(0,0,0,.6)", cursor: "pointer"}} onClick={() => setDisplayCommentUpdate(prev=>!prev)}>edit</h4>
@@ -113,20 +155,6 @@ const ReviewShow = (props) => {
         }
     }
 
-
-    const deleteReview = () => {
-        reviewDelete(user, reviewId)
-            .then(() => {
-                navigate(`/companies/${review.company._id}`)
-            })
-            .catch((err) => {
-                msgAlert({
-                    heading: "Failure",
-                    message: "Failed to delete review: " + err,
-                    variant: "danger"
-                })
-            })
-    }
 
     return (
         <>
@@ -161,10 +189,25 @@ const ReviewShow = (props) => {
                     </div>
 
                     {/* display dates posted and edited, but only both if actually edited */}
-                    <small>posted {review.createdAt.split("T")[0]}</small>
-                    <br/>
-                    {review.createdAt !== review.updatedAt &&
-                    <small style={{color: "red"}}>edited {review.updatedAt.split("T")[0]}</small>}
+                    <small>posted {review.createdAt.split("T")[0]}</small>                    
+                    {review.createdAt !== review.updatedAt && 
+                    <>
+                        <br/>
+                        <small style={{color: "red"}}>edited {review.updatedAt.split("T")[0]}</small>
+                    </>}
+                    {/* display likes */}
+                    {review.userLikes.length > 0 && (
+                        review.userLikes.length === 1 ?
+                            <>
+                                <br/>
+                                <small>1 like</small>
+                            </>
+                        :
+                            <>
+                                <br/>
+                                <small>{review.userLikes.length} likes</small>
+                            </>
+                    )}
                     
                     <div className="review-btns">
                         <section className="revew-btns-1">
@@ -175,12 +218,12 @@ const ReviewShow = (props) => {
                                 </div>
                             : null}
                         </section>
-                                {/* only signed-in users can comment */}
+                                {/* only signed-in users can comment or like */}
                         <section className="revew-btns-2">
                             {user ?
                                 <section>
                                     <button className="comment-like-btn" onClick={() => toggleCommentForm()}>Comment</button>
-                                    <button className="comment-like-btn" >Like</button>
+                                    {review.userLikes?.includes(user._id) ? <button className="comment-like-btn" onClick={unLikeReview}>Unlike</button> : <button className="comment-like-btn" onClick={likeReview}>Like</button>}
                                 </section>                    
                             : null}
                         </section>
