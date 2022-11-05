@@ -62,9 +62,15 @@ const ReviewShow = (props) => {
     }
 
     let comments
+    let salaryUSD
     if (review !== null) {
+        salaryUSD = review.startingSalary.toLocaleString('en-US', {
+            style: 'currency',     
+            currency: 'USD',     
+            currencyDisplay: 'symbol',
+            maximumFractionDigits: 2
+        })
         if (review.comments.length > 0) {
-
             comments = review.comments.map((comment, index) => (
                 
                 <div key={index} className='mt-4' style={{width: "300px", background: "lightgrey", border: "2px solid black", borderRadius: "10px", padding: "8px", margin: "auto"}}>
@@ -141,7 +147,7 @@ const ReviewShow = (props) => {
                             <div className="rating-item">{ fiveStars(review.generalRating) }</div>
                             <section className="review-index-section">
                                 <div className="rating-item label">Salary:</div> 
-                                <div>{ review.startingSalary }</div>
+                                <div>{ salaryUSD }</div>
                             </section>
                             <section className="review-index-section">
                                 <div className="rating-item label">Starting Position:</div> 
