@@ -10,12 +10,11 @@ const CompanyForm = (props) => {
             <Form onSubmit={ handleSubmit }>
                 <Form.Label className="label mb-0 mt-3">Name:</Form.Label>
                 <Form.Control 
-                    className="mb-3"
-                    value= { company.name }
+                    className="mb-3"                    
                     placeholder="What's your company's name?"
                     name="name"
                     id="name"
-                    
+                    value= { company.name }
                     onChange={ handleChange }
                 />
                 <Form.Label className="label mb-0">Logo (direct image link):</Form.Label>
