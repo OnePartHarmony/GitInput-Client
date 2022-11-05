@@ -3,7 +3,6 @@ import { signOut } from '../../api/auth'
 
 const SignOut = (props) => {
 	const { clearUser, user } = props
-    console.log(props)
 
     const navigate = useNavigate()
 

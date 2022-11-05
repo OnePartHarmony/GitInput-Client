@@ -26,34 +26,41 @@ const ReviewIndex = (props) => {
 
 
 
-    const reviewCards = reviews.map(review => (
-
-        <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
-            <Card.Header className="review-index-section mb-1">
-                <div className="label review-user">User:</div>
-                <div className="label review-user">{review.owner?.username}</div>
-            </Card.Header>
-            <section className="review-index-heading">
-                <div className="stars">{fiveStars(review.generalRating)}</div>
-                <div className="review-index-title">{review.title}</div>
-            </section>
-            <Card.Body>
-                <section className="review-index-section">
-                    <div className="label">Starting Position:</div>
-                    <div>{review.startingPosition}</div>
+    const reviewCards = reviews.map(review => {
+        const salaryUSD = review.startingSalary.toLocaleString('en-US', {
+            style: 'currency',     
+            currency: 'USD',     
+            currencyDisplay: 'symbol',
+            maximumFractionDigits: 2
+        })
+        return (
+            <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
+                <Card.Header className="review-index-section mb-1">
+                    <div className="label review-user">User:</div>
+                    <div className="label review-user">{review.owner?.username}</div>
+                </Card.Header>
+                <section className="review-index-heading">
+                    <div className="stars">{fiveStars(review.generalRating)}</div>
+                    <div className="review-index-title">{review.title}</div>
                 </section>
+                <Card.Body>
+                    <section className="review-index-section">
+                        <div className="label">Starting Position:</div>
+                        <div>{review.startingPosition}</div>
+                    </section>
 
-                <section className="review-index-section">
-                    <div className="label">Starting Salary:</div>
-                    <div>{review.startingSalary}</div>
-                </section>
-                
-            </Card.Body>
-            <Card.Footer>
-                <Link className="company-button" to={`/reviews/${review._id}`} >Read More</Link>
-            </Card.Footer>
-        </Card>
-    ))
+                    <section className="review-index-section">
+                        <div className="label">Starting Salary:</div>
+                        <div>{salaryUSD}</div>
+                    </section>
+                    
+                </Card.Body>
+                <Card.Footer>
+                    <Link className="company-button" to={`/reviews/${review._id}`} >Read More</Link>
+                </Card.Footer>
+            </Card>
+        )
+    })
     return (
         <div className="mt-5" style={{flex: 1, textAlign: "center", }}>
             
