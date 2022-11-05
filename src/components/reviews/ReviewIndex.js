@@ -36,8 +36,11 @@ const ReviewIndex = (props) => {
         return (
             <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
                 <Card.Header className="review-index-section mb-1">
-                    <div className="label review-user">User:</div>
+                    {/* <div className="label review-user">User:</div> */}
                     <div className="label review-user">{review.owner?.username}</div>
+                    
+                    <p style={{marginLeft: "auto"}}>{review.userLikes.length}<img style={{height: "25px"}} alt="likes" src={require("../../icons/thumbs-up.png")}></img></p>
+                    
                 </Card.Header>
                 <section className="review-index-heading">
                     <div className="stars">{fiveStars(review.generalRating)}</div>

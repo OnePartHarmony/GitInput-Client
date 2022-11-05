@@ -195,18 +195,13 @@ const ReviewShow = (props) => {
                         <br/>
                         <small style={{color: "red"}}>edited {review.updatedAt.split("T")[0]}</small>
                     </>}
+                    <br/>
                     {/* display likes */}
                     {review.userLikes.length > 0 && (
-                        review.userLikes.length === 1 ?
-                            <>
-                                <br/>
-                                <small>1 like</small>
-                            </>
+                        review.userLikes.length === 1 ?                            
+                            <small>1 like</small>
                         :
-                            <>
-                                <br/>
-                                <small>{review.userLikes.length} likes</small>
-                            </>
+                            <small>{review.userLikes.length} likes</small>
                     )}
                     
                     <div className="review-btns">
@@ -222,8 +217,14 @@ const ReviewShow = (props) => {
                         <section className="revew-btns-2">
                             {user ?
                                 <section>
+                                {/* hollow thumb icon for like becomes solid icon for unlike */}
+                                    {review.userLikes.includes(user._id) ?
+                                        <p style={{color: "rgb(38,173,204)", cursor: "pointer", margin: "0px 10px 10px 20px"}} onClick={unLikeReview}><img style={{height: "25px"}} alt="unlike" src={require('../../icons/thumbs-up.png')}/> unlike</p>
+                                        :
+                                        <p style={{cursor: "pointer", margin: "0px 10px 10px 20px"}} onClick={likeReview}><img style={{height: "25px"}} alt="like" src={require('../../icons/blackHollowThumb.png')}/> like</p>
+                                    }
+
                                     <button className="comment-like-btn" onClick={() => toggleCommentForm()}>Comment</button>
-                                    {review.userLikes?.includes(user._id) ? <button className="comment-like-btn" onClick={unLikeReview}>Unlike</button> : <button className="comment-like-btn" onClick={likeReview}>Like</button>}
                                 </section>                    
                             : null}
                         </section>
