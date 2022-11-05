@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from 'react'
+import Modal from 'react-bootstrap/Modal'
 import { companyCreate } from '../../api/company'
 import CompanyForm from './CompanyForm'
 
 function CreateCompanyModal(props) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const { user, msgAlert, triggerRefresh } = props
 
@@ -16,28 +16,29 @@ function CreateCompanyModal(props) {
     logo: '',
     domain: '',
     description: ''
-}
+  }
 
-const [company, setCompany] = useState(defaultCompany)
+  const [company, setCompany] = useState(defaultCompany)
 
-const handleChange = (event) => {
+  const handleChange = (event) => {
     setCompany({...company, [event.target.name]: event.target.value})
-}
+  }
 
-const handleCreateCompany = () => {
+  const handleCreateCompany = (e) => {
+    e.preventDefault()
     companyCreate(company, user)
     .then(() => {
-        triggerRefresh()
-        handleClose()
+      triggerRefresh()
+      handleClose()
     })
     .catch((error) => {
         msgAlert({
-            heading: 'Failure',
-            message: 'Create Company Failure' + error,
-            variant: 'danger'
+          heading: 'Failure',
+          message: 'Create Company Failure' + error,
+          variant: 'danger'
         })
     })
-}
+  }
 
 
   return (
@@ -52,10 +53,10 @@ const handleCreateCompany = () => {
         </Modal.Header>
         <Modal.Body>
           <CompanyForm
-              company={ company }
-              handleChange={ handleChange }
-              heading="Add a new Company!"
-              handleSubmit={ handleCreateCompany }
+            company={ company }
+            handleChange={ handleChange }
+            heading="Add a new Company!"
+            handleSubmit={ handleCreateCompany }
           />
         </Modal.Body>
         <Modal.Footer>

@@ -36,7 +36,7 @@ const CompanyShow = (props) => {
             <>Loading...</>
         )
     }
-
+    
     return (
         <>
         <div style={{display: "flex"}}>
@@ -46,6 +46,7 @@ const CompanyShow = (props) => {
         </div>
         </>
     )
+
 }
 
 export default CompanyShow
