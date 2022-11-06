@@ -46,6 +46,7 @@ const CompanyShow = (props) => {
         </div>
         </>
     )
+
 }
 
 export default CompanyShow

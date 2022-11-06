@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-
-import Modal from 'react-bootstrap/Modal';
+import React, { useEffect, useState } from 'react'
+import Modal from 'react-bootstrap/Modal'
 import { companyUpdate } from '../../api/company'
 import CompanyForm from './CompanyForm'
 
 function EditCompanyModal(props) {
 
-const {currentCompany, msgAlert, showUpdate, closeUpdate, user, companyId, triggerRefresh} = props
-
+  const {currentCompany, msgAlert, showUpdate, closeUpdate, user, companyId, triggerRefresh} = props
+  
 
   const [company, setCompany] = useState(currentCompany)
+ 
+  // currentCompany initially gets set as {} and needs to be updated when changed, else the form won't render default values.
+  useEffect(() => {
+    setCompany(currentCompany)
+  },[currentCompany])
 
   const handleChange = (e) => {
       setCompany(prevCompany => {
