@@ -31,7 +31,7 @@ const ReviewIndex = (props) => {
             style: 'currency',     
             currency: 'USD',     
             currencyDisplay: 'symbol',
-            maximumFractionDigits: 2
+            maximumFractionDigits: 0
         })
         return (
             <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>

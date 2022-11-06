@@ -109,7 +109,7 @@ const ReviewShow = (props) => {
             style: 'currency',     
             currency: 'USD',     
             currencyDisplay: 'symbol',
-            maximumFractionDigits: 2
+            maximumFractionDigits: 0
         })
     ///map comments to cards
         if (review.comments.length > 0) {
