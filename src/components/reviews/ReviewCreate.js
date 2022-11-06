@@ -5,7 +5,7 @@ import Ratings from "react-ratings-declarative"
 
 const ReviewCreate = (props) => {
 
-    const {closeReviewForm, company, companyId, msgAlert, user} = props
+    const {closeReviewForm, company, companyId, msgAlert, user, triggerRefresh} = props
 
     const defaultReview = {
         title: "",
@@ -36,6 +36,7 @@ const ReviewCreate = (props) => {
         reviewCreate(review, user, companyId)
             .then(() => {
                 closeReviewForm()
+                triggerRefresh()
             })
             .catch((err) => {
                 msgAlert({
