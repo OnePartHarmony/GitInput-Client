@@ -32,12 +32,13 @@ export const reviewShow = (id) => {
 	})
 }
 
-export const reviewUpdate = (review, user, id) => {	
+export const reviewUpdate = (review, user, id, currentRating) => {	
 	return axios({
 		method: 'PATCH',
 		url: apiUrl + `/reviews/${id}`,
 		data: {
-			review: review
+			review: review,
+            currentRating: currentRating
 		},
         headers: {
             Authorization: `Token token=${user.token}`
