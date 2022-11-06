@@ -27,17 +27,18 @@ function CreateCompanyModal(props) {
   const handleCreateCompany = (e) => {
     e.preventDefault()
     companyCreate(company, user)
-    .then(() => {
-      triggerRefresh()
-      handleClose()
-    })
-    .catch((error) => {
-        msgAlert({
-          heading: 'Failure',
-          message: 'Create Company Failure' + error,
-          variant: 'danger'
-        })
-    })
+      .then(() => {        
+        handleClose()
+        setCompany(defaultCompany)
+        triggerRefresh()
+      })
+      .catch((error) => {
+          msgAlert({
+            heading: 'Failure',
+            message: 'Create Company Failure' + error,
+            variant: 'danger'
+          })
+      })
   }
 
 
