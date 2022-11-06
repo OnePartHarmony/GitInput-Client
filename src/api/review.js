@@ -37,7 +37,7 @@ export const reviewUpdate = (review, user, id) => {
 		method: 'PATCH',
 		url: apiUrl + `/reviews/${id}`,
 		data: {
-			review: review,
+			review: review
 		},
         headers: {
             Authorization: `Token token=${user.token}`
