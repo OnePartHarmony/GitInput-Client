@@ -26,13 +26,6 @@ const SignUp = (props) => {
 		signUp(credentials)
 			.then(() => signIn(credentials))
 			.then((res) => setUser(res.data.user))
-			.then(() =>
-				msgAlert({
-					heading: 'Sign Up Success',
-					message: messages.signUpSuccess,
-					variant: 'success',
-				})
-			)
 			.then(() => navigate('/'))
 			.catch((error) => {
                 setUsername('')

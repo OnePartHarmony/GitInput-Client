@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react' 
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { reviewDelete, reviewLike, reviewShow, reviewUnlike } from '../../api/review'
 import CommentCreate from '../comments/CommentCreate'
 import ReviewUpdateModal from './ReviewUpdateModal'
@@ -160,8 +160,10 @@ const ReviewShow = (props) => {
         <>
              <style>{'body { height:100vh; width:100vw; background-color: rgba(159, 159, 159, .3); background-image: linear-gradient(60deg, rgba(237, 237, 237, 1) 35%, transparent 30%), linear-gradient(-400deg, rgba(202, 235, 242, .7) 40%, transparent 30%);}'}</style>
             <div className="show-review-container">
-                <h1 className="text-center mt-5 mb-4">{review.company.name}</h1>
-                <img className="logo-review-show mt-3 mb-5" alt="logo" src={review.company.logo}></img>
+                <Link to={`/companies/${review.company._id}`} style={{color: "black", textDecoration: "none"}} className="text-center">
+                    <h1 className="mt-5 mb-4" >{review.company.name}</h1>
+                    <img className="logo-review-show mt-3 mb-5" alt="logo" src={review.company.logo}></img>
+                </Link>                
                 <h2 className="text-center review-title">{ review.title }</h2>
                 <div className="review-card">
                     <div className="review-info d-flex">
