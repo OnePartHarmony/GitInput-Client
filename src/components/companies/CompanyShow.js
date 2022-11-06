@@ -31,6 +31,8 @@ const CompanyShow = (props) => {
         setDisplayReviewCreate(prevValue => !prevValue)
     }
 
+    const triggerRefresh = () => {setUpdated (prevValue=>!prevValue)}
+
     if (company === {}) {
         return(
             <>Loading...</>
@@ -40,9 +42,9 @@ const CompanyShow = (props) => {
     return (
         <>
         <div style={{display: "flex"}}>
-            <CompanyProfile company={company} msgAlert={msgAlert} companyId={id} toggleReviewForm={toggleReviewForm} user={user} triggerRefresh={()=> setUpdated (prevValue=>!prevValue)} displayReviewCreate={displayReviewCreate}/>
+            <CompanyProfile company={company} msgAlert={msgAlert} companyId={id} toggleReviewForm={toggleReviewForm} user={user} triggerRefresh={triggerRefresh} displayReviewCreate={displayReviewCreate}/>
 
-            {displayReviewCreate ? <ReviewCreate company={company} companyId={id} closeReviewForm={toggleReviewForm} msgAlert={msgAlert} user={user}/> : <ReviewIndex companyId={id} msgAlert={msgAlert}/>}
+            {displayReviewCreate ? <ReviewCreate company={company} companyId={id} closeReviewForm={toggleReviewForm} msgAlert={msgAlert} user={user} triggerRefresh={triggerRefresh}/> : <ReviewIndex companyId={id} msgAlert={msgAlert}/>}
         </div>
         </>
     )

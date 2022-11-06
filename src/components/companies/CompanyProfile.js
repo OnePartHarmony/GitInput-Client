@@ -43,7 +43,7 @@ const CompanyProfile = (props) => {
                 <div className="title-box">
                     <div className="profile-title">{company.name}</div>
                 </div>
-                {company.averageRating ? <h4>{company.averageRating ? <h4>{fiveStars(Math.round(company.averageRating))}</h4> : null}</h4> : null}
+                {company.averageRating ? <h4>{fiveStars(Math.round(company.averageRating))}</h4> : null}
                 <img className="profile-logo" src={company.logo} alt={`${company.name} logo`}/>
                 <div className="profile-description">{company.description} </div>
                 <a href={`https://www.${company.domain}`} target="_blank" className="company-button">{company.domain}</a>

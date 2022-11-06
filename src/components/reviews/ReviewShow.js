@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react' 
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { reviewDelete, reviewLike, reviewShow, reviewUnlike } from '../../api/review'
 import CommentCreate from '../comments/CommentCreate'
 import ReviewUpdateModal from './ReviewUpdateModal'
@@ -169,8 +169,11 @@ const ReviewShow = (props) => {
 
         <main className="review-show-page">
             <div className="show-review-container">
+
                 <div className="mt-3 mb-2 review-company review-company-container">
-                    <div className="">Company: {review.company.name}</div>
+                <Link to={`/companies/${review.company._id}`} style={{color: "black", textDecoration: "none"}}>
+                    <div>Company: {review.company.name}</div>
+                </Link>     
                     <div className="num-likes">
                         {review.userLikes.length > 0 && (
                                 review.userLikes.length === 1 ?                            
@@ -180,6 +183,7 @@ const ReviewShow = (props) => {
                             )}
                     </div>
                 </div>
+                
                 <div className="review-card">
                     <div className="review-info">
                         <section className="review-section-1">
