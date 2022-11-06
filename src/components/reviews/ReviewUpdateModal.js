@@ -41,18 +41,18 @@ const ReviewUpdateModal = (props) => {
     return (
         <>
             
-            <Modal show={ showUpdate } onHide={ closeUpdate }>
+            <Modal className="mt-5" show={ showUpdate } onHide={ closeUpdate }>
                 <Modal.Header closeButton />
                 <Modal.Body>
 
-                    <h3>Update Review of {company.name}</h3>
+                    <h3 className="text-center label">Update Review of {company.name}</h3>
                     <Form onSubmit={updateReview}>
                         <Form.Group className="mb-2">
-                            <Form.Label>Review Title:</Form.Label>
+                            <Form.Label className="label">Review Title:</Form.Label>
                             <Form.Control type="text" name="title" value={review.title}placeholder={currentReview.title} onChange={handleChange}/>
                         </Form.Group>
                         <Form.Group className="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
-                            <Form.Label>Your Rating:</Form.Label>
+                            <Form.Label className="label">Your Rating:</Form.Label>
                             <br/>
                             {/* Star rating radio inputs */} 
                             <Ratings
@@ -72,7 +72,7 @@ const ReviewUpdateModal = (props) => {
         
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label>Starting Position:</Form.Label>
+                            <Form.Label className="label">Starting Position:</Form.Label>
                             <Form.Select aria-label="starting position" name="startingPosition" defaultValue={review.startingPosition} onChange={handleChange}>
                                 <option value="Intern">Intern</option>
                                 <option value="Junior">Junior</option>
@@ -81,14 +81,17 @@ const ReviewUpdateModal = (props) => {
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label>Starting Salary:</Form.Label>
+                            <Form.Label className="label">Starting Salary:</Form.Label>
                             <Form.Control placeholder={currentReview.startingSalary} name="startingSalary" value={review.startingSalary} onChange={handleChange}/>
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label>Review:</Form.Label>
+                            <Form.Label className="label">Review:</Form.Label>
                             <Form.Control as="textarea" rows={4} placeholder={currentReview.content} name="content" value={review.content} onChange={handleChange}/>
                         </Form.Group>
-                        <Button type="submit">Update Review</Button>
+                        <div className="text-center">
+                            <button className="company-button" type="submit">Update Review</button>
+                        </div>
+
                     </Form>
                     
                 </Modal.Body>

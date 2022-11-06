@@ -6,12 +6,16 @@ const CommentForm = (props) => {
 
     return (
         <>
+            <div className="text-end">
             <Form.Control
+                as="textarea"
+                rows={3}
                 placeholder="Enter your comment here"
                 value={comment}
                 onChange= { handleChange }
             />
-            <Button onClick={() => handleSubmit()}>Submit</Button>
+            <button className="company-button mt-3 mb-0" onClick={() => handleSubmit()}>Submit</button>
+            </div>
         </>
     )
 }

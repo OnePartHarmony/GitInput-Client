@@ -37,9 +37,12 @@ const CompanyIndex = (props) => {
                 <div className="logo-index-container mb-3">
                     <img className="logo-company-index" alt="logo" src={company.logo}></img>
                 </div>
-                {company.numberOfReviews ? (company.numberOfReviews === 1 ? <p>1 Review</p> : <p>{company.numberOfReviews} Reviews</p> ) : null }
+                <section className="index-review-container">
+                    {company.numberOfReviews ? (company.numberOfReviews === 1 ? <div>1 Review</div> : 
+                    <div>{company.numberOfReviews} Reviews</div> ) : null }
+                </section>
                 <div className= "description-container text-center">
-                    <p className="company-description mt-4">{company.description}</p>
+                    <p className="company-description mt-2">{company.description}</p>
                 </div>
                 <div className="index-btn-container mt-auto mb-2">
                     <a className="company-button company-link" target="_blank" href={`https://www.${company.domain}`}> Website</a>

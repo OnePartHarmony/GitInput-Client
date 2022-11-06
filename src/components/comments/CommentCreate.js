@@ -12,13 +12,6 @@ const CommentCreate = (props) => {
 
     const createComment = () => {
         commentCreate(user, review._id, comment)
-            .then(() => {               
-                msgAlert({
-                    heading: 'Success!',
-                    message: 'Your comment has ben created.',
-                    variant: 'success'
-                })
-            })
             .then(() => {
                 closeComment()
                 triggerRefresh()                

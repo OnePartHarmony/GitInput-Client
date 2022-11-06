@@ -31,7 +31,7 @@ const ReviewIndex = (props) => {
             style: 'currency',     
             currency: 'USD',     
             currencyDisplay: 'symbol',
-            maximumFractionDigits: 2
+            maximumFractionDigits: 0
         })
         return (
             <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
@@ -39,7 +39,8 @@ const ReviewIndex = (props) => {
                     {/* <div className="label review-user">User:</div> */}
                     <div className="label review-user">{review.owner?.username}</div>
                     
-                    <p style={{marginLeft: "auto"}}>{review.userLikes.length}<img style={{height: "25px"}} alt="likes" src={require("../../icons/thumbs-up.png")}></img></p>
+                    <div className="likes-num" style={{marginLeft: "auto"}}>{review.userLikes.length}</div>
+                    <img style={{height: "25px"}} alt="likes" src={require("../../icons/thumbs-up.png")}></img>
                     
                 </Card.Header>
                 <section className="review-index-heading">

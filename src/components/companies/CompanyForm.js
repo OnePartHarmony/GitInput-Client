@@ -5,7 +5,7 @@ const CompanyForm = (props) => {
     const { company, handleChange, heading, handleSubmit } = props
 
     return (
-        <Container className="justify-content-center">
+        <Container>
             <h3 className="text-center label">{ heading }</h3>
             <Form onSubmit={ handleSubmit }>
                 <Form.Label className="label mb-0 mt-3">Name:</Form.Label>
