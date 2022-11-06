@@ -23,7 +23,7 @@ const ReviewUpdateModal = (props) => {
 
     const updateReview = (e) => {
         e.preventDefault()
-        reviewUpdate(review, user, reviewId, currentReview.generalRating)
+        reviewUpdate(review, user, reviewId)
             .then(() => {
                 closeUpdate()
                 triggerRefresh()
