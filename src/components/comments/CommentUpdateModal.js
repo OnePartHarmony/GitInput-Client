@@ -14,6 +14,7 @@ const CommentUpdateModal = (props) => {
       setComment(e.target.value)
   }
 
+  // can remove unused `e` from params
   const editComment = (e) => {
     commentUpdate(user, comment, commentId, reviewId)
     .then(() => {

@@ -53,6 +53,7 @@ const CompanyIndex = (props) => {
             </Card>
     ))
 
+    // Convert to arrow syntax if function declaration is not needed. We always want to be as consistent as possible when coding so if all other functions are arrow function expressions having a random function declaration breaks from that conventing that we have set. 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
