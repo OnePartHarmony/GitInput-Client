@@ -106,7 +106,6 @@ const ReviewShow = (props) => {
         setDisplayButtons(!displayButtons)
     }
 
-
     let comments
     let salaryUSD
     if (review !== null) {
@@ -161,7 +160,6 @@ const ReviewShow = (props) => {
             ))
         }
     }
-
 
     return (
         <>
