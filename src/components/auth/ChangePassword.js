@@ -16,7 +16,6 @@ const ChangePassword = (props) => {
 
 	const onChangePassword = (event) => {
 		event.preventDefault()
-
 		
         const passwords = {oldPassword, newPassword}
 
@@ -32,8 +31,6 @@ const ChangePassword = (props) => {
 				})
 			})
 	}
-
-
 
     return (
         <>

@@ -27,6 +27,7 @@ const ReviewIndex = (props) => {
 
 
     const reviewCards = reviews.map(review => {
+        // display salary number as dollars
         const salaryUSD = review.startingSalary.toLocaleString('en-US', {
             style: 'currency',     
             currency: 'USD',     
@@ -36,7 +37,6 @@ const ReviewIndex = (props) => {
         return (
             <Card className="review-index-card mt-0" key={review._id} style={{backgroundColor: "#EFEFEF", margin: "20px"}}>
                 <Card.Header className="review-index-section mb-1">
-                    {/* <div className="label review-user">User:</div> */}
                     <div className="label review-user">{review.owner?.username}</div>
                     
                     <div className="likes-num" style={{marginLeft: "auto"}}>{review.userLikes.length}</div>

@@ -39,12 +39,10 @@ const ReviewUpdateModal = (props) => {
 
 
     return (
-        <>
-            
+        <>            
             <Modal className="mt-5" show={ showUpdate } onHide={ closeUpdate }>
                 <Modal.Header closeButton />
                 <Modal.Body>
-
                     <h3 className="text-center label">Update Review of {company.name}</h3>
                     <Form onSubmit={updateReview}>
                         <Form.Group className="mb-2">
@@ -54,7 +52,6 @@ const ReviewUpdateModal = (props) => {
                         <Form.Group className="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
                             <Form.Label className="label">Your Rating:</Form.Label>
                             <br/>
-                            {/* Star rating radio inputs */} 
                             <Ratings
                                 rating={review.generalRating}
                                 widgetRatedColors="gold"
@@ -67,9 +64,7 @@ const ReviewUpdateModal = (props) => {
                                 <Ratings.Widget/>
                                 <Ratings.Widget/>
                                 <Ratings.Widget/>
-                            </Ratings>
-                            
-        
+                            </Ratings>        
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label className="label">Starting Position:</Form.Label>
@@ -91,14 +86,10 @@ const ReviewUpdateModal = (props) => {
                         <div className="text-center">
                             <button className="company-button" type="submit">Update Review</button>
                         </div>
-
-                    </Form>
-                    
+                    </Form>                    
                 </Modal.Body>
-            </Modal>
-            
+            </Modal>            
         </>
-
     )
 }
 

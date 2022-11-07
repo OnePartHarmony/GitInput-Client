@@ -9,7 +9,7 @@ export const companyCreate = (company, user) => {
             company: company
         },
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
     })
 }
@@ -41,7 +41,6 @@ export const companyUpdate = (company, user, id) => {
 }
 
 export const companyDelete = (user, id) => {
-	console.log(id)
 	return axios({
 		method: 'DELETE',
 		url: apiUrl + `/companies/${id}`,

@@ -52,6 +52,7 @@ const ReviewCreate = (props) => {
             <div className="mt-5" style={{flex: 1, textAlign: "center", }}>
                 <div  className="company-profile" style={{width: "33vw", margin: "auto", border: "2px solid black", padding: "20px"}}>
                     <h3 className="create-review-title">Review {company.name}</h3>
+                    
                     <Form className="review-form" onSubmit={createReview}>
                         <Form.Group className="mt-3 mb-2">
                             <Form.Label className="review-update-label">Title your Review:</Form.Label>
@@ -60,8 +61,7 @@ const ReviewCreate = (props) => {
                         <Form.Group className="mb-2" style={{display: "flex", justifyContent: "space-between"}}>
                             <br/>
                             <div className="review-stars">
-                                <Ratings 
-                                    
+                                <Ratings                                    
                                     rating={review.generalRating}
                                     widgetRatedColors="gold"
                                     widgetHoverColors="gold"
@@ -75,9 +75,7 @@ const ReviewCreate = (props) => {
                                     <Ratings.Widget/>
                                     <Ratings.Widget/>
                                 </Ratings>
-                            </div>
-                            
-        
+                            </div>        
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label className="review-update-label">Starting Position:</Form.Label>
@@ -105,15 +103,11 @@ const ReviewCreate = (props) => {
                         </Form.Group>    
                         <div className="text-center mt-3 index-btn-container align-text-bottom mt-2">
                             <button className="company-button" type="submit">Submit Review</button>
-                        </div>
-
-                        
+                        </div>                        
                     </Form>
-
                 </div>
             </div>        
         </>
-
     )
 }
 

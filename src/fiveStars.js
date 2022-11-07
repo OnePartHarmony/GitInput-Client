@@ -1,4 +1,4 @@
-//this function creates five stars, with the number of yellow ones dependent on a parameter
+//this function creates five stars, with the number of yellow ones dependent on the number passed into it.
 
 const fiveStars = (rating) => {
     

@@ -128,16 +128,15 @@ const ReviewShow = (props) => {
                     </div>
                     
                     <div>
-                        <small>
-                        {/* date comment was written */}
-                            posted {comment.createdAt.split("T")[0]}
-                        </small>
+                    {/* date comment was written */}
+                        <small>posted {comment.createdAt.split("T")[0]}</small>
                         <br/>
                     {/* if comment has been updated, show updated date */}
-                        {comment.createdAt !== comment.updatedAt && <small style={{color: "red"}}>
-                            edited {comment.updatedAt.split("T")[0]}
-                            </small>}
+                        {comment.createdAt !== comment.updatedAt && 
+                            <small style={{color: "red"}}>edited {comment.updatedAt.split("T")[0]}</small>
+                        }
                     </div>
+
                     {user && user._id === comment.owner._id ? 
                         <div>
                             <button className="comment-edit-btn company-button" onClick={() => setDisplayCommentUpdate(prev=>!prev)}>edit</button>
@@ -145,6 +144,7 @@ const ReviewShow = (props) => {
                             <button className="comment-delete-btn" onClick={() => deleteComment(comment._id)}>X</button>
                         </div>
                     : null }
+
                     <CommentUpdateModal
                         currentComment={comment.comment}
                         msgAlert={msgAlert}
@@ -156,7 +156,6 @@ const ReviewShow = (props) => {
                         reviewId={reviewId}
                     />
                 </div>
-
             ))
         }
     }
@@ -167,11 +166,11 @@ const ReviewShow = (props) => {
 
         <main className="review-show-page">
             <div className="show-review-container">
-
                 <div className="mt-3 mb-2 review-company review-company-container">
-                <Link to={`/companies/${review.company._id}`} style={{color: "black", textDecoration: "none"}}>
-                    <div>Company: {review.company.name}</div>
-                </Link>     
+                    <Link to={`/companies/${review.company._id}`} style={{color: "black", textDecoration: "none"}}>
+                        <div>Company: {review.company.name}</div>
+                    </Link>
+                {/* display likes */}
                     <div className="num-likes">
                         {review.userLikes.length > 0 && (
                                 review.userLikes.length === 1 ?                            
@@ -185,34 +184,30 @@ const ReviewShow = (props) => {
                 <div className="review-card">
                     <div className="review-info">
                         <section className="review-section-1">
-                            {/* conditionally rendered username because seed reviews have no owner */}
                             <div className="review-title mb-2">{ fiveStars(review.generalRating) } { review.title }</div>
                             <section className="review-index-section">
-                                <div className="rating-item label">User:</div> 
-                                {review.owner ? <div className="rating-item">{ review.owner?.username }</div> : null }
+                                <div className="rating-item label">User:</div>
+                                <div className="rating-item">{ review.owner?.username }</div>
                             </section>
                             <section className="review-index-section">
-                                <div className="rating-item label">Salary:</div> 
+                                <div className="rating-item label">Salary:</div>
                                 <div>{ salaryUSD }</div>
                             </section>
-                            <section className="review-index-section">
-                                <div className="rating-item label">Starting Position:</div> 
+                            <section className="review-index-section mb-2">
+                                <div className="rating-item label">Starting Position:</div>
                                 <div>{ review.startingPosition }</div>
                             </section>
-                            <div className="rating-item"> </div>
                         </section>
                     </div>
                     <section className="review-section-2">
                         <div>{ review.content }</div>
                     </section>
 
-                    {/* display likes */}
-
-                    
                     <div>
-                    {user && (user._id === review.owner?._id) ?
-                        <button className="drop-down-btn" onClick={handleDropDown}>...</button>
-                    : null}
+                    {/* if user is author of review, button appears for drop-down edit and delete */}
+                        {user && (user._id === review.owner?._id) ?
+                            <button className="drop-down-btn" onClick={handleDropDown}>...</button>
+                        : null}
                         {displayButtons ? (
                             <section>
                             {user && (user._id === review.owner?._id) ?
@@ -245,10 +240,9 @@ const ReviewShow = (props) => {
                         <div>
                             {/* display dates posted and edited, but only both if actually edited */}
                             <small>posted {review.createdAt.split("T")[0]}</small>                    
-                            {review.createdAt !== review.updatedAt && 
-                            <>
-                            <br/>
-                            <small style={{color: "red"}}>edited {review.updatedAt.split("T")[0]}</small>
+                            {review.createdAt !== review.updatedAt && <>                            
+                                <br/>
+                                <small style={{color: "red"}}>edited {review.updatedAt.split("T")[0]}</small>
                             </>}
                             <br/>
                         </div>
