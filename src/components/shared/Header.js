@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 const authenticatedOptions = (
 	<>
 		<Nav.Item className="nav-item ms-4">
-			<Link to='change-password' className="nav-item">
+			<Nav.Link eventKey="2" as={Link}  to='change-password' className="nav-item">
 				Change Password
-			</Link>
+			</Nav.Link>
 		</Nav.Item>
 		<Nav.Item className="ms-4">
-			<Link to='sign-out' className="nav-item">
+			<Nav.Link eventKey="3" as={Link}  to='sign-out' className="nav-item">
 				Sign Out
-			</Link>
+			</Nav.Link>
 		</Nav.Item>
 	</>
 )
@@ -22,21 +22,21 @@ const authenticatedOptions = (
 const unauthenticatedOptions = (
 	<>
         <Nav.Item className="nav-item ms-4">
-		    <Link to='sign-up' className="nav-item">
+		    <Nav.Link eventKey="4" as={Link}  to='sign-up' className="nav-item">
 				Sign Up
-			</Link>
+			</Nav.Link>
         </Nav.Item>
         <Nav.Item className="nav-item ms-4">
-		    <Link to='sign-in' className="nav-item">
+		    <Nav.Link eventKey="5" as={Link}  to='sign-in' className="nav-item">
 				Sign In
-			</Link>
+			</Nav.Link>
         </Nav.Item>
 	</>
 )
 
 
 const Header = ({ user }) => (
-	<Navbar className='nav-bar p-0' variant='dark' expand='xl'>
+	<Navbar collapseOnSelect={true} className='nav-bar p-0' variant='dark' expand='xl'>
 		<Navbar.Brand>
             <Link to='/' className="ms-3 site-name">
                 &lt;Git Input/&gt;
@@ -47,12 +47,11 @@ const Header = ({ user }) => (
 		}
 		<Navbar.Toggle aria-controls='basic-navbar-nav' className='me-4'/>		
 		<Navbar.Collapse id='basic-navbar-nav'>
-			<Nav className='nav justify-content-end me-5 nav-link' style={{ width: "100%" }}>
-				
+			<Nav className='nav justify-content-end me-5 nav-link' style={{ width: "100%" }}>				
 				<Nav.Item className="ms-4">
-					<Link to='/companies' className="nav-item">
+					<Nav.Link eventKey="1" as={Link} to='/companies' className="nav-item">
 						View Companies
-					</Link>
+					</Nav.Link>
 				</Nav.Item>
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
