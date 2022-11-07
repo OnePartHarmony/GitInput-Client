@@ -309,7 +309,7 @@ body {
 
 .review-section-1 {
   flex: 6;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   border-bottom: 1px solid grey;
 }
 
@@ -318,7 +318,10 @@ body {
 }
 
 .review-section-2 {
-  margin-top: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 110px;
+  overflow: scroll;
 }
 
 .review-btns {
@@ -340,6 +343,10 @@ body {
   color: #404040;
   padding: 5px;
   border-radius: 10px;
+}
+
+.drop-down-btn:hover {
+  background-color:#CAEBF2
 }
 
 .like-btn {
