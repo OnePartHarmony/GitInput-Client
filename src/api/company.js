@@ -35,7 +35,7 @@ export const companyUpdate = (company, user, id) => {
 			company: company
 		},
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
 	})
 }
@@ -46,7 +46,7 @@ export const companyDelete = (user, id) => {
 		method: 'DELETE',
 		url: apiUrl + `/companies/${id}`,
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
 	})
 }

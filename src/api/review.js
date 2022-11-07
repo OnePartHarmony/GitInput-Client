@@ -13,7 +13,7 @@ export const reviewCreate = (review, user, companyId) => {
             } 
         },
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
     })
 }
@@ -40,7 +40,7 @@ export const reviewUpdate = (review, user, id) => {
 			review: review
 		},
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
 	})
 }
@@ -50,7 +50,7 @@ export const reviewDelete = (user, id) => {
 		method: 'DELETE',
 		url: apiUrl + `/reviews/${id}`,
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
 	})
 }
@@ -64,7 +64,7 @@ export const reviewLike = (user, reviewId) => {
             userId: user._id
         },
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
     })
 }
@@ -77,7 +77,7 @@ export const reviewUnlike = (user, reviewId) => {
             userId: user._id
         },
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
     })
 }
