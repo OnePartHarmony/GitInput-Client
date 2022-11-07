@@ -9,26 +9,18 @@ import Form from 'react-bootstrap/Form'
 const ChangePassword = (props) => {
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
-
+    
+    const { msgAlert, user } = props
+    
     const navigate = useNavigate()
 
 	const onChangePassword = (event) => {
 		event.preventDefault()
 
-		const { msgAlert, user } = props
-        console.log('the user', user)
-        
-
+		
         const passwords = {oldPassword, newPassword}
 
 		changePassword(passwords, user)
-			.then(() =>
-				msgAlert({
-					heading: 'Change Password Success',
-					message: messages.changePasswordSuccess,
-					variant: 'success',
-				})
-			)
 			.then(() => navigate('/'))
 			.catch((error) => {
 				setOldPassword('')
