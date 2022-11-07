@@ -45,7 +45,7 @@ const CompanyIndex = (props) => {
                     <p className="company-description mt-2">{company.description}</p>
                 </div>
                 <div className="index-btn-container mt-auto mb-2">
-                    <a className="company-button company-link" target="_blank" href={`https://www.${company.domain}`}> Website</a>
+                    <a className="company-button company-link" target="_blank" rel="noreferrer" href={`https://www.${company.domain}`}> Website</a>
                     <Link to={`/companies/${company._id}`} state={company} className="company-button">Reviews</Link>
                 </div>
             </Card>

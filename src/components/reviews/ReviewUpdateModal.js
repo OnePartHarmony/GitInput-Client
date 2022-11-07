@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Form, Button, Modal } from 'react-bootstrap'
+import { Form, Modal } from 'react-bootstrap'
 import { reviewUpdate } from "../../api/review"
 import Ratings from "react-ratings-declarative"
 
