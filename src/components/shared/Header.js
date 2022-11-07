@@ -34,35 +34,26 @@ const unauthenticatedOptions = (
 	</>
 )
 
-const alwaysOptions = (
-	<>
-		<Nav.Item>
-			<Link to='/' className="nav-item">
-				Home
-			</Link>
-		</Nav.Item>
-		<Nav.Item className="ms-4">
-			<Link to='/companies' className="nav-item">
-				View Companies
-			</Link>
-		</Nav.Item>		
-	</>
-)
 
 const Header = ({ user }) => (
-	<Navbar className='nav-bar p-0' variant='dark' expand='md'>
+	<Navbar className='nav-bar p-0' variant='dark' expand='xl'>
 		<Navbar.Brand>
             <Link to='/' className="ms-3 site-name">
                 &lt;Git Input/&gt;
             </Link>
         </Navbar.Brand>
-		<Navbar.Toggle aria-controls='basic-navbar-nav' />
+		{user && 
+			<span className='welcome-nav item ms-1'>Welcome, {user.username}</span>
+		}
+		<Navbar.Toggle aria-controls='basic-navbar-nav' className='me-4'/>		
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='nav justify-content-end me-5 nav-link' style={{ width: "100%" }}>
-				{user && (
-					<span className='welcome-nav item me-4'>Welcome, {user.username}</span>
-				)}
-				{alwaysOptions}
+				
+				<Nav.Item className="ms-4">
+					<Link to='/companies' className="nav-item">
+						View Companies
+					</Link>
+				</Nav.Item>
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
