@@ -5,7 +5,6 @@ import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 const SignIn = (props) => {
 
@@ -36,40 +35,42 @@ const SignIn = (props) => {
 	}
 
     return (
-        <div className='row auth-form' style={{ margin: '100px auto 0 auto'}}>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3 className="mb-3 text-center">Sign In</h3>
-                <Form onSubmit={onSignIn}>
-                    <Form.Group controlId='username'>
-                        <Form.Label className="mb-0">Username</Form.Label>
-                        <Form.Control
-                            className="mb-3"
-                            required
-                            type='text'
-                            name='username'
-                            value={username}
-                            placeholder='Enter username'
-                            onChange={e => setUsername(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group controlId='password'>
-                        <Form.Label className="mb-0">Password</Form.Label>
-                        <Form.Control
-                            className="mb-3"
-                            required
-                            name='password'
-                            value={password}
-                            type='password'
-                            placeholder='Password'
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Button className="mt-3 mb-5" variant='primary' type='submit'>
-                        Submit
-                    </Button>
-                </Form>
+        <>
+            <style>{'body { height:100vh; width:100vw; background-color: rgba(159, 159, 159, .3); background-image: linear-gradient(60deg, rgba(237, 237, 237, 1) 35%, transparent 30%), linear-gradient(-400deg, rgba(202, 235, 242, .7) 40%, transparent 30%);}'}</style>
+            <div className='row auth-form' style={{ margin: '100px auto 0 auto'}}>
+                <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+                    <h3 className="mb-3 text-center">Sign In</h3>
+                    <Form onSubmit={onSignIn}>
+                        <Form.Group controlId='username'>
+                            <Form.Label className="mb-0">Username</Form.Label>
+                            <Form.Control
+                                className="mb-3"
+                                required
+                                type='text'
+                                name='username'
+                                value={username}
+                                placeholder='Enter username'
+                                onChange={e => setUsername(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId='password'>
+                            <Form.Label className="mb-0">Password</Form.Label>
+                            <Form.Control
+                                className="mb-3"
+                                required
+                                name='password'
+                                value={password}
+                                type='password'
+                                placeholder='Password'
+                                onChange={e => setPassword(e.target.value)}
+                            />
+                        </Form.Group>
+                        <button className='comment-btn' type='submit' style={{margin: "10px 0 30px 0"}}>Submit</button>
+                    </Form>
+                </div>
             </div>
-        </div>
+        </>
+        
     )
 }
 

@@ -52,39 +52,39 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-            path='/companies'
-            element={              
-              <CompanyIndex msgAlert={msgAlert} user={user} />
-            }
-         	 />
-			<Route
-            path='/companies/:id'
-            element={            
-              <CompanyShow msgAlert={msgAlert} user={user}/>
-            }
-         	 />
-			<Route
-            path='/reviews/:reviewId'
-            element={
-                <ReviewShow msgAlert={msgAlert} user={user} company=""/>
-            }
-         	/>
+					<Route
+						path='/sign-out'
+						element={
+						<RequireAuth user={user}>
+							<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+						</RequireAuth>
+						}
+					/>
+					<Route
+						path='/change-password'
+						element={
+						<RequireAuth user={user}>
+							<ChangePassword msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
+					<Route
+						path='/companies'
+						element={              
+							<CompanyIndex msgAlert={msgAlert} user={user} />
+						}
+						/>
+					<Route
+						path='/companies/:id'
+						element={            
+							<CompanyShow msgAlert={msgAlert} user={user}/>
+						}
+						/>
+					<Route
+						path='/reviews/:reviewId'
+						element={
+							<ReviewShow msgAlert={msgAlert} user={user} company=""/>
+						}
+					/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert

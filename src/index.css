@@ -72,7 +72,6 @@ body {
 .auth-form {
   margin: auto;
   width: 70%;
-  border: solid black 2px;
   border-radius: 10px;
 }
 
@@ -113,7 +112,7 @@ body {
   align-items: center;
   margin: 15px;
   padding: 10px;
-  width: 30%;
+  width: 310px;
   min-height: 300px;
   max-height: 340px;
 }
@@ -480,4 +479,8 @@ margin: auto;
   position: absolute;
   top: 15%;
   right: 0;
+}
+
+input {
+  box-shadow: 1px 1px 2px rgba(0,0,0,.7) inset;
 }
