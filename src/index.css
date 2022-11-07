@@ -218,7 +218,8 @@ body {
 }
 
 .profile-description {
-  height: 150px;
+  min-height: 150px;
+  height: max-content;
   margin: 20px 30px 20px 30px;
 }
 

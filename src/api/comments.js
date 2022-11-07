@@ -11,7 +11,7 @@ export const commentCreate = (user, reviewId, comment) => {
             comment: comment, owner: user._id
         },
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
     })
 }
@@ -24,7 +24,7 @@ export const commentUpdate = (user, comment, commentId, reviewId) => {
 			comment: comment
 		},
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
 	})
 }
@@ -34,7 +34,7 @@ export const commentDelete = (user, reviewId, commentId) => {
         method: "DELETE",
         url: apiUrl + `/delete/${reviewId}/${commentId}`,
         headers: {
-            Authorization: `Token token=${user.token}`
+            Authorization: `Bearer ${user.token}`
         }
     })
 }

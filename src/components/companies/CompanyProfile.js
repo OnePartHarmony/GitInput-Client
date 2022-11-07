@@ -45,8 +45,9 @@ const CompanyProfile = (props) => {
                 </div>
                 {company.averageRating ? <h4>{fiveStars(Math.round(company.averageRating))}</h4> : null}
                 <img className="profile-logo" src={company.logo} alt={`${company.name} logo`}/>
-                <div className="profile-description">{company.description} </div>
+                <p className="profile-description">{company.description} </p>
                 <a href={`https://www.${company.domain}`} target="_blank"  rel="noreferrer" className="company-button">{company.domain}</a>
+
                 {/* if signed in, the leave review button toggles form and becomes a close form button */}
                 {user ? (displayReviewCreate ? <button className="company-button" onClick={toggleReviewForm}>Close Review Form</button> : <button className="company-button mt-2" onClick={toggleReviewForm}>Leave a Review</button> ) : null}
             </div>
