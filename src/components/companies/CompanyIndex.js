@@ -73,9 +73,9 @@ const CompanyIndex = (props) => {
                         <br/>
                         Search for it!</section>
                         <Form.Control
-                        className="text-center"
-                        placeholder="Search a Company"
-                        onChange={(e) => searchCompanies(e)}
+                            className="text-center"
+                            placeholder="Search a Company"
+                            onChange={(e) => searchCompanies(e)}
                         >
                         </Form.Control>
                         <button className="search-btn mt-3 mb-5">
@@ -84,9 +84,9 @@ const CompanyIndex = (props) => {
                         {user ? 
                             <div className="company-create">
                                 <section>
-                                Don't see your company in the search?
-                                <br/>
-                                Create it!
+                                    Don't see your company in the search?
+                                    <br/>
+                                    Create it!
                                 </section>
                             <CreateCompanyModal user={user} msgAlert={msgAlert}/>
                             </div>
