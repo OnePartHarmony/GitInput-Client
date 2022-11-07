@@ -29,12 +29,11 @@ const CommentUpdateModal = (props) => {
         })
 }
 
-
   return (
     <>
       <Modal className="mt-5"show={showUpdate} onHide={closeUpdate}>
         <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
+          <Modal.Title>Update Comment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <CommentForm

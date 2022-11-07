@@ -1,4 +1,3 @@
-// import React, { Component } from 'react'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -82,9 +81,6 @@ const SignUp = (props) => {
                                 onChange={e => setPasswordConfirmation(e.target.value)}
                             />
                         </Form.Group>
-                        {/* <Button className="mt-3 mb-5" variant='primary' type='submit'>
-                            Submit
-                        </Button> */}
                         <button className='comment-btn' type='submit' style={{margin: "10px 0 30px 0"}}>Submit</button>
                     </Form>
                 </div>

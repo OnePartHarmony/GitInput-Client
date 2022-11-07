@@ -11,6 +11,7 @@ const CompanyIndex = (props) => {
  
     const [allCompanies, setAllCompanies] = useState([])
     const [filteredCompanies, setFilteredCompanies] = useState([])
+    const [updated, setUpdated] = useState(false)
 
     useEffect(() => {
         companyIndex()
@@ -25,21 +26,22 @@ const CompanyIndex = (props) => {
                     variant: 'danger'
                 })
             })
-    }, [msgAlert])
+    }, [msgAlert, updated])
 
-    const allCompaniesJSX = filteredCompanies.map((company, index) => {
- 
-        return (
+    const allCompaniesJSX = filteredCompanies.map((company, index) => (
             <Card key={index} className="company-card text-center mb-3 d-flex flex-column">
                 <Card.Title>
-                <p className="company-name">{company.name}</p>
+                    <p className="company-name">{company.name}</p>
                 </Card.Title>
                 <div className="logo-index-container mb-3">
                     <img className="logo-company-index" alt="logo" src={company.logo}></img>
                 </div>
                 <section className="index-review-container">
-                    {company.numberOfReviews ? (company.numberOfReviews === 1 ? <div>1 Review</div> : 
-                    <div>{company.numberOfReviews} Reviews</div> ) : null }
+                    {company.numberOfReviews ? 
+                        (company.numberOfReviews === 1 ? 
+                            <div>1 Review</div> : 
+                            <div>{company.numberOfReviews} Reviews</div> )
+                    : null }
                 </section>
                 <div className= "description-container text-center">
                     <p className="company-description mt-2">{company.description}</p>
@@ -49,12 +51,12 @@ const CompanyIndex = (props) => {
                     <Link to={`/companies/${company._id}`} state={company} className="company-button">Reviews</Link>
                 </div>
             </Card>
-        )
-    })
+    ))
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
-      }
+    }
+
     const searchCompanies = (e) => {
         let companies=allCompanies
         let capital = capitalizeFirstLetter(e.target.value)
@@ -69,9 +71,11 @@ const CompanyIndex = (props) => {
             <main className="company-index">
                 <div className="company-search-container text-center">
                     <div className="mb-5 company-search-box">
-                        <section className="m-3 mt-0">Don't see your company listed? 
-                        <br/>
-                        Search for it!</section>
+                        <section className="m-3 mt-0">
+                            Don't see your company listed? 
+                            <br/>
+                            Search for it!
+                        </section>
                         <Form.Control
                             className="text-center"
                             placeholder="Search a Company"
@@ -88,7 +92,7 @@ const CompanyIndex = (props) => {
                                     <br/>
                                     Create it!
                                 </section>
-                            <CreateCompanyModal user={user} msgAlert={msgAlert}/>
+                            <CreateCompanyModal user={user} msgAlert={msgAlert} triggerRefresh={() => setUpdated(prev => !prev)}/>
                             </div>
                         : null }
                     </div>
