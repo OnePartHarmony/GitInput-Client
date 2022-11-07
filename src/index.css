@@ -130,9 +130,12 @@ body {
 }
 
 .logo-company-index {
-  /* margin: 10px 20px; */
   max-height: 80px;
   object-fit: contain;
+}
+
+.index-review-container {
+  font-weight: bold;
 }
 
 .index-btn-container{
@@ -217,7 +220,12 @@ body {
 
 .profile-description {
   height: 150px;
-  margin: 40px 30px 40px 30px;
+  margin: 20px 30px 20px 30px;
+}
+
+.company-update-btns {
+  display: flex;
+  margin: auto;
 }
 
 
@@ -227,8 +235,18 @@ body {
   height: 75%;
 }
 
+.review-company{
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .review-index-card {
   background-color: #EFEFEF
+}
+
+.likes-num {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .review-index-heading {
@@ -252,7 +270,7 @@ body {
 .review-index-section {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -263,35 +281,26 @@ body {
 
 /* REVIEW SHOW */
 .show-review-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.logo-review-show {
-  margin: auto;
-  min-height: 65px;
-  max-width: 500px;
-  object-fit: contain;
+  margin-top: 20px;
+  margin-left: 3%;
+  flex: 1;
 }
 
 .review-title {
-  margin: auto;
-  padding: 30px;
-  width: 500px;
-  border-top: solid black 2px;
+  margin-right: 30px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .review-card {
-  /* display: flex;
-  flex-direction: row;
-  align-items: center; */
   margin: auto;
-  width: 50%;
+  width: 85%;
+  height: 50vh;
   border: 2px solid black;
   background-color: white;
   border-radius: 5px;
   padding: 25px 25px 0px 25px;
+  position: relative;
 }
 
 .review-info {
@@ -299,7 +308,9 @@ body {
 }
 
 .review-section-1 {
-  flex: 3;
+  flex: 6;
+  padding-bottom: 30px;
+  border-bottom: 1px solid grey;
 }
 
 .rating-item {
@@ -307,20 +318,46 @@ body {
 }
 
 .review-section-2 {
-  padding-left: 25px;
-  margin-left: 15px;
-  flex: 4;
-  border-left: 2px solid black;
+  margin-top: 30px;
 }
 
 .review-btns {
   display: flex;
   margin-top: 25px;
-  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  padding: 5px;
+  right: 0;
+  bottom: 0;
 }
 
-.comment-like-btn {
+.drop-down-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
+  border: solid 2px #404040;
+  color: #404040;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.like-btn {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.like-btn:hover, .comment-btn:hover {
   background-color: #CAEBF2;
+  color: black;
+}
+
+.comment-btn {
+  background-color:white;
   border: #404040 solid 2px;
   color: #404040;
   text-decoration: none;
@@ -334,7 +371,6 @@ body {
   color: white;
 }
 
-/* REVIEW CREATE */
 .create-review-title {
   font-size: 30px;
   font-weight: bold;
@@ -352,8 +388,89 @@ margin: auto;
   font-weight: bold;
 }
 
-/* COMMENT CREATE */
-.comment-form {
-  margin-top: 20px;
-  width: 500px;
+
+/* //////////////// */
+.review-show-page {
+  display: flex;
+}
+
+.review-show-comments {
+  flex: 1;
+}
+
+.comment-container {
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  height: 80vh;
+  width: 75%;
+  overflow: scroll;
+}
+
+.review-company-container {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.num-likes {
+  font-size: 30px;
+}
+
+.review-dates {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 15px 25px;
+}
+
+.comment-create {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  width: 85%;
+  margin: 20px auto;
+  background-color: white;
+}
+
+.comment-box {
+  padding: 15px;
+  border-radius: 10px;
+  background-color:#EFEFEF;
+  margin: auto;
+  width: 80%;
+  font-size: 17px;
+  position: relative;
+}
+
+.comment-edit-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.comment-delete-btn {
+  padding: 0px 6px;
+  margin: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.comment-delete-btn:hover {
+  background-color: #f95959;
+  color: white;
+}
+
+.comment-btn-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: absolute;
+  top: 15%;
+  right: 0;
 }

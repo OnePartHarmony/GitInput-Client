@@ -48,7 +48,7 @@ function CreateCompanyModal(props) {
         Create Company!
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal className="mt-5" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
         </Modal.Header>
@@ -60,8 +60,6 @@ function CreateCompanyModal(props) {
             handleSubmit={ handleCreateCompany }
           />
         </Modal.Body>
-        <Modal.Footer>
-        </Modal.Footer>
       </Modal>
     </>
   );
